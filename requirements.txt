@@ -1,0 +1,14 @@
+pymupdf
+langchain
+langchain-community
+langchain-anthropic
+langchain-text-splitters
+streamlit
+python-dotenv
+anthropic
+scikit-learn
+joblib
+numpy
+fpdf2
+arabic-reshaper
+python-bidi
