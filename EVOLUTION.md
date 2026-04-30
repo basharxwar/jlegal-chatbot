@@ -54,6 +54,16 @@ Sub-second query response after first load
 preload_all_collections() warms all 9 domain JSON files at startup
 Model loading moved entirely to startup phase
 
+## v11 — Pre-Defense Fixes
+Bug #1: Spinner nested in st.chat_message("assistant") cleared container on exit (Streamlit 1.5x).
+Fix: moved spinner to run between messages — assistant bubble now renders on first script run.
+Bug #2: Full navy #1B3A57 theme applied to main chat area, expanders, and chat input.
+Bug #3: Multimodal attachments — st.chat_input accepts PNG/JPG/WebP (5 MB) and PDF (10 MB).
+Images sent as base64 content blocks to Claude vision API.
+PDFs extracted via PyMuPDF and appended to retrieval query (original kept for audit log).
+pipeline.run_query: added images and pdf_texts parameters.
+generator.generate_answer: added images parameter with magic-byte MIME detection.
+
 ## v10 — Final Polish
 PDF files renamed to English slugs (labor.pdf, commercial.pdf, etc.)
 Language detection for no-result messages (Arabic/English/Jordanian)
