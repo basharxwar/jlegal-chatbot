@@ -27,8 +27,8 @@ from src.database import (
 # Constants
 # ---------------------------------------------------------------------------
 
-DEFAULT_THRESHOLD = 0.05
-DEFAULT_TOP_K = 5
+DEFAULT_THRESHOLD = 0.50
+DEFAULT_TOP_K = 8
 
 ERROR_MESSAGE_AR = (
     "عذراً، حدث خطأ أثناء معالجة سؤالك. "
@@ -44,9 +44,6 @@ def ensure_session(session_id: Optional[str] = None) -> str:
     """Return a valid session_id, creating a new session row if needed."""
     if session_id is None:
         return create_session()
-    # INSERT OR IGNORE: creates the row if missing, no-op if it already exists.
-    # touch_session's UPDATE silently does nothing when the row is absent,
-    # so we must guarantee the row exists before relying on it.
     create_session(session_id=session_id)
     touch_session(session_id)
     return session_id
@@ -60,37 +57,27 @@ def run_query(
     query_text: str,
     session_id: str,
     law_domain: Optional[str] = None,
+    style: str = "formal",
+    images: Optional[list[bytes]] = None,
+    pdf_texts: Optional[list[str]] = None,
     top_k: int = DEFAULT_TOP_K,
     similarity_threshold: float = DEFAULT_THRESHOLD,
 ) -> dict:
     """Execute the full RAG pipeline for a single user query.
 
-    Steps
-    -----
-    1. Validate input (non-empty query, valid session).
-    2. Ensure the session row exists in SQLite.
-    3. Retrieve relevant chunks from the vector store.
-    4. Generate an Arabic answer via the Claude API.
-    5. Log QUERY, RESPONSE, and QUERY_CHUNK rows to SQLite.
-    6. Return a result dict for the UI layer.
-
-    Returns
-    -------
-    dict with keys:
-        success        (bool)
-        response_text  (str)
-        chunks         (list[dict])
-        is_no_result   (bool)
-        tokens_used    (int)
-        model_used     (str)
-        query_id       (str)
-        error          (str | None)
+    Returns dict with keys:
+        success, response_text, chunks, is_no_result,
+        tokens_used, model_used, query_id, error
     """
+    print(f"[pipeline] style received: {style}")
     try:
         return _run_query_inner(
             query_text=query_text,
             session_id=session_id,
             law_domain=law_domain,
+            style=style,
+            images=images,
+            pdf_texts=pdf_texts,
             top_k=top_k,
             similarity_threshold=similarity_threshold,
         )
@@ -103,16 +90,17 @@ def _run_query_inner(
     query_text: str,
     session_id: str,
     law_domain: Optional[str],
+    style: str,
+    images: Optional[list[bytes]],
+    pdf_texts: Optional[list[str]],
     top_k: int,
     similarity_threshold: float,
 ) -> dict:
-    """Inner implementation of run_query — may raise; caller handles it."""
+    """Inner implementation — may raise; caller handles it."""
 
-    # ---- 1. Input validation -----------------------------------------------
     if not query_text or not query_text.strip():
         return _error_result("الرجاء إدخال سؤال قانوني قبل الإرسال.")
 
-    # ---- 2. Session guard --------------------------------------------------
     try:
         session_id = ensure_session(session_id)
     except Exception as exc:
@@ -121,33 +109,42 @@ def _run_query_inner(
 
     query_id = str(uuid.uuid4())
 
+    # When PDF attachments are present, augment the retrieval query with their text.
+    # Keep the original query_text for the SQLite audit log (clean record).
+    if pdf_texts:
+        retrieval_query = (
+            query_text.strip()
+            + "\n\n---\nنص الملف المرفق:\n"
+            + "\n---\n".join(pdf_texts)
+        )
+    else:
+        retrieval_query = query_text.strip()
+
     try:
-        # ---- 3. Retrieval --------------------------------------------------
         chunks = retrieve(
-            query_text=query_text.strip(),
+            query_text=retrieval_query,
             law_domain=law_domain,
             top_k=top_k,
             threshold=similarity_threshold,
         )
 
-        # ---- 4. Generation -------------------------------------------------
         gen_result = generate_answer(
-            query_text=query_text.strip(),
+            query_text=retrieval_query,
             chunks=chunks,
+            style=style,
+            images=images,
         )
 
-        # ---- 5. Logging ----------------------------------------------------
         _log_to_db(
             query_id=query_id,
             session_id=session_id,
-            query_text=query_text.strip(),
+            query_text=query_text.strip(),   # original, not augmented
             law_domain=law_domain,
             similarity_threshold=similarity_threshold,
             chunks=chunks,
             gen_result=gen_result,
         )
 
-        # ---- 6. Return result ----------------------------------------------
         return {
             "success": True,
             "response_text": gen_result["response_text"],
@@ -172,7 +169,7 @@ def _run_query_inner(
                 error_message=str(exc),
             )
         except Exception:
-            pass  # Logging failure must never propagate to the UI
+            pass
 
         return _error_result(ERROR_MESSAGE_AR, exc)
 
@@ -190,7 +187,6 @@ def _log_to_db(
     chunks: list[dict],
     gen_result: dict,
 ) -> None:
-    """Write QUERY, RESPONSE, and QUERY_CHUNK rows to SQLite."""
     insert_query(
         session_id=session_id,
         query_text=query_text,
@@ -198,7 +194,6 @@ def _log_to_db(
         similarity_threshold=similarity_threshold,
         query_id=query_id,
     )
-
     insert_response(
         query_id=query_id,
         response_text=gen_result["response_text"],
@@ -206,16 +201,11 @@ def _log_to_db(
         tokens_used=gen_result["tokens_used"],
         is_no_result=gen_result["is_no_result"],
     )
-
     if chunks:
         insert_query_chunks(
             query_id=query_id,
             chunks=[
-                {
-                    "chunk_id": c["chunk_id"],
-                    "score": c["score"],
-                    "rank": c["rank"],
-                }
+                {"chunk_id": c["chunk_id"], "score": c["score"], "rank": c["rank"]}
                 for c in chunks
             ],
         )
@@ -229,7 +219,6 @@ def _log_failed_query(
     similarity_threshold: float,
     error_message: str,
 ) -> None:
-    """Persist a failed query so there is at least a partial audit record."""
     insert_query(
         session_id=session_id,
         query_text=query_text,
@@ -247,7 +236,6 @@ def _log_failed_query(
 
 
 def _error_result(message: str, exc: Optional[Exception] = None) -> dict:
-    """Build a standardised error result dict."""
     return {
         "success": False,
         "response_text": message,
