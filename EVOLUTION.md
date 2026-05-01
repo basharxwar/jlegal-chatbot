@@ -54,6 +54,16 @@ Sub-second query response after first load
 preload_all_collections() warms all 9 domain JSON files at startup
 Model loading moved entirely to startup phase
 
+## v11.1 — Surgical fix pack (defense prep)
+
+1. **Voice input restored** (`app.py`): replaced bare `except` with structured error logging; surfaced real exceptions instead of generic "غير متاح"; Whisper loader now returns None on failure instead of raising.
+2. **System prompt rewrite** (`src/generator.py`): both FORMAL and JORDANIAN prompts rewritten to encourage confident synthesis from retrieved articles; added explicit structure examples and forbidden-behavior list.
+3. **Sidebar reorganization** (`app.py`): compact logo, horizontal style radio, stats/status collapsed into expander. Fits 1080p without scrolling.
+4. **Cleanup** (`app.py`): Arabic-only domain dropdown labels; replaced broken Traffic Law example with dismissal-without-notice example.
+5. **Source display threshold** (`src/pipeline.py`): `DISPLAY_THRESHOLD = 0.65` — retrieval still passes all 0.50+ chunks to Claude, but only ≥0.65 shown as user-visible sources. Prevents fake citations on casual greetings.
+
+Not changed: embeddings, vector store, retrieval logic, database schema, ingestion pipeline.
+
 ## v11 — Pre-Defense Fixes
 Bug #1: Spinner nested in st.chat_message("assistant") cleared container on exit (Streamlit 1.5x).
 Fix: moved spinner to run between messages — assistant bubble now renders on first script run.
