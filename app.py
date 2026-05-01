@@ -382,15 +382,15 @@ db_chunk_count = get_chunk_count() if get_chunk_count else 0
 # ---------------------------------------------------------------------------
 
 with st.sidebar:
+    # Compact logo
     st.markdown(
-        '<div style="text-align:center;padding:16px 0 8px 0;">'
-        '<div style="font-size:2rem;">⚖️</div>'
-        '<div style="font-size:1.3rem;font-weight:700;">JLegal-ChatBot</div>'
-        '<div style="font-size:0.85rem;opacity:0.8;margin-top:4px;">المساعد القانوني الأردني</div>'
+        '<div style="text-align:center;padding:8px 0;">'
+        '<div style="font-size:1.6rem;">⚖️</div>'
+        '<div style="font-size:1.15rem;font-weight:700;">JLegal-ChatBot</div>'
+        '<div style="font-size:0.78rem;opacity:0.85;">المساعد القانوني الأردني</div>'
         '</div>',
         unsafe_allow_html=True,
     )
-    st.divider()
 
     # Voice input
     st.markdown("##### 🎤 الإدخال الصوتي")
@@ -438,24 +438,25 @@ with st.sidebar:
                     except Exception:
                         pass
 
-    st.divider()
+    st.markdown("---")
 
-    # Response style
-    st.markdown("### 💬 أسلوب الرد")
+    # Response style — horizontal to save vertical space
+    st.markdown("##### 💬 أسلوب الرد")
     response_style = st.radio(
         "أسلوب",
         options=["formal", "jordanian"],
-        format_func=lambda x: "رسمي — عربية فصحى" if x == "formal" else "ودود — لهجة أردنية",
+        format_func=lambda x: "رسمي" if x == "formal" else "ودود (أردني)",
         index=0 if st.session_state.response_style == "formal" else 1,
         label_visibility="collapsed",
         key="style_radio",
+        horizontal=True,
     )
     st.session_state.response_style = response_style
 
-    st.divider()
+    st.markdown("---")
 
     # Law domain filter
-    st.markdown("### 📖 نطاق البحث القانوني")
+    st.markdown("##### 📖 نطاق البحث")
     selected_label = st.selectbox(
         label="القانون",
         options=list(DOMAIN_OPTIONS.keys()),
@@ -466,7 +467,7 @@ with st.sidebar:
     st.session_state.selected_domain_label = selected_label
     active_domain: str | None = DOMAIN_OPTIONS[selected_label]
 
-    st.divider()
+    st.markdown("---")
 
     if st.button("🔄 جلسة جديدة", use_container_width=True):
         st.session_state.session_id = str(uuid.uuid4())
@@ -474,26 +475,22 @@ with st.sidebar:
         ensure_session(st.session_state.session_id)
         st.rerun()
 
-    st.divider()
+    # Stats + status collapsed by default — saves vertical space
+    with st.expander("📊 معلومات النظام", expanded=False):
+        c1, c2 = st.columns(2)
+        c1.metric("النصوص", str(db_chunk_count))
+        c2.metric("القوانين", "9")
+        st.caption("AraBERTv02 — بحث دلالي")
 
-    st.markdown("### 📊 إحصائيات النظام")
-    c1, c2 = st.columns(2)
-    c1.metric("النصوص", str(db_chunk_count))
-    c2.metric("القوانين", "9")
-    st.caption("نموذج: AraBERTv02 — بحث دلالي")
-
-    st.divider()
-
-    store_ready = bool(VECTOR_STORE_DIR and VECTOR_STORE_DIR.exists() and any(VECTOR_STORE_DIR.iterdir()))
-    model_loaded = load_arabert() is not None
-    st.markdown("### ⚙️ حالة النظام")
-    if store_ready and db_chunk_count > 0 and model_loaded:
-        st.success("النظام جاهز ✓")
-    elif not store_ready or db_chunk_count == 0:
-        st.warning("شغّل run_ingestion.py أولاً")
-    else:
-        st.warning("النموذج لم يُحمَّل بعد...")
-    st.caption(f"جلسة: `{st.session_state.session_id[:8]}…`")
+        store_ready = bool(VECTOR_STORE_DIR and VECTOR_STORE_DIR.exists() and any(VECTOR_STORE_DIR.iterdir()))
+        model_loaded = load_arabert() is not None
+        if store_ready and db_chunk_count > 0 and model_loaded:
+            st.success("النظام جاهز ✓")
+        elif not store_ready or db_chunk_count == 0:
+            st.warning("شغّل run_ingestion.py")
+        else:
+            st.warning("النموذج لم يُحمَّل")
+        st.caption(f"جلسة: `{st.session_state.session_id[:8]}…`")
 
 # ---------------------------------------------------------------------------
 # Main header
