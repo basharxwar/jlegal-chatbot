@@ -34,6 +34,24 @@ DEFAULT_TOP_K = 8
 # to the user as cited sources — prevents noise on casual/off-topic queries.
 DISPLAY_THRESHOLD = 0.65
 
+
+def _compute_confidence(chunks: list[dict]) -> dict:
+    """Compute confidence score from top-3 chunk similarities."""
+    if not chunks:
+        return {"score": 0.0, "label": "غير متوفر", "label_color": "#6B7280"}
+
+    top_3 = sorted(chunks, key=lambda c: c.get("score", 0), reverse=True)[:3]
+    avg = sum(c.get("score", 0) for c in top_3) / len(top_3)
+
+    if avg >= 0.80:
+        label, color = "مرتفعة", "#22C55E"
+    elif avg >= 0.65:
+        label, color = "متوسطة", "#F59E0B"
+    else:
+        label, color = "منخفضة", "#EF4444"
+
+    return {"score": avg, "label": label, "label_color": color}
+
 ERROR_MESSAGE_AR = (
     "عذراً، حدث خطأ أثناء معالجة سؤالك. "
     "يُرجى المحاولة مرة أخرى أو التواصل مع الدعم الفني."
@@ -162,6 +180,7 @@ def _run_query_inner(
             "success": True,
             "response_text": gen_result["response_text"],
             "chunks": display_chunks,
+            "confidence": _compute_confidence(gen_result["chunks_used"]),
             "is_no_result": gen_result["is_no_result"],
             "tokens_used": gen_result["tokens_used"],
             "model_used": gen_result["model_used"],
