@@ -54,6 +54,27 @@ Sub-second query response after first load
 preload_all_collections() warms all 9 domain JSON files at startup
 Model loading moved entirely to startup phase
 
+## v12 — Polish pack (final code change before defense)
+
+**Goal:** Professional-grade polish for defense demo and committee review.
+
+1. **Confidence Score** — every answer now shows a top-3-average similarity percentage with color-coded label (مرتفعة/متوسطة/منخفضة) and visual bar. Computed in pipeline, rendered above answer.
+2. **PDF letterhead** — consultations now have a formal header (project name, university, date), per-page footer with legal disclaimer, page numbers. No team credits. Used FPDF2 subclass with header()/footer() methods.
+3. **Voice button inline** — moved from sidebar to small column directly above chat input (reliable fallback approach).
+4. **Avatars** — ⚖️ for assistant, 👤 for user via st.chat_message(avatar=...).
+5. **Sidebar collapsed by default** — initial_sidebar_state="collapsed"; toggle button opens it.
+6. **Chat history with rename** — past sessions listed in sidebar, click to reload messages from SQLite QUERY+RESPONSE tables. Edit (✏) to rename, delete (🗑) to remove. display_name column added to SESSION via migration.
+7-9. **Visual redesign** — dark navy/blue palette (#1A2332 base, #3B82F6 accent), gray assistant bubbles, blue user bubbles, refined chat-app aesthetic.
+
+**Not changed:** AraBERT embedder, vector store, retrieval logic, ingestion pipeline, corpus.
+
+**Defense-relevant features:**
+- Confidence Score answers "how does the system know when it's right?"
+- Anti-hallucination behavior (v11) preserved
+- Cross-law reasoning (v8) preserved
+- Voice input (v6) preserved
+- Jordanian dialect toggle (v6) preserved
+
 ## v11.1 — Surgical fix pack (defense prep)
 
 1. **Voice input restored** (`app.py`): replaced bare `except` with structured error logging; surfaced real exceptions instead of generic "غير متاح"; Whisper loader now returns None on failure instead of raising.
