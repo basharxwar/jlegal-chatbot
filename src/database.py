@@ -108,6 +108,10 @@ def init_db() -> None:
     """Create all tables and indexes if they do not already exist."""
     with get_connection() as conn:
         conn.executescript(_DDL)
+        # Migration: add display_name to SESSION if not present (safe for existing DBs)
+        cols = [r["name"] for r in conn.execute("PRAGMA table_info(SESSION)").fetchall()]
+        if "display_name" not in cols:
+            conn.execute("ALTER TABLE SESSION ADD COLUMN display_name TEXT DEFAULT NULL")
 
 
 def reset_db() -> None:
@@ -352,6 +356,83 @@ def get_chunk_count() -> int:
     with get_connection() as conn:
         row = conn.execute("SELECT COUNT(*) AS cnt FROM CHUNK").fetchone()
     return row["cnt"] if row else 0
+
+
+# ---------------------------------------------------------------------------
+# Session history CRUD (for chat history sidebar)
+# ---------------------------------------------------------------------------
+
+def list_sessions(limit: int = 50) -> list[dict]:
+    """Return recent sessions that have at least one query, newest first."""
+    with get_connection() as conn:
+        rows = conn.execute(
+            """
+            SELECT
+                s.session_id,
+                s.display_name,
+                s.created_at,
+                s.last_active_at,
+                (SELECT q.query_text FROM QUERY q
+                 WHERE q.session_id = s.session_id
+                 ORDER BY q.created_at ASC LIMIT 1) AS first_query
+            FROM SESSION s
+            WHERE EXISTS (SELECT 1 FROM QUERY q WHERE q.session_id = s.session_id)
+            ORDER BY s.last_active_at DESC
+            LIMIT ?
+            """,
+            (limit,),
+        ).fetchall()
+    return [dict(r) for r in rows]
+
+
+def rename_session(session_id: str, new_name: str) -> None:
+    with get_connection() as conn:
+        conn.execute(
+            "UPDATE SESSION SET display_name = ? WHERE session_id = ?",
+            (new_name.strip()[:100], session_id),
+        )
+
+
+def delete_session(session_id: str) -> None:
+    """Delete a session and all its queries/responses via CASCADE."""
+    with get_connection() as conn:
+        conn.execute("DELETE FROM SESSION WHERE session_id = ?", (session_id,))
+
+
+def load_session_messages(session_id: str) -> list[dict]:
+    """Reconstruct the messages list for a session from QUERY + RESPONSE tables."""
+    with get_connection() as conn:
+        rows = conn.execute(
+            """
+            SELECT
+                q.query_id, q.query_text,
+                r.response_text, r.is_no_result
+            FROM QUERY q
+            LEFT JOIN RESPONSE r ON r.query_id = q.query_id
+            WHERE q.session_id = ?
+            ORDER BY q.created_at ASC
+            """,
+            (session_id,),
+        ).fetchall()
+
+    messages = []
+    for row in rows:
+        messages.append({
+            "role": "user",
+            "content": row["query_text"],
+            "attachments": [],
+        })
+        if row["response_text"]:
+            messages.append({
+                "role": "assistant",
+                "content": row["response_text"],
+                "chunks": [],        # not reloaded — too expensive
+                "question": row["query_text"],
+                "query_id": row["query_id"],
+                "attachments": [],
+                "confidence": {},    # historical sessions don't store confidence
+            })
+    return messages
 
 
 # ---------------------------------------------------------------------------
