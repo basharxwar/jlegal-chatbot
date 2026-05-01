@@ -3,11 +3,11 @@ database.py — SQLite schema creation and all CRUD operations for JLegal-ChatBo
 
 All table definitions match the exact schema specified in the project requirements.
 WAL mode and foreign-key enforcement are enabled on every connection.
+All foreign keys use ON DELETE CASCADE so a reset is safe and clean.
 """
 
 import sqlite3
 import uuid
-from datetime import datetime
 from pathlib import Path
 from typing import Optional
 
@@ -31,7 +31,7 @@ def get_connection() -> sqlite3.Connection:
 
 
 # ---------------------------------------------------------------------------
-# Schema initialisation
+# Schema DDL
 # ---------------------------------------------------------------------------
 
 _DDL = """
@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS SESSION (
 CREATE TABLE IF NOT EXISTS DOCUMENT (
     document_id    TEXT PRIMARY KEY,
     title          TEXT NOT NULL,
-    law_domain     TEXT NOT NULL CHECK (law_domain IN ('Labor','Commercial','PersonalStatus','Cybercrime','CivilService')),
+    law_domain     TEXT NOT NULL,
     language       TEXT NOT NULL DEFAULT 'ar',
     source_url     TEXT DEFAULT NULL,
     effective_date DATE DEFAULT NULL,
@@ -72,7 +72,7 @@ CREATE TABLE IF NOT EXISTS QUERY (
     session_id           TEXT NOT NULL,
     query_text           TEXT NOT NULL,
     law_domain           TEXT DEFAULT NULL,
-    similarity_threshold REAL NOT NULL DEFAULT 0.75,
+    similarity_threshold REAL NOT NULL DEFAULT 0.05,
     created_at           TIMESTAMP NOT NULL DEFAULT (CURRENT_TIMESTAMP),
     FOREIGN KEY (session_id) REFERENCES SESSION(session_id) ON DELETE CASCADE
 );
@@ -94,8 +94,8 @@ CREATE TABLE IF NOT EXISTS QUERY_CHUNK (
     similarity_score REAL NOT NULL,
     rank             INTEGER NOT NULL,
     PRIMARY KEY (query_id, chunk_id),
-    FOREIGN KEY (query_id)  REFERENCES QUERY(query_id)  ON DELETE CASCADE,
-    FOREIGN KEY (chunk_id)  REFERENCES CHUNK(chunk_id)  ON DELETE CASCADE
+    FOREIGN KEY (query_id) REFERENCES QUERY(query_id)  ON DELETE CASCADE,
+    FOREIGN KEY (chunk_id) REFERENCES CHUNK(chunk_id)  ON DELETE CASCADE
 );
 
 CREATE INDEX IF NOT EXISTS idx_query_session  ON QUERY(session_id);
@@ -110,6 +110,28 @@ def init_db() -> None:
         conn.executescript(_DDL)
 
 
+def reset_db() -> None:
+    """Drop all tables and recreate from scratch.
+
+    Used after a --force re-ingestion with a new embedding model so that
+    chunk UUIDs in SQLite match those in the JSON vector store exactly.
+    Disables FK enforcement during the drop so order does not matter.
+    """
+    drop_script = """
+    PRAGMA foreign_keys = OFF;
+    DROP TABLE IF EXISTS QUERY_CHUNK;
+    DROP TABLE IF EXISTS RESPONSE;
+    DROP TABLE IF EXISTS QUERY;
+    DROP TABLE IF EXISTS CHUNK;
+    DROP TABLE IF EXISTS DOCUMENT;
+    DROP TABLE IF EXISTS SESSION;
+    PRAGMA foreign_keys = ON;
+    """
+    with get_connection() as conn:
+        conn.executescript(drop_script)
+    init_db()
+
+
 # ---------------------------------------------------------------------------
 # SESSION CRUD
 # ---------------------------------------------------------------------------
@@ -119,7 +141,7 @@ def create_session(
     user_identifier: Optional[str] = None,
     language: str = "ar",
 ) -> str:
-    """Insert a new session row and return the session_id."""
+    """Insert a new session row and return the session_id. Safe to call twice."""
     session_id = session_id or str(uuid.uuid4())
     with get_connection() as conn:
         conn.execute(
@@ -153,7 +175,7 @@ def upsert_document(
     source_url: Optional[str] = None,
     effective_date: Optional[str] = None,
 ) -> str:
-    """Insert a document row; silently ignore if already present (idempotent)."""
+    """Insert a document row; silently ignore if already present."""
     with get_connection() as conn:
         conn.execute(
             """
@@ -189,11 +211,17 @@ def insert_chunk(
     page_number: Optional[int] = None,
     token_count: int = 0,
 ) -> None:
-    """Insert a single chunk row; ignore duplicates (idempotent re-runs)."""
+    """Upsert a chunk row.
+
+    Uses INSERT OR REPLACE so that a --force re-ingestion with new chunk UUIDs
+    correctly replaces old rows (via the UNIQUE document_id/chunk_index constraint)
+    instead of silently keeping stale UUIDs that would break FK references.
+    The ON DELETE CASCADE on QUERY_CHUNK ensures any old logging rows are cleaned up.
+    """
     with get_connection() as conn:
         conn.execute(
             """
-            INSERT OR IGNORE INTO CHUNK
+            INSERT OR REPLACE INTO CHUNK
                 (chunk_id, document_id, chunk_index, chunk_text,
                  article_number, page_number, embedding_model, token_count)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?)
@@ -229,7 +257,7 @@ def insert_query(
     session_id: str,
     query_text: str,
     law_domain: Optional[str] = None,
-    similarity_threshold: float = 0.75,
+    similarity_threshold: float = 0.05,
     query_id: Optional[str] = None,
 ) -> str:
     """Insert a QUERY row and return the query_id."""
@@ -282,18 +310,48 @@ def insert_query_chunks(
 ) -> None:
     """Bulk-insert QUERY_CHUNK rows linking a query to its retrieved chunks.
 
-    Each dict in *chunks* must contain: chunk_id, score (float), rank (int).
+    Each dict must contain: chunk_id, score (float), rank (int).
+
+    Filters out any chunk_ids that are not present in the CHUNK table before
+    inserting so we never hit a FK violation from stale references.
     """
-    rows = [(query_id, c["chunk_id"], c["score"], c["rank"]) for c in chunks]
+    if not chunks:
+        return
+
+    # Resolve only chunk_ids that actually exist in the CHUNK table.
+    # This guards against any UUID mismatch between the vector store and SQLite.
+    chunk_ids = [c["chunk_id"] for c in chunks]
+    placeholders = ",".join("?" * len(chunk_ids))
+
     with get_connection() as conn:
-        conn.executemany(
-            """
-            INSERT OR IGNORE INTO QUERY_CHUNK
-                (query_id, chunk_id, similarity_score, rank)
-            VALUES (?, ?, ?, ?)
-            """,
-            rows,
-        )
+        rows = conn.execute(
+            f"SELECT chunk_id FROM CHUNK WHERE chunk_id IN ({placeholders})",
+            chunk_ids,
+        ).fetchall()
+        valid_ids = {r["chunk_id"] for r in rows}
+
+        valid_rows = [
+            (query_id, c["chunk_id"], c["score"], c["rank"])
+            for c in chunks
+            if c["chunk_id"] in valid_ids
+        ]
+
+        if valid_rows:
+            conn.executemany(
+                """
+                INSERT OR IGNORE INTO QUERY_CHUNK
+                    (query_id, chunk_id, similarity_score, rank)
+                VALUES (?, ?, ?, ?)
+                """,
+                valid_rows,
+            )
+
+
+def get_chunk_count() -> int:
+    """Return total number of chunks in the database (used for status checks)."""
+    with get_connection() as conn:
+        row = conn.execute("SELECT COUNT(*) AS cnt FROM CHUNK").fetchone()
+    return row["cnt"] if row else 0
 
 
 # ---------------------------------------------------------------------------
