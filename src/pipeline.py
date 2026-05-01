@@ -30,6 +30,10 @@ from src.database import (
 DEFAULT_THRESHOLD = 0.50
 DEFAULT_TOP_K = 8
 
+# Chunks below this score are passed to Claude for context but NOT shown
+# to the user as cited sources — prevents noise on casual/off-topic queries.
+DISPLAY_THRESHOLD = 0.65
+
 ERROR_MESSAGE_AR = (
     "عذراً، حدث خطأ أثناء معالجة سؤالك. "
     "يُرجى المحاولة مرة أخرى أو التواصل مع الدعم الفني."
@@ -145,10 +149,19 @@ def _run_query_inner(
             gen_result=gen_result,
         )
 
+        # Only show chunks above DISPLAY_THRESHOLD as cited sources in the UI.
+        # Chunks between DEFAULT_THRESHOLD and DISPLAY_THRESHOLD still went to
+        # Claude as context, but are not shown to avoid misleading citations on
+        # casual or off-topic queries (e.g. greetings score ~0.50–0.60).
+        display_chunks = [
+            c for c in gen_result["chunks_used"]
+            if c.get("score", 0) >= DISPLAY_THRESHOLD
+        ]
+
         return {
             "success": True,
             "response_text": gen_result["response_text"],
-            "chunks": gen_result["chunks_used"],
+            "chunks": display_chunks,
             "is_no_result": gen_result["is_no_result"],
             "tokens_used": gen_result["tokens_used"],
             "model_used": gen_result["model_used"],
