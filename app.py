@@ -64,8 +64,12 @@ def preload_all_collections():
 
 @st.cache_resource
 def load_whisper_model():
-    import whisper
-    return whisper.load_model("base")
+    try:
+        import whisper
+        return whisper.load_model("base")
+    except Exception as e:
+        logger.exception("Whisper failed to load")
+        return None
 
 
 load_arabert()
@@ -389,9 +393,16 @@ with st.sidebar:
     st.divider()
 
     # Voice input
-    st.markdown("### 🎤 الإدخال الصوتي")
+    st.markdown("##### 🎤 الإدخال الصوتي")
+    _voice_import_ok = True
     try:
         from streamlit_mic_recorder import mic_recorder
+    except ImportError as e:
+        logger.error("streamlit_mic_recorder not installed: %s", e)
+        st.caption("⚠️ الإدخال الصوتي غير مثبّت")
+        _voice_import_ok = False
+
+    if _voice_import_ok:
         audio = mic_recorder(
             start_prompt="🎤 اضغط للتحدث",
             stop_prompt="⏹️ إيقاف التسجيل",
@@ -399,21 +410,33 @@ with st.sidebar:
             use_container_width=True,
             key="voice_input",
         )
-        if audio and audio.get("bytes"):
-            with tempfile.NamedTemporaryFile(suffix=".wav", delete=False) as tmp:
-                tmp.write(audio["bytes"])
-                tmp_path = tmp.name
-            with st.spinner("جارٍ تحويل الصوت إلى نص..."):
-                wmodel = load_whisper_model()
-                result_w = wmodel.transcribe(tmp_path, language="ar")
-                voice_text = result_w["text"].strip()
-                os.unlink(tmp_path)
-            if voice_text:
-                st.success(f"تم: {voice_text}")
-                st.session_state.voice_query = voice_text
-                st.rerun()
-    except Exception:
-        st.caption("الإدخال الصوتي غير متاح")
+        if audio and isinstance(audio, dict) and audio.get("bytes"):
+            tmp_path = None
+            try:
+                with tempfile.NamedTemporaryFile(suffix=".wav", delete=False) as tmp:
+                    tmp.write(audio["bytes"])
+                    tmp_path = tmp.name
+                with st.spinner("جارٍ تحويل الصوت إلى نص..."):
+                    wmodel = load_whisper_model()
+                    if wmodel is None:
+                        raise RuntimeError("Whisper model failed to load")
+                    result_w = wmodel.transcribe(tmp_path, language="ar")
+                    voice_text = (result_w.get("text") or "").strip()
+                if voice_text:
+                    st.session_state.voice_query = voice_text
+                    st.success(f"✓ {voice_text}")
+                    st.rerun()
+                else:
+                    st.warning("لم يُسمع كلام واضح. حاول مرة أخرى.")
+            except Exception as e:
+                logger.exception("Voice transcription failed")
+                st.error(f"تعذّر تحويل الصوت: {type(e).__name__}: {e}")
+            finally:
+                if tmp_path and os.path.exists(tmp_path):
+                    try:
+                        os.unlink(tmp_path)
+                    except Exception:
+                        pass
 
     st.divider()
 
