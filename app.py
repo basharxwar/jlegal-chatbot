@@ -83,16 +83,16 @@ MAX_IMAGE_BYTES = 5 * 1024 * 1024   # 5 MB
 MAX_PDF_BYTES   = 10 * 1024 * 1024  # 10 MB
 
 DOMAIN_OPTIONS: dict[str, str | None] = {
-    "جميع القوانين | All Laws": None,
-    "قانون العمل | Labor": "Labor",
-    "قانون التجارة | Commercial": "Commercial",
-    "قانون الأحوال الشخصية | Personal Status": "PersonalStatus",
-    "قانون الجرائم الإلكترونية | Cybercrime": "Cybercrime",
-    "نظام الخدمة المدنية | Civil Service": "CivilService",
-    "قانون الأحوال المدنية | Civil Status": "CivilStatus",
-    "قانون الأحوال الشخصية 2019 | Personal Status 2019": "PersonalStatus2019",
-    "قانون السير | Traffic Law": "TrafficLaw",
-    "نظام إدارة الموارد البشرية | HR Management": "HRManagement",
+    "جميع القوانين": None,
+    "قانون العمل": "Labor",
+    "قانون التجارة": "Commercial",
+    "قانون الأحوال الشخصية": "PersonalStatus",
+    "قانون الجرائم الإلكترونية": "Cybercrime",
+    "نظام الخدمة المدنية": "CivilService",
+    "قانون الأحوال المدنية": "CivilStatus",
+    "قانون الأحوال الشخصية 2019": "PersonalStatus2019",
+    "قانون السير": "TrafficLaw",
+    "نظام إدارة الموارد البشرية": "HRManagement",
 }
 
 LAW_NAMES_AR: dict[str, str] = {
@@ -113,7 +113,7 @@ EXAMPLES = [
     ("📅", "ما هي مدة الإجازة السنوية في قانون العمل؟"),
     ("💑", "ما هي شروط الزواج في قانون الأحوال الشخصية؟"),
     ("📱", "ما هي عقوبة الابتزاز الإلكتروني في الأردن؟"),
-    ("🚗", "ما هي مخالفات السير والمرور؟"),
+    ("⚠️", "متى يحق لصاحب العمل فصل العامل دون إنذار؟"),
     ("💼", "ما هي حقوق الموظف الحكومي في الإجازات؟"),
 ]
 
