@@ -54,6 +54,22 @@ Sub-second query response after first load
 preload_all_collections() warms all 9 domain JSON files at startup
 Model loading moved entirely to startup phase
 
+## v12.1 — Final polish patch
+
+**Goal:** Last UI refinements before defense. No new features, only fixes and arrangement.
+
+1. **Restored PDF download button** below every assistant answer (lost in v12 rewrite).
+2. **Moved confidence bar** from above answer to below answer for better reading flow.
+3. **Reorganized sidebar order** — response style and domain filter moved above chat history (more frequently used controls promoted).
+4. **Replaced radio toggle** with segmented control for cleaner appearance (no red circle dot).
+5. **Compact voice button** right-aligned above chat input as small circular icon. Removed sidebar duplicate.
+6. **About expander** in sidebar with project info, tech stack, corpus list, and limitations.
+7. **Footer credit** at sidebar bottom.
+
+**Not changed:** AraBERT model, vector store, retrieval logic, ingestion, color palette, system prompts.
+
+**Status:** Code-complete. v12.1-stable is the defense version.
+
 ## v12 — Polish pack (final code change before defense)
 
 **Goal:** Professional-grade polish for defense demo and committee review.

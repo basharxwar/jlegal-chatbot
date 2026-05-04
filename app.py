@@ -279,6 +279,35 @@ body, .stMarkdown, .stCaption {
 }
 .stDivider { border-color: #2D3748 !important; }
 p, li, span { color: #E5E7EB !important; }
+
+/* ── Segmented control (Fix 4) ───────────────────────────── */
+[data-testid="stSegmentedControl"] button[aria-pressed="true"] {
+    background-color: #3B82F6 !important;
+    color: #FFFFFF !important;
+}
+[data-testid="stSegmentedControl"] button[aria-pressed="false"] {
+    background-color: #1A2332 !important;
+    color: #A0AEC0 !important;
+}
+
+/* ── Compact inline mic button (Fix 5) ───────────────────── */
+div[data-testid="column"]:has(button[title="Click to record"]) button,
+div[data-testid="column"]:has(button[title="Click to stop"]) button {
+    border-radius: 50% !important;
+    min-width: 40px !important;
+    max-width: 48px !important;
+    height: 40px !important;
+    padding: 0 !important;
+    background-color: #243447 !important;
+    border: 1px solid #3B82F6 !important;
+    color: #3B82F6 !important;
+    font-size: 1.1rem !important;
+}
+div[data-testid="column"]:has(button[title="Click to record"]) button:hover,
+div[data-testid="column"]:has(button[title="Click to stop"]) button:hover {
+    background-color: #3B82F6 !important;
+    color: #FFFFFF !important;
+}
 </style>
 """
 
@@ -430,30 +459,39 @@ def _render_sources(chunks: list[dict]) -> None:
 
 
 def _render_assistant_message(msg: dict, key_suffix: str) -> None:
-    """Render a stored assistant message (history replay)."""
-    _render_confidence(msg.get("confidence", {}))
+    """Render a stored assistant message (history replay).
+
+    Order: answer → confidence bar → sources → PDF button → feedback
+    """
+    # 1. Answer text first
     st.markdown(msg["content"])
 
+    # 2. Confidence bar below answer
+    _render_confidence(msg.get("confidence", {}))
+
+    # 3. Sources expander
     if msg.get("chunks"):
         _render_sources(msg["chunks"])
 
+    # 4. PDF download button
     if msg.get("question"):
         try:
             pdf_bytes = _generate_pdf(msg["question"], msg["content"])
             st.download_button(
-                label="تحميل الاستشارة القانونية PDF",
+                label="📄 تحميل الاستشارة القانونية PDF",
                 data=pdf_bytes,
-                file_name=f"استشارة_{date.today()}.pdf",
+                file_name=f"استشارة_قانونية_{date.today()}.pdf",
                 mime="application/pdf",
-                key=f"pdf_{key_suffix}",
+                key=f"pdf_history_{key_suffix}",
             )
         except Exception:
-            logger.exception("PDF generation failed")
+            logger.exception("PDF generation failed for history message")
 
     for att in msg.get("attachments", []):
         icon = "🖼️" if att["type"] == "image" else "📄"
         st.caption(f"{icon} {att['name']}")
 
+    # 5. Feedback buttons
     fb_key = msg.get("query_id", key_suffix)
     fc = st.columns([1, 1, 8])
     with fc[0]:
@@ -509,14 +547,65 @@ with st.sidebar:
         unsafe_allow_html=True,
     )
 
-    # --- Feature 6: Chat history ---
-    st.markdown("##### محادثاتي")
+    # 1. New session button
     if st.button("+ محادثة جديدة", use_container_width=True, key="new_chat_btn"):
         st.session_state.session_id = str(uuid.uuid4())
         st.session_state.messages = []
         ensure_session(st.session_state.session_id)
         st.rerun()
 
+    st.markdown("---")
+
+    # 2. Style toggle — Fix 4: segmented control (no more radio red dot)
+    st.markdown("##### اسلوب الرد")
+    try:
+        _style_label = st.segmented_control(
+            "أسلوب",
+            options=["رسمي", "ودود (أردني)"],
+            default="رسمي" if st.session_state.response_style == "formal" else "ودود (أردني)",
+            label_visibility="collapsed",
+            key="style_segmented",
+        )
+        response_style = "formal" if _style_label == "رسمي" else "jordanian"
+    except (AttributeError, TypeError):
+        _sc = st.columns(2)
+        with _sc[0]:
+            if st.button(
+                "رسمي", use_container_width=True,
+                type="primary" if st.session_state.response_style == "formal" else "secondary",
+                key="style_formal_btn",
+            ):
+                st.session_state.response_style = "formal"
+                st.rerun()
+        with _sc[1]:
+            if st.button(
+                "ودود (أردني)", use_container_width=True,
+                type="primary" if st.session_state.response_style == "jordanian" else "secondary",
+                key="style_jordanian_btn",
+            ):
+                st.session_state.response_style = "jordanian"
+                st.rerun()
+        response_style = st.session_state.response_style
+    st.session_state.response_style = response_style
+
+    st.markdown("---")
+
+    # 3. Domain filter
+    st.markdown("##### نطاق البحث")
+    selected_label = st.selectbox(
+        label="القانون",
+        options=list(DOMAIN_OPTIONS.keys()),
+        index=list(DOMAIN_OPTIONS.keys()).index(st.session_state.selected_domain_label),
+        key="domain_selectbox",
+        label_visibility="collapsed",
+    )
+    st.session_state.selected_domain_label = selected_label
+    active_domain: str | None = DOMAIN_OPTIONS[selected_label]
+
+    st.markdown("---")
+
+    # 4. Chat history — below frequently-used controls
+    st.markdown("##### محادثاتي")
     if list_sessions:
         sessions = list_sessions(limit=20)
         for sess in sessions:
@@ -564,36 +653,7 @@ with st.sidebar:
 
     st.markdown("---")
 
-    # Style toggle — horizontal
-    st.markdown("##### اسلوب الرد")
-    response_style = st.radio(
-        "أسلوب",
-        options=["formal", "jordanian"],
-        format_func=lambda x: "رسمي" if x == "formal" else "ودود (أردني)",
-        index=0 if st.session_state.response_style == "formal" else 1,
-        label_visibility="collapsed",
-        key="style_radio",
-        horizontal=True,
-    )
-    st.session_state.response_style = response_style
-
-    st.markdown("---")
-
-    # Domain filter
-    st.markdown("##### نطاق البحث")
-    selected_label = st.selectbox(
-        label="القانون",
-        options=list(DOMAIN_OPTIONS.keys()),
-        index=list(DOMAIN_OPTIONS.keys()).index(st.session_state.selected_domain_label),
-        key="domain_selectbox",
-        label_visibility="collapsed",
-    )
-    st.session_state.selected_domain_label = selected_label
-    active_domain: str | None = DOMAIN_OPTIONS[selected_label]
-
-    st.markdown("---")
-
-    # Stats + status collapsed
+    # 5. Stats + status collapsed
     with st.expander("معلومات النظام", expanded=False):
         c1, c2 = st.columns(2)
         c1.metric("النصوص", str(db_chunk_count))
@@ -608,6 +668,49 @@ with st.sidebar:
         else:
             st.warning("النموذج لم يُحمَّل")
         st.caption(f"جلسة: `{st.session_state.session_id[:8]}…`")
+
+    # 6. About expander (Fix 6)
+    with st.expander("ℹ️ حول المشروع", expanded=False):
+        st.markdown("""
+**JLegal-ChatBot — المساعد القانوني الأردني**
+
+نظام ذكاء اصطناعي للإجابة على الأسئلة القانونية بناءً على القوانين الأردنية.
+
+**التقنيات المستخدمة:**
+- نموذج التضمين: AraBERTv02 (mean pooling)
+- محرك البحث: NumPy cosine similarity
+- نموذج الإجابة: Claude Sonnet 4
+- توسيع الاستفسار: Claude Haiku
+- إدخال صوتي: OpenAI Whisper
+- الواجهة: Streamlit
+
+**القوانين المتاحة (9):**
+- قانون العمل الأردني
+- قانون التجارة الأردني
+- قانون الأحوال الشخصية
+- قانون الجرائم الإلكترونية
+- نظام الخدمة المدنية
+- قانون الأحوال المدنية
+- قانون الأحوال الشخصية 2019
+- قانون السير الأردني
+- نظام إدارة الموارد البشرية
+
+**حدود النظام:**
+- يستند حصراً إلى النصوص المُدرجة
+- لا يُعدّ بديلاً عن الاستشارة القانونية المتخصصة
+- بعض القوانين قد تحتوي على نصوص غير قابلة للقراءة بالكامل (مثل قانون السير)
+
+**مشروع تخرج — كلية تكنولوجيا المعلومات، جامعة اليرموك — 2026**
+""")
+
+    # 7. Footer credit (Fix 7)
+    st.markdown(
+        '<div style="text-align:center;padding:12px 0 8px 0;'
+        'font-size:0.75rem;color:#6B7280;border-top:1px solid #2D3748;margin-top:12px;">'
+        'جامعة اليرموك<br>مشروع تخرج 2026'
+        '</div>',
+        unsafe_allow_html=True,
+    )
 
 # ---------------------------------------------------------------------------
 # Main header — updated blue/gray palette
@@ -662,14 +765,14 @@ for idx, msg in enumerate(st.session_state.messages):
 # Feature 3: Voice button inline — row above chat input
 # ---------------------------------------------------------------------------
 
-voice_cols = st.columns([1, 20])
-with voice_cols[0]:
+voice_cols = st.columns([20, 1])   # mic in last column → right-aligned for RTL
+with voice_cols[1]:
     _voice_import_ok = True
     try:
         from streamlit_mic_recorder import mic_recorder
     except ImportError as e:
         logger.error("streamlit_mic_recorder not installed: %s", e)
-        st.caption("🎤")
+        st.caption("⚠️")
         _voice_import_ok = False
 
     if _voice_import_ok:
@@ -678,7 +781,7 @@ with voice_cols[0]:
             stop_prompt="⏹",
             just_once=True,
             use_container_width=True,
-            key="voice_inline",
+            key="voice_input_inline",
         )
         if audio and isinstance(audio, dict) and audio.get("bytes"):
             tmp_path = None
@@ -793,32 +896,34 @@ if user_text or uploaded_files:
         conf: dict = result.get("confidence", {})
 
         with st.chat_message("assistant", avatar="⚖️"):
+            # Order: answer → confidence → sources → PDF → feedback
             try:
-                _render_confidence(conf)
-                st.markdown(response_text)
+                st.markdown(response_text)           # 1. Answer first
             except Exception as e:
                 logger.exception("Failed to render response")
                 st.error(f"خطأ في عرض الإجابة: {type(e).__name__}")
 
-            if chunks:
+            _render_confidence(conf)                 # 2. Confidence below answer
+
+            if chunks:                               # 3. Sources
                 _render_sources(chunks)
             elif not result["success"]:
                 st.error("عذراً، حدث خطأ أثناء معالجة سؤالك. يُرجى المحاولة مرة أخرى.")
 
-            try:
-                if user_text:
+            if user_text:                            # 4. PDF download button
+                try:
                     pdf_bytes = _generate_pdf(user_text, response_text)
                     st.download_button(
-                        label="تحميل الاستشارة القانونية PDF",
+                        label="📄 تحميل الاستشارة القانونية PDF",
                         data=pdf_bytes,
-                        file_name=f"استشارة_{date.today()}.pdf",
+                        file_name=f"استشارة_قانونية_{date.today()}.pdf",
                         mime="application/pdf",
                         key="pdf_new",
                     )
-            except Exception:
-                pass
+                except Exception:
+                    logger.exception("PDF generation failed for new message")
 
-            fc2 = st.columns([1, 1, 8])
+            fc2 = st.columns([1, 1, 8])             # 5. Feedback
             with fc2[0]:
                 if st.button("👍", key=f"up_new_{query_id}"):
                     st.toast("شكراً لتقييمك!")
