@@ -324,97 +324,124 @@ def _extract_pdf_text(pdf_bytes: bytes) -> str:
     return "\n".join(parts).strip()[:30_000]
 
 
-class _LegalPDF:
-    """FPDF2 subclass with per-page header and footer for legal consultations."""
-
-    def __init__(self, question: str, answer: str):
-        from fpdf import FPDF
-
-        try:
-            import arabic_reshaper
-            from bidi.algorithm import get_display
-            def ar(t): return get_display(arabic_reshaper.reshape(t))
-            self._has_arabic = True
-        except ImportError:
-            def ar(t): return t
-            self._has_arabic = False
-        self._ar = ar
-
-        font_path = Path(__file__).resolve().parent / "fonts" / "Amiri-Regular.ttf"
-
-        class PDF(FPDF):
-            def __init__(self_, *a, **k):
-                super().__init__(*a, **k)
-                self_.set_auto_page_break(auto=True, margin=30)
-                self_.set_margins(15, 28, 15)
-                if font_path.exists() and self._has_arabic:
-                    self_.add_font("Arabic", fname=str(font_path))
-                    self_._mf = "Arabic"
-                else:
-                    self_._mf = "Helvetica"
-
-            def header(self_):
-                mf = self_._mf
-                align = "R" if self._has_arabic else "C"
-                self_.set_font(mf, size=16)
-                self_.set_text_color(27, 58, 87)
-                self_.cell(0, 8, ar("استشارة قانونية"), align="C", new_x="LMARGIN", new_y="NEXT")
-                self_.set_font(mf, size=10)
-                self_.set_text_color(80, 80, 80)
-                self_.cell(0, 6, ar("JLegal-ChatBot — المساعد القانوني الأردني"), align="C", new_x="LMARGIN", new_y="NEXT")
-                self_.set_font("Helvetica", size=9)
-                self_.set_text_color(130, 130, 130)
-                self_.cell(0, 5, ar("جامعة اليرموك — كلية تكنولوجيا المعلومات"), align="C", new_x="LMARGIN", new_y="NEXT")
-                self_.cell(0, 5, date.today().strftime("%Y-%m-%d"), align=align, new_x="LMARGIN", new_y="NEXT")
-                self_.ln(2)
-                self_.line(15, self_.get_y(), 195, self_.get_y())
-                self_.ln(4)
-
-            def footer(self_):
-                self_.set_y(-22)
-                self_.line(15, self_.get_y(), 195, self_.get_y())
-                self_.ln(1)
-                self_.set_font("Helvetica", size=7)
-                self_.set_text_color(130, 130, 130)
-                disclaimer = ar(
-                    "إخلاء مسؤولية: هذه الاستشارة مُولّدة بواسطة نظام ذكاء اصطناعي بناءً على نصوص قانونية أردنية مُدرجة في النظام. "
-                    "لا تُعدّ بديلاً عن الاستشارة القانونية المتخصصة من محامٍ مرخّص."
-                )
-                self_.multi_cell(170, 3.5, disclaimer, align="C")
-                self_.set_y(-8)
-                self_.set_font("Helvetica", size=8)
-                self_.cell(0, 5, f"صفحة {self_.page_no()} من {{nb}}", align="C")
-
-        pdf = PDF()
-        pdf.alias_nb_pages()
-        pdf.add_page()
-
-        mf = pdf._mf
-        align_body = "R" if self._has_arabic else "L"
-
-        pdf.set_font(mf, size=12)
-        pdf.set_text_color(40, 40, 40)
-        pdf.cell(0, 8, ar("السؤال القانوني:"), align=align_body, new_x="LMARGIN", new_y="NEXT")
-        pdf.set_font(mf, size=10)
-        pdf.set_text_color(0, 0, 0)
-        pdf.multi_cell(0, 6, ar(question), align=align_body)
-        pdf.ln(5)
-
-        pdf.set_font(mf, size=12)
-        pdf.set_text_color(40, 40, 40)
-        pdf.cell(0, 8, ar("الإجابة القانونية:"), align=align_body, new_x="LMARGIN", new_y="NEXT")
-        pdf.set_font(mf, size=10)
-        pdf.set_text_color(0, 0, 0)
-        pdf.multi_cell(0, 6, ar(answer), align=align_body)
-
-        self._bytes = bytes(pdf.output())
-
-    def output(self) -> bytes:
-        return self._bytes
-
-
 def _generate_pdf(question: str, answer: str) -> bytes:
-    return _LegalPDF(question, answer).output()
+    """Generate a legal consultation PDF with Yarmouk letterhead.
+
+    Fixes vs v12: installs fontTools dependency, adds emoji stripping,
+    adds Yarmouk logo, fixes duplicate add_font() call that was silently
+    crashing and hiding the download button.
+    """
+    import re
+    from fpdf import FPDF
+
+    _EMOJI_RE = re.compile(
+        "[\U0001F600-\U0001F64F"
+        "\U0001F300-\U0001F5FF"
+        "\U0001F680-\U0001F6FF"
+        "\U0001F1E0-\U0001F1FF"
+        "\U00002702-\U000027B0"
+        "\U000024C2-\U0001F251"
+        "\U00010000-\U0010FFFF]+",
+        flags=re.UNICODE,
+    )
+
+    def strip_emoji(text: str) -> str:
+        return _EMOJI_RE.sub("", text)
+
+    try:
+        import arabic_reshaper
+        from bidi.algorithm import get_display
+        def ar(text: str) -> str:
+            return get_display(arabic_reshaper.reshape(strip_emoji(text)))
+        has_arabic = True
+    except ImportError:
+        def ar(text: str) -> str:
+            return strip_emoji(text)
+        has_arabic = False
+
+    font_path = Path(__file__).resolve().parent / "fonts" / "Amiri-Regular.ttf"
+    logo_path = Path(__file__).resolve().parent / "assets" / "yarmouk_logo.png"
+
+    # Font is loaded once on the pdf object, NOT inside header/footer
+    # to avoid the duplicate add_font() bug that crashed silently before.
+    _mf = "Helvetica"
+
+    class LetterheadPDF(FPDF):
+        def header(self_):
+            # Logo — right side for RTL layout
+            if logo_path.exists():
+                try:
+                    self_.image(str(logo_path), x=160, y=6, w=32)
+                except Exception:
+                    pass
+
+            self_.set_font(_mf, size=15)
+            self_.set_text_color(31, 60, 136)
+            self_.cell(0, 9, ar("استشارة قانونية"), align="C", new_x="LMARGIN", new_y="NEXT")
+
+            self_.set_font(_mf, size=10)
+            self_.set_text_color(70, 70, 70)
+            self_.cell(0, 6, ar("JLegal-ChatBot — المساعد القانوني الأردني"), align="C", new_x="LMARGIN", new_y="NEXT")
+            self_.cell(0, 5, ar("جامعة اليرموك — كلية تكنولوجيا المعلومات"), align="C", new_x="LMARGIN", new_y="NEXT")
+
+            self_.set_font("Helvetica", size=9)
+            self_.set_text_color(130, 130, 130)
+            d_align = "R" if has_arabic else "L"
+            self_.cell(0, 5, f"التاريخ: {date.today().strftime('%Y-%m-%d')}", align=d_align, new_x="LMARGIN", new_y="NEXT")
+            self_.ln(2)
+            self_.set_draw_color(31, 60, 136)
+            self_.set_line_width(0.5)
+            self_.line(15, self_.get_y(), 195, self_.get_y())
+            self_.ln(4)
+
+        def footer(self_):
+            self_.set_y(-25)
+            self_.set_draw_color(200, 200, 200)
+            self_.set_line_width(0.3)
+            self_.line(15, self_.get_y(), 195, self_.get_y())
+            self_.ln(2)
+
+            self_.set_font(_mf, size=7)
+            self_.set_text_color(130, 130, 130)
+            disclaimer = ar(
+                "اخلاء مسؤولية: هذه الاستشارة مولدة بواسطة نظام ذكاء اصطناعي بناء على نصوص قانونية اردنية مدرجة. "
+                "لا تعد بديلا عن الاستشارة القانونية المتخصصة من محام مرخص."
+            )
+            self_.multi_cell(0, 4, disclaimer, align="C")
+            self_.set_font("Helvetica", size=8)
+            self_.cell(0, 5, f"صفحة {self_.page_no()}", align="C")
+
+    pdf = LetterheadPDF()
+
+    # Register Arabic font ONCE on the pdf object (not in header/footer)
+    if font_path.exists() and has_arabic:
+        try:
+            pdf.add_font(_mf := "Arabic", fname=str(font_path))
+        except Exception:
+            _mf = "Helvetica"
+
+    pdf.set_margins(15, 48, 15)   # large top margin for header
+    pdf.set_auto_page_break(auto=True, margin=30)
+    pdf.add_page()
+
+    align = "R" if has_arabic else "L"
+
+    pdf.set_font(_mf, size=12)
+    pdf.set_text_color(31, 60, 136)
+    pdf.cell(0, 8, ar("السؤال القانوني:"), align=align, new_x="LMARGIN", new_y="NEXT")
+    pdf.set_font(_mf, size=10)
+    pdf.set_text_color(0, 0, 0)
+    pdf.multi_cell(0, 6, ar(question), align=align)
+    pdf.ln(6)
+
+    pdf.set_font(_mf, size=12)
+    pdf.set_text_color(31, 60, 136)
+    pdf.cell(0, 8, ar("الاجابة القانونية:"), align=align, new_x="LMARGIN", new_y="NEXT")
+    pdf.set_font(_mf, size=10)
+    pdf.set_text_color(0, 0, 0)
+    pdf.multi_cell(0, 6, ar(answer), align=align)
+
+    return bytes(pdf.output())
 
 
 def _render_confidence(conf: dict) -> None:
