@@ -54,6 +54,19 @@ Sub-second query response after first load
 preload_all_collections() warms all 9 domain JSON files at startup
 Model loading moved entirely to startup phase
 
+## v12.2 — Corpus expansion + PDF restoration
+
+**Goal:** Add Penal Code, fix PDF download button, improve letterhead.
+
+1. **PDF download button restored** — root cause found: `fontTools` not installed, causing every `_generate_pdf` call to throw silently. Installed `fontTools`, rewrote function cleanly.
+2. **Emoji stripping** — emojis removed from question/answer text before PDF rendering. Eliminates Amiri font missing-glyph warnings.
+3. **PDF letterhead** — Yarmouk University logo (assets/yarmouk_logo.png) added. Formal header: project name, university, date. Per-page disclaimer footer. Duplicate `add_font()` bug fixed.
+4. **Penal Code added** — قانون العقوبات الأردني (1367KB, 129 pages, clean Unicode). 529 chunks, 100% article number coverage. Theft, assault, fraud, criminal questions now answered.
+5. **Corpus: 10 laws, 2096 chunks total** (was 1567).
+6. **Traffic Law replacement failed** — new traffic.pdf still garbled (different encoding, Tifinagh-range codepoints). Traffic limitation updated in KNOWN_LIMITATIONS.md.
+
+**Not changed:** AraBERT embedder, vector store format, retrieval logic, ingestion pipeline, UI color palette, confidence score, chat history.
+
 ## v12.1 — Final polish patch
 
 **Goal:** Last UI refinements before defense. No new features, only fixes and arrangement.

@@ -1,21 +1,21 @@
 # JLegal-ChatBot — Known Limitations
 
 ## 1. Traffic Law Article Numbers Not Detected
-**Status:** Known, documented, low priority
+**Status:** Persistent — replacement PDF also has encoding issues
 
-The Traffic Law PDF (traffic.pdf) uses Arabic Presentation Forms
-(Unicode range FB50-FEFF) instead of standard Arabic codepoints (0600-06FF).
-PyMuPDF extracts the text correctly but the article number regex
-`r"المادة\s*-?\s*(\d+)"` operates on standard codepoints only.
+The original traffic.pdf used Arabic Presentation Forms (U+FB50-FEFF).
+A replacement file was tested in v12.2 but had a different problem: 635
+non-BMP characters (Tifinagh-range codepoints) scattered through the text,
+zero article numbers detectable via regex.
 
-Result: All 108 Traffic Law chunks are searchable and retrievable,
-but the article_number field is empty — citations show "نص قانوني" instead
-of article numbers.
+Result: The 108 Traffic Law chunks currently in the vector store are from
+the original file. They are semantically searchable but show "نص قانوني"
+instead of article numbers.
 
-Fix: Apply `unicodedata.normalize('NFKC', text)` at PDF extraction time
-to convert presentation forms to standard codepoints before regex matching.
+Fix needed: A clean Unicode-encoded PDF of قانون السير رقم 49 لسنة 2008.
+When available, run `python run_ingestion.py --force` to replace chunks.
 
-Priority: Low — law is still useful for semantic search
+Priority: Medium — law is searchable, citations lack article numbers
 
 ---
 
