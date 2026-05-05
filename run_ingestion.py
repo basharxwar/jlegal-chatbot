@@ -1,3 +1,4 @@
+
 """
 run_ingestion.py — Ingest all Jordanian law PDFs into the vector store.
 
@@ -34,6 +35,7 @@ LAWS: list[dict] = [
     {"file": "personal_status_2019.pdf","domain": "PersonalStatus2019", "label": "Personal Status 2019"},
     {"file": "traffic.pdf",             "domain": "TrafficLaw",         "label": "Traffic Law"},
     {"file": "hr_system.pdf",           "domain": "HRManagement",       "label": "HR Management"},
+    {"file": "penal_code.pdf",          "domain": "PenalCode",          "label": "Penal Code"},
 ]
 
 
