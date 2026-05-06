@@ -54,6 +54,24 @@ Sub-second query response after first load
 preload_all_collections() warms all 9 domain JSON files at startup
 Model loading moved entirely to startup phase
 
+## v12.3 — Cleanup + targeted fixes
+
+**Goal:** Fix recurring PDF bug, remove confidence bar, optimize chunking, clean junk files.
+
+1. **PDF button works** — root cause: `_mf := "Arabic"` walrus operator set `_mf` before `add_font` succeeded; if `add_font` raised, `header()` called `set_font("Arabic")` with unregistered font. Fixed by assigning `_mf = "Arabic"` only after `add_font` returns successfully. Errors now surface as visible `st.caption` instead of silent `except: pass`.
+2. **Confidence card removed** — user preferred cleaner UI. Pipeline still computes and stores the score for potential future use; only rendering is removed.
+3. **Article-boundary chunking** — `SEPARATORS` now prioritizes `\nالمادة` and `المادة` before `\n\n`. Chunks prefer to break at legal article boundaries. Chunk counts increased (e.g. Labor 179→212, Penal Code 529→625) confirming better segmentation.
+4. **Project cleanup** — deleted: `traffic2.pdf`, `tfidf_model.joblib`, `diagnose_retrieval.py`, 3 diagnosis text files, `Amiri.zip`, 44MB Social Security PDF, `Arabic_Legal_RAG/`, `Amiri/` folders, 5 unrelated files from `assets/`. Only `yarmouk_logo.png` remains in `assets/`.
+
+**Corpus after re-ingestion (10 laws, 2421 chunks):**
+Labor 212, Commercial 460, PersonalStatus 215, PersonalStatus2019 209,
+Cybercrime 73, CivilService 81, CivilStatus 75, HRManagement 317,
+TrafficLaw 154, PenalCode 625
+
+**Not changed:** AraBERT embedder, vector store schema, retrieval logic, generator, database, color palette, sidebar layout.
+
+**Status:** Code-complete. v12.3-stable is the defense version.
+
 ## v12.2 — Corpus expansion + PDF restoration
 
 **Goal:** Add Penal Code, fix PDF download button, improve letterhead.
