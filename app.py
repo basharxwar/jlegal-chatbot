@@ -415,10 +415,13 @@ def _generate_pdf(question: str, answer: str) -> bytes:
 
     pdf = LetterheadPDF()
 
-    # Register Arabic font ONCE on the pdf object (not in header/footer)
+    # Register Arabic font ONCE on the pdf object (not in header/footer).
+    # walrus operator avoided deliberately: set _mf AFTER add_font succeeds,
+    # otherwise header() calls set_font("Arabic") before the font is registered.
     if font_path.exists() and has_arabic:
         try:
-            pdf.add_font(_mf := "Arabic", fname=str(font_path))
+            pdf.add_font("Arabic", fname=str(font_path))
+            _mf = "Arabic"
         except Exception:
             _mf = "Helvetica"
 
@@ -490,19 +493,16 @@ def _render_sources(chunks: list[dict]) -> None:
 def _render_assistant_message(msg: dict, key_suffix: str) -> None:
     """Render a stored assistant message (history replay).
 
-    Order: answer → confidence bar → sources → PDF button → feedback
+    Order: answer → sources → PDF button → feedback
     """
-    # 1. Answer text first
+    # 1. Answer text
     st.markdown(msg["content"])
 
-    # 2. Confidence bar below answer
-    _render_confidence(msg.get("confidence", {}))
-
-    # 3. Sources expander
+    # 2. Sources expander
     if msg.get("chunks"):
         _render_sources(msg["chunks"])
 
-    # 4. PDF download button
+    # 3. PDF download button
     if msg.get("question"):
         try:
             pdf_bytes = _generate_pdf(msg["question"], msg["content"])
@@ -513,8 +513,9 @@ def _render_assistant_message(msg: dict, key_suffix: str) -> None:
                 mime="application/pdf",
                 key=f"pdf_history_{key_suffix}",
             )
-        except Exception:
+        except Exception as exc:
             logger.exception("PDF generation failed for history message")
+            st.caption(f"⚠️ تعذّر إنشاء PDF: {type(exc).__name__}: {exc}")
 
     for att in msg.get("attachments", []):
         icon = "🖼️" if att["type"] == "image" else "📄"
@@ -927,21 +928,19 @@ if user_text or uploaded_files:
         conf: dict = result.get("confidence", {})
 
         with st.chat_message("assistant", avatar="⚖️"):
-            # Order: answer → confidence → sources → PDF → feedback
+            # Order: answer → sources → PDF → feedback  (confidence removed per v12.3)
             try:
-                st.markdown(response_text)           # 1. Answer first
+                st.markdown(response_text)           # 1. Answer
             except Exception as e:
                 logger.exception("Failed to render response")
                 st.error(f"خطأ في عرض الإجابة: {type(e).__name__}")
 
-            _render_confidence(conf)                 # 2. Confidence below answer
-
-            if chunks:                               # 3. Sources
+            if chunks:                               # 2. Sources
                 _render_sources(chunks)
             elif not result["success"]:
                 st.error("عذراً، حدث خطأ أثناء معالجة سؤالك. يُرجى المحاولة مرة أخرى.")
 
-            if user_text:                            # 4. PDF download button
+            if user_text:                            # 3. PDF download button
                 try:
                     pdf_bytes = _generate_pdf(user_text, response_text)
                     st.download_button(
@@ -949,10 +948,11 @@ if user_text or uploaded_files:
                         data=pdf_bytes,
                         file_name=f"استشارة_قانونية_{date.today()}.pdf",
                         mime="application/pdf",
-                        key="pdf_new",
+                        key=f"pdf_new_{query_id or 'x'}",
                     )
-                except Exception:
+                except Exception as exc:
                     logger.exception("PDF generation failed for new message")
+                    st.caption(f"⚠️ تعذّر إنشاء PDF: {type(exc).__name__}: {exc}")
 
             fc2 = st.columns([1, 1, 8])             # 5. Feedback
             with fc2[0]:

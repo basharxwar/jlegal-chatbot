@@ -34,7 +34,7 @@ EMBEDDING_MODEL_NAME = "arabertv02-768"
 
 CHUNK_SIZE = 512
 CHUNK_OVERLAP = 64
-SEPARATORS = ["\n\n", "\n", "المادة", ".", " ", ""]
+SEPARATORS = ["\nالمادة", "المادة", "\n\n", "\n", ".", " ", ""]
 
 # Multiple patterns to handle all formats found in the 5 PDFs:
 #   المادة (45):   — Commercial law uses parentheses
