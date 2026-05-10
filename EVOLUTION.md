@@ -54,6 +54,27 @@ Sub-second query response after first load
 preload_all_collections() warms all 9 domain JSON files at startup
 Model loading moved entirely to startup phase
 
+## v12.4 — PDF button final fix
+
+**Goal:** Fix the recurring PDF button bug that survived v12, v12.1, v12.2, v12.3.
+
+**Root cause:** `_mf` was initialized to `"Helvetica"` before `LetterheadPDF` was
+defined. The class captured `_mf` by closure. Then `add_font` was called on the
+real `pdf` instance AFTER `LetterheadPDF()` was instantiated, and `add_page()`
+(which triggers `header()`) was called immediately after — before `_mf` was
+updated to `"Arabic"`. So `header()` always saw `_mf = "Helvetica"`, and every
+Arabic string in the header threw `FPDFUnicodeEncodingException`.
+
+**Fix:** Two-step pattern:
+1. Probe font loading on a throwaway FPDF instance. Set `_mf = "Arabic"` ONLY
+   if `add_font()` succeeds without exception.
+2. Build `LetterheadPDF` after `_mf` is finalized. On the real `pdf` instance,
+   re-register the font (each FPDF instance needs its own registration), then
+   call `add_page()` — `header()` now reads the correct `_mf`.
+
+**Status:** Code-complete. v12.4-stable is the defense version. No more code
+changes before defense.
+
 ## v12.3 — Cleanup + targeted fixes
 
 **Goal:** Fix recurring PDF bug, remove confidence bar, optimize chunking, clean junk files.

@@ -327,28 +327,27 @@ def _extract_pdf_text(pdf_bytes: bytes) -> str:
 
 
 def _generate_pdf(question: str, answer: str) -> bytes:
-    """Generate a legal consultation PDF with Yarmouk letterhead.
+    """Generate a Yarmouk-letterhead PDF for the consultation.
 
-    Fixes vs v12: installs fontTools dependency, adds emoji stripping,
-    adds Yarmouk logo, fixes duplicate add_font() call that was silently
-    crashing and hiding the download button.
+    Returns bytes on success. Raises on failure (caller logs and shows error).
+
+    Two-step font pattern: probe font on a throwaway FPDF first, then set _mf
+    only if that succeeds. This guarantees LetterheadPDF.header() never calls
+    set_font("Arabic") against an unregistered font.
     """
     import re
     from fpdf import FPDF
+    from pathlib import Path
 
+    # Strip emojis — Amiri has no emoji glyphs
     _EMOJI_RE = re.compile(
-        "[\U0001F600-\U0001F64F"
-        "\U0001F300-\U0001F5FF"
-        "\U0001F680-\U0001F6FF"
-        "\U0001F1E0-\U0001F1FF"
-        "\U00002702-\U000027B0"
-        "\U000024C2-\U0001F251"
+        "[\U0001F600-\U0001F64F\U0001F300-\U0001F5FF\U0001F680-\U0001F6FF"
+        "\U0001F1E0-\U0001F1FF\U00002702-\U000027B0\U000024C2-\U0001F251"
         "\U00010000-\U0010FFFF]+",
         flags=re.UNICODE,
     )
-
     def strip_emoji(text: str) -> str:
-        return _EMOJI_RE.sub("", text)
+        return _EMOJI_RE.sub("", text or "")
 
     try:
         import arabic_reshaper
@@ -361,35 +360,45 @@ def _generate_pdf(question: str, answer: str) -> bytes:
             return strip_emoji(text)
         has_arabic = False
 
-    font_path = Path(__file__).resolve().parent / "fonts" / "Amiri-Regular.ttf"
-    logo_path = Path(__file__).resolve().parent / "assets" / "yarmouk_logo.png"
+    base_dir = Path(__file__).resolve().parent
+    font_path = base_dir / "fonts" / "Amiri-Regular.ttf"
+    logo_path = base_dir / "assets" / "yarmouk_logo.png"
 
-    # Font is loaded once on the pdf object, NOT inside header/footer
-    # to avoid the duplicate add_font() bug that crashed silently before.
+    # === STEP 1: Probe font on a throwaway PDF ===
+    # _mf is set to "Arabic" ONLY if add_font succeeds here.
+    # This resolves the closure-capture bug: LetterheadPDF.header() reads _mf
+    # at call time (during add_page()), so _mf must be final before that call.
     _mf = "Helvetica"
+    if has_arabic and font_path.exists():
+        try:
+            _probe = FPDF()
+            _probe.add_font("Arabic", fname=str(font_path))
+            _mf = "Arabic"
+            del _probe
+        except Exception as exc:
+            logger.warning("Amiri font probe failed, using Helvetica: %s", exc)
 
+    # === STEP 2: Build the real PDF with the verified font ===
     class LetterheadPDF(FPDF):
         def header(self_):
-            # Logo — right side for RTL layout
             if logo_path.exists():
                 try:
                     self_.image(str(logo_path), x=160, y=6, w=32)
                 except Exception:
                     pass
-
             self_.set_font(_mf, size=15)
             self_.set_text_color(31, 60, 136)
             self_.cell(0, 9, ar("استشارة قانونية"), align="C", new_x="LMARGIN", new_y="NEXT")
-
             self_.set_font(_mf, size=10)
             self_.set_text_color(70, 70, 70)
-            self_.cell(0, 6, ar("JLegal-ChatBot — المساعد القانوني الأردني"), align="C", new_x="LMARGIN", new_y="NEXT")
-            self_.cell(0, 5, ar("جامعة اليرموك — كلية تكنولوجيا المعلومات"), align="C", new_x="LMARGIN", new_y="NEXT")
-
+            self_.cell(0, 6, ar("JLegal-ChatBot — المساعد القانوني الأردني"),
+                       align="C", new_x="LMARGIN", new_y="NEXT")
+            self_.cell(0, 6, ar("جامعة اليرموك — كلية تكنولوجيا المعلومات"),
+                       align="C", new_x="LMARGIN", new_y="NEXT")
             self_.set_font("Helvetica", size=9)
             self_.set_text_color(130, 130, 130)
-            d_align = "R" if has_arabic else "L"
-            self_.cell(0, 5, f"التاريخ: {date.today().strftime('%Y-%m-%d')}", align=d_align, new_x="LMARGIN", new_y="NEXT")
+            self_.cell(0, 5, f"التاريخ: {date.today().strftime('%Y-%m-%d')}",
+                       align="R", new_x="LMARGIN", new_y="NEXT")
             self_.ln(2)
             self_.set_draw_color(31, 60, 136)
             self_.set_line_width(0.5)
@@ -399,15 +408,14 @@ def _generate_pdf(question: str, answer: str) -> bytes:
         def footer(self_):
             self_.set_y(-25)
             self_.set_draw_color(200, 200, 200)
-            self_.set_line_width(0.3)
             self_.line(15, self_.get_y(), 195, self_.get_y())
             self_.ln(2)
-
             self_.set_font(_mf, size=7)
             self_.set_text_color(130, 130, 130)
             disclaimer = ar(
-                "اخلاء مسؤولية: هذه الاستشارة مولدة بواسطة نظام ذكاء اصطناعي بناء على نصوص قانونية اردنية مدرجة. "
-                "لا تعد بديلا عن الاستشارة القانونية المتخصصة من محام مرخص."
+                "إخلاء مسؤولية: هذه الاستشارة مُولّدة بواسطة نظام ذكاء اصطناعي "
+                "بناءً على نصوص قانونية أردنية مُدرجة. لا تُعدّ بديلاً عن "
+                "الاستشارة القانونية المتخصصة من محامٍ مرخّص."
             )
             self_.multi_cell(0, 4, disclaimer, align="C")
             self_.set_font("Helvetica", size=8)
@@ -415,19 +423,13 @@ def _generate_pdf(question: str, answer: str) -> bytes:
 
     pdf = LetterheadPDF()
 
-    # Register Arabic font ONCE on the pdf object (not in header/footer).
-    # walrus operator avoided deliberately: set _mf AFTER add_font succeeds,
-    # otherwise header() calls set_font("Arabic") before the font is registered.
-    if font_path.exists() and has_arabic:
-        try:
-            pdf.add_font("Arabic", fname=str(font_path))
-            _mf = "Arabic"
-        except Exception:
-            _mf = "Helvetica"
+    # Each FPDF instance needs its own font registration.
+    if _mf == "Arabic":
+        pdf.add_font("Arabic", fname=str(font_path))
 
-    pdf.set_margins(15, 48, 15)   # large top margin for header
+    pdf.set_margins(15, 48, 15)
     pdf.set_auto_page_break(auto=True, margin=30)
-    pdf.add_page()
+    pdf.add_page()   # triggers header() — _mf is now fully resolved
 
     align = "R" if has_arabic else "L"
 
@@ -441,7 +443,7 @@ def _generate_pdf(question: str, answer: str) -> bytes:
 
     pdf.set_font(_mf, size=12)
     pdf.set_text_color(31, 60, 136)
-    pdf.cell(0, 8, ar("الاجابة القانونية:"), align=align, new_x="LMARGIN", new_y="NEXT")
+    pdf.cell(0, 8, ar("الإجابة القانونية:"), align=align, new_x="LMARGIN", new_y="NEXT")
     pdf.set_font(_mf, size=10)
     pdf.set_text_color(0, 0, 0)
     pdf.multi_cell(0, 6, ar(answer), align=align)
