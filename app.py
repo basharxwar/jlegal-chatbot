@@ -360,40 +360,53 @@ def _generate_pdf(question: str, answer: str) -> bytes:
             return strip_emoji(text)
         has_arabic = False
 
-    base_dir = Path(__file__).resolve().parent
-    font_path = base_dir / "fonts" / "Amiri-Regular.ttf"
-    logo_path = base_dir / "assets" / "yarmouk_logo.png"
+    import os
+    # os.path.abspath is reliable in Streamlit; Path.resolve() is not
+    # (Streamlit may change cwd, making relative resolution wrong)
+    _APP_DIR = os.path.dirname(os.path.abspath(__file__))
+    font_path = Path(os.path.join(_APP_DIR, "fonts", "Amiri-Regular.ttf"))
+    logo_path = Path(os.path.join(_APP_DIR, "assets", "yarmouk_logo.png"))
 
-    # === STEP 1: Probe font on a throwaway PDF ===
-    # _mf is set to "Arabic" ONLY if add_font succeeds here.
-    # This resolves the closure-capture bug: LetterheadPDF.header() reads _mf
-    # at call time (during add_page()), so _mf must be final before that call.
-    _mf = "Helvetica"
+    # Probe font on throwaway instance — use_arabic_font only True on success
+    use_arabic_font = False
     if has_arabic and font_path.exists():
         try:
             _probe = FPDF()
             _probe.add_font("Arabic", fname=str(font_path))
-            _mf = "Arabic"
+            use_arabic_font = True
             del _probe
         except Exception as exc:
             logger.warning("Amiri font probe failed, using Helvetica: %s", exc)
 
-    # === STEP 2: Build the real PDF with the verified font ===
+    # LetterheadPDF receives all state as constructor args — no closures
     class LetterheadPDF(FPDF):
+        def __init__(self, use_ar, fp, lp, ar_fn):
+            super().__init__()
+            self._use_ar = use_ar
+            self._fp = fp
+            self._lp = lp
+            self._ar = ar_fn
+            if self._use_ar:
+                self.add_font("Arabic", fname=str(self._fp))
+
+        def _f(self):
+            return "Arabic" if self._use_ar else "Helvetica"
+
         def header(self_):
-            if logo_path.exists():
+            if self_._lp.exists():
                 try:
-                    self_.image(str(logo_path), x=160, y=6, w=32)
+                    self_.image(str(self_._lp), x=160, y=6, w=32)
                 except Exception:
                     pass
-            self_.set_font(_mf, size=15)
+            self_.set_font(self_._f(), size=15)
             self_.set_text_color(31, 60, 136)
-            self_.cell(0, 9, ar("استشارة قانونية"), align="C", new_x="LMARGIN", new_y="NEXT")
-            self_.set_font(_mf, size=10)
-            self_.set_text_color(70, 70, 70)
-            self_.cell(0, 6, ar("JLegal-ChatBot — المساعد القانوني الأردني"),
+            self_.cell(0, 9, self_._ar("استشارة قانونية"),
                        align="C", new_x="LMARGIN", new_y="NEXT")
-            self_.cell(0, 6, ar("جامعة اليرموك — كلية تكنولوجيا المعلومات"),
+            self_.set_font(self_._f(), size=10)
+            self_.set_text_color(70, 70, 70)
+            self_.cell(0, 6, self_._ar("JLegal-ChatBot — المساعد القانوني الأردني"),
+                       align="C", new_x="LMARGIN", new_y="NEXT")
+            self_.cell(0, 6, self_._ar("جامعة اليرموك — كلية تكنولوجيا المعلومات"),
                        align="C", new_x="LMARGIN", new_y="NEXT")
             self_.set_font("Helvetica", size=9)
             self_.set_text_color(130, 130, 130)
@@ -410,9 +423,9 @@ def _generate_pdf(question: str, answer: str) -> bytes:
             self_.set_draw_color(200, 200, 200)
             self_.line(15, self_.get_y(), 195, self_.get_y())
             self_.ln(2)
-            self_.set_font(_mf, size=7)
+            self_.set_font(self_._f(), size=7)
             self_.set_text_color(130, 130, 130)
-            disclaimer = ar(
+            disclaimer = self_._ar(
                 "إخلاء مسؤولية: هذه الاستشارة مُولّدة بواسطة نظام ذكاء اصطناعي "
                 "بناءً على نصوص قانونية أردنية مُدرجة. لا تُعدّ بديلاً عن "
                 "الاستشارة القانونية المتخصصة من محامٍ مرخّص."
@@ -421,30 +434,26 @@ def _generate_pdf(question: str, answer: str) -> bytes:
             self_.set_font("Helvetica", size=8)
             self_.cell(0, 5, f"صفحة {self_.page_no()}", align="C")
 
-    pdf = LetterheadPDF()
-
-    # Each FPDF instance needs its own font registration.
-    if _mf == "Arabic":
-        pdf.add_font("Arabic", fname=str(font_path))
-
+    pdf = LetterheadPDF(use_arabic_font, font_path, logo_path, ar)
     pdf.set_margins(15, 48, 15)
     pdf.set_auto_page_break(auto=True, margin=30)
-    pdf.add_page()   # triggers header() — _mf is now fully resolved
+    pdf.add_page()
 
+    _f = "Arabic" if use_arabic_font else "Helvetica"
     align = "R" if has_arabic else "L"
 
-    pdf.set_font(_mf, size=12)
+    pdf.set_font(_f, size=12)
     pdf.set_text_color(31, 60, 136)
     pdf.cell(0, 8, ar("السؤال القانوني:"), align=align, new_x="LMARGIN", new_y="NEXT")
-    pdf.set_font(_mf, size=10)
+    pdf.set_font(_f, size=10)
     pdf.set_text_color(0, 0, 0)
     pdf.multi_cell(0, 6, ar(question), align=align)
     pdf.ln(6)
 
-    pdf.set_font(_mf, size=12)
+    pdf.set_font(_f, size=12)
     pdf.set_text_color(31, 60, 136)
     pdf.cell(0, 8, ar("الإجابة القانونية:"), align=align, new_x="LMARGIN", new_y="NEXT")
-    pdf.set_font(_mf, size=10)
+    pdf.set_font(_f, size=10)
     pdf.set_text_color(0, 0, 0)
     pdf.multi_cell(0, 6, ar(answer), align=align)
 
@@ -506,18 +515,23 @@ def _render_assistant_message(msg: dict, key_suffix: str) -> None:
 
     # 3. PDF download button
     if msg.get("question"):
+        _pdf_bytes = None
+        _pdf_error = None
         try:
-            pdf_bytes = _generate_pdf(msg["question"], msg["content"])
+            _pdf_bytes = _generate_pdf(msg["question"], msg["content"])
+        except Exception as exc:
+            logger.exception("PDF generation failed for history message")
+            _pdf_error = f"{type(exc).__name__}: {exc}"
+        if _pdf_bytes is not None:
             st.download_button(
                 label="📄 تحميل الاستشارة القانونية PDF",
-                data=pdf_bytes,
+                data=_pdf_bytes,
                 file_name=f"استشارة_قانونية_{date.today()}.pdf",
                 mime="application/pdf",
                 key=f"pdf_history_{key_suffix}",
             )
-        except Exception as exc:
-            logger.exception("PDF generation failed for history message")
-            st.caption(f"⚠️ تعذّر إنشاء PDF: {type(exc).__name__}: {exc}")
+        elif _pdf_error:
+            st.caption(f"⚠️ تعذّر إنشاء PDF: {_pdf_error}")
 
     for att in msg.get("attachments", []):
         icon = "🖼️" if att["type"] == "image" else "📄"
@@ -800,49 +814,50 @@ for idx, msg in enumerate(st.session_state.messages):
 # ---------------------------------------------------------------------------
 
 voice_cols = st.columns([20, 1])   # mic in last column → right-aligned for RTL
-with voice_cols[1]:
-    _voice_import_ok = True
-    try:
-        from streamlit_mic_recorder import mic_recorder
-    except ImportError as e:
-        logger.error("streamlit_mic_recorder not installed: %s", e)
-        st.caption("⚠️")
-        _voice_import_ok = False
+_voice_import_ok = True
+try:
+    from streamlit_mic_recorder import mic_recorder
+except ImportError as e:
+    logger.error("streamlit_mic_recorder not installed: %s", e)
+    _voice_import_ok = False
 
-    if _voice_import_ok:
-        audio = mic_recorder(
+_audio = None
+if _voice_import_ok:
+    with voice_cols[1]:
+        _audio = mic_recorder(
             start_prompt="🎤",
             stop_prompt="⏹",
             just_once=True,
             use_container_width=True,
             key="voice_input_inline",
         )
-        if audio and isinstance(audio, dict) and audio.get("bytes"):
-            tmp_path = None
+
+if _audio and isinstance(_audio, dict) and _audio.get("bytes"):
+    tmp_path = None
+    try:
+        with tempfile.NamedTemporaryFile(suffix=".wav", delete=False) as tmp:
+            tmp.write(_audio["bytes"])
+            tmp_path = tmp.name
+        with st.spinner("تحويل الصوت..."):
+            wmodel = load_whisper_model()
+            if wmodel is None:
+                raise RuntimeError("Whisper model failed to load")
+            result_w = wmodel.transcribe(tmp_path, language="ar")
+            voice_text = (result_w.get("text") or "").strip()
+        if voice_text:
+            st.session_state.voice_query = voice_text
+            st.rerun()
+        else:
+            st.warning("لم يُسمع كلام واضح.")
+    except Exception as e:
+        logger.exception("Voice transcription failed")
+        st.error(f"خطأ: {type(e).__name__}: {e}")
+    finally:
+        if tmp_path and os.path.exists(tmp_path):
             try:
-                with tempfile.NamedTemporaryFile(suffix=".wav", delete=False) as tmp:
-                    tmp.write(audio["bytes"])
-                    tmp_path = tmp.name
-                with st.spinner("تحويل الصوت..."):
-                    wmodel = load_whisper_model()
-                    if wmodel is None:
-                        raise RuntimeError("Whisper model failed to load")
-                    result_w = wmodel.transcribe(tmp_path, language="ar")
-                    voice_text = (result_w.get("text") or "").strip()
-                if voice_text:
-                    st.session_state.voice_query = voice_text
-                    st.rerun()
-                else:
-                    st.warning("لم يُسمع كلام واضح.")
-            except Exception as e:
-                logger.exception("Voice transcription failed")
-                st.error(f"خطأ: {type(e).__name__}: {e}")
-            finally:
-                if tmp_path and os.path.exists(tmp_path):
-                    try:
-                        os.unlink(tmp_path)
-                    except Exception:
-                        pass
+                os.unlink(tmp_path)
+            except Exception:
+                pass
 
 # ---------------------------------------------------------------------------
 # Chat input with file support
@@ -943,18 +958,23 @@ if user_text or uploaded_files:
                 st.error("عذراً، حدث خطأ أثناء معالجة سؤالك. يُرجى المحاولة مرة أخرى.")
 
             if user_text:                            # 3. PDF download button
+                _pdf_bytes2 = None
+                _pdf_error2 = None
                 try:
-                    pdf_bytes = _generate_pdf(user_text, response_text)
+                    _pdf_bytes2 = _generate_pdf(user_text, response_text)
+                except Exception as exc:
+                    logger.exception("PDF generation failed for new message")
+                    _pdf_error2 = f"{type(exc).__name__}: {exc}"
+                if _pdf_bytes2 is not None:
                     st.download_button(
                         label="📄 تحميل الاستشارة القانونية PDF",
-                        data=pdf_bytes,
+                        data=_pdf_bytes2,
                         file_name=f"استشارة_قانونية_{date.today()}.pdf",
                         mime="application/pdf",
                         key=f"pdf_new_{query_id or 'x'}",
                     )
-                except Exception as exc:
-                    logger.exception("PDF generation failed for new message")
-                    st.caption(f"⚠️ تعذّر إنشاء PDF: {type(exc).__name__}: {exc}")
+                elif _pdf_error2:
+                    st.caption(f"⚠️ تعذّر إنشاء PDF: {_pdf_error2}")
 
             fc2 = st.columns([1, 1, 8])             # 5. Feedback
             with fc2[0]:

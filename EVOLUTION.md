@@ -1,5 +1,37 @@
 # JLegal-ChatBot — System Evolution Log
 
+## v12.5 — PDF path fix, button outside try, voice spinner width
+
+**Goal:** Three surgical fixes to `app.py` only — no logic changes.
+
+1. **PDF path resolution** (`_generate_pdf`) — replaced `Path(__file__).resolve().parent`
+   with `os.path.dirname(os.path.abspath(__file__))`. Streamlit may change the working
+   directory at startup, making `resolve()` return a wrong path so `font_path.exists()`
+   returned False and the Amiri font was never loaded. `os.path.abspath` anchors to the
+   file's real location regardless of cwd.
+
+2. **`LetterheadPDF` constructor injection** — eliminated closure-captured `_mf` variable.
+   `LetterheadPDF` now accepts `(use_ar, fp, lp, ar_fn)` as constructor arguments stored
+   as instance attributes. `header()` and `footer()` read `self._use_ar` / `self._f()`
+   instead of a mutable outer variable. The font is registered inside `__init__` on the
+   same instance that will call `add_page()`, so no race between font registration and
+   `header()` execution.
+
+3. **PDF button outside try block** — in both `_render_assistant_message` (history replay)
+   and the new-message block, the pattern is now: generate bytes first into `_pdf_bytes`,
+   then render `st.download_button` only if bytes are not None, else show caption. This
+   prevents Streamlit from swallowing the button when `_generate_pdf` raises mid-way.
+
+4. **Voice transcription spinner at full width** — the `st.spinner("تحويل الصوت...")`
+   block and all transcription logic moved outside the `with voice_cols[1]:` context.
+   Only the `mic_recorder` widget stays inside the narrow [20,1] column; processing
+   renders at full page width so the spinner is visible instead of stacking vertically.
+
+**Not changed:** AraBERT embedder, vector store, retrieval logic, ingestion pipeline,
+database schema, corpus, color palette, system prompts.
+
+**Status:** Code-complete. v12.5-stable is the defense version.
+
 ## v1 — TF-IDF + Pure Python
 Reason: Windows + Python 3.12 + ChromaDB DLL incompatibility
 Result: Works for formal MSA, fails on colloquial
