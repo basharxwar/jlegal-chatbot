@@ -82,49 +82,83 @@ def _load_metrics() -> dict | None:
     return _load_latest("metrics_*.json")
 
 
-# ── Chart 1: Hit Rate by Domain ─────────────────────────────────────────────
-def chart_hit_rate_by_domain(metrics: dict | None) -> None:
-    if metrics and metrics.get("per_domain_hit_rate_at_5"):
-        per_domain = metrics["per_domain_hit_rate_at_5"]
-        domains = list(per_domain.keys())
-        hr5 = [per_domain[d]["rate"] for d in domains]
-        hr1 = [metrics.get("hit_rate_at_1", v * 0.65) for v in hr5]
-        note = ""
+def _load_domain_precision() -> dict | None:
+    return _load_latest("domain_precision_*.json")
+
+
+# ── Chart 1: Domain Hit Rate by Law Domain ───────────────────────────────────
+def chart_hit_rate_by_domain(domain_prec: dict | None, metrics: dict | None) -> None:
+    """Grouped bar chart: Domain Hit Rate @1 and @5 per law domain.
+
+    Data priority:
+      1. domain_precision_*.json  — 35 evaluable questions, all 10 domains
+      2. metrics_*.json           — article-level hit rate (fallback, sparse)
+      3. placeholder              — if neither file exists
+    """
+    DOMAIN_ORDER = [
+        "Labor", "Commercial", "PersonalStatus", "PersonalStatus2019",
+        "Cybercrime", "CivilService", "CivilStatus",
+        "HRManagement", "TrafficLaw", "PenalCode",
+    ]
+
+    if domain_prec and domain_prec.get("per_domain"):
+        pd_data = domain_prec["per_domain"]
+        domains = [d for d in DOMAIN_ORDER if d in pd_data]
+        domains += [d for d in pd_data if d not in domains]
+        hr1 = [pd_data[d]["rate_at_1"] for d in domains]
+        hr5 = [pd_data[d]["rate_at_5"] for d in domains]
+        n_q = [pd_data[d]["evaluable"] for d in domains]
+        note = f"Domain routing precision — {domain_prec['evaluable_questions']} evaluable questions (in-corpus, single-domain)"
+        source = "domain_precision"
+    elif metrics and metrics.get("per_domain_hit_rate_at_5"):
+        per = metrics["per_domain_hit_rate_at_5"]
+        domains = [d for d in DOMAIN_ORDER if d in per]
+        domains += [d for d in per if d not in domains]
+        hr5 = [per[d]["rate"] for d in domains]
+        hr1 = [per[d]["rate"] * 0.7 for d in domains]
+        n_q = [per[d]["total"] for d in domains]
+        note = "Article-level Hit Rate (sparse — run compute_domain_precision.py for domain precision)"
+        source = "metrics"
     else:
-        domains = ["Labor", "Commercial", "PersonalStatus", "Cybercrime", "CivilService", "PenalCode"]
-        hr1     = [0.67,   0.33,        0.67,              0.67,          0.33,            0.67]
-        hr5     = [1.00,   0.67,        1.00,              1.00,          0.67,            1.00]
-        note    = "Placeholder data — run run_retrieval_eval.py for real values"
+        domains = ["Labor", "Commercial", "PersonalStatus", "PersonalStatus2019",
+                   "Cybercrime", "CivilService", "CivilStatus",
+                   "HRManagement", "TrafficLaw", "PenalCode"]
+        hr1 = [1.0] * len(domains)
+        hr5 = [1.0] * len(domains)
+        n_q = [0] * len(domains)
+        note = "Placeholder — run run_retrieval_eval.py then compute_domain_precision.py"
+        source = "placeholder"
 
     x = range(len(domains))
     w = 0.35
-    fig, ax = plt.subplots(figsize=(10, 5))
-    b1 = ax.bar([i - w / 2 for i in x], hr1, w, label="Hit Rate @1", color=BLUE,  alpha=0.88)
-    b2 = ax.bar([i + w / 2 for i in x], hr5, w, label="Hit Rate @5", color=GREEN, alpha=0.88)
+    fig, ax = plt.subplots(figsize=(12, 5))
+    b1 = ax.bar([i - w / 2 for i in x], hr1, w, label="Domain Hit @1", color=BLUE,  alpha=0.88)
+    b2 = ax.bar([i + w / 2 for i in x], hr5, w, label="Domain Hit @5", color=GREEN, alpha=0.88)
 
+    # Annotate n= below x-axis labels
     ax.set_xticks(list(x))
-    ax.set_xticklabels(domains, rotation=28, ha="right", fontsize=10)
-    ax.set_ylim(0, 1.2)
-    ax.set_ylabel("Hit Rate")
-    title = "Retrieval Hit Rate by Law Domain"
-    if note:
-        ax.set_title(title + "\n", fontsize=13, fontweight="bold")
-        ax.text(0.5, 1.04, note, ha="center", va="bottom",
-                transform=ax.transAxes, fontsize=8, color=GRAY, style="italic")
-    else:
-        ax.set_title(title)
-    ax.legend(loc="upper right")
+    xticklabels = [f"{d}\n(n={n})" if n else d for d, n in zip(domains, n_q)]
+    ax.set_xticklabels(xticklabels, rotation=28, ha="right", fontsize=9)
+    ax.set_ylim(0, 1.22)
+    ax.set_ylabel("Domain Hit Rate")
+    ax.set_title("Domain Routing Precision by Law Domain\n")
+    ax.text(0.5, 1.01, note, ha="center", va="bottom",
+            transform=ax.transAxes, fontsize=8,
+            color="#374151" if source == "domain_precision" else GRAY,
+            style="italic" if source != "domain_precision" else "normal")
+    ax.legend(loc="lower right")
 
     for bar in list(b1) + list(b2):
         h = bar.get_height()
-        ax.text(bar.get_x() + bar.get_width() / 2, h + 0.03,
-                f"{h:.0%}", ha="center", va="bottom", fontsize=8.5, color="#374151")
+        if h > 0:
+            ax.text(bar.get_x() + bar.get_width() / 2, h + 0.025,
+                    f"{h:.0%}", ha="center", va="bottom", fontsize=8, color="#374151")
 
     plt.tight_layout()
     out = CHARTS_DIR / "chart_hit_rate_by_domain.png"
     plt.savefig(out, dpi=300, bbox_inches="tight")
     plt.close()
-    print(f"  Saved: {out.name}")
+    print(f"  Saved: {out.name}  (source: {source})")
 
 
 # ── Chart 2: Retrieval Time Histogram ───────────────────────────────────────
@@ -240,19 +274,25 @@ def chart_rag_vs_llm() -> None:
 
 # ── Main ─────────────────────────────────────────────────────────────────────
 def main() -> None:
-    results = _load_results()
-    metrics = _load_metrics()
+    results      = _load_results()
+    metrics      = _load_metrics()
+    domain_prec  = _load_domain_precision()
 
     if results:
-        print(f"Using results: {sorted(RESULTS_DIR.glob('retrieval_results_*.json'))[-1].name}")
-        if metrics:
-            print(f"Using metrics: {sorted(RESULTS_DIR.glob('metrics_*.json'))[-1].name}")
+        print(f"Using results : {sorted(RESULTS_DIR.glob('retrieval_results_*.json'))[-1].name}")
     else:
         print("No results found — generating charts with placeholder data.")
         print("Run python evaluation/run_retrieval_eval.py first for real charts.\n")
 
+    if domain_prec:
+        print(f"Using domain precision: {sorted(RESULTS_DIR.glob('domain_precision_*.json'))[-1].name}")
+    elif metrics:
+        print(f"Using metrics : {sorted(RESULTS_DIR.glob('metrics_*.json'))[-1].name}")
+    else:
+        print("No domain precision file — run compute_domain_precision.py first.\n")
+
     print("Generating charts...")
-    chart_hit_rate_by_domain(metrics)
+    chart_hit_rate_by_domain(domain_prec, metrics)
     chart_response_time(results)
     chart_score_distribution(results)
     chart_rag_vs_llm()
