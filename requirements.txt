@@ -18,3 +18,4 @@ sentence-transformers==2.7.0
 openai-whisper
 streamlit-mic-recorder
 numba
+pytest>=8.0

@@ -41,6 +41,19 @@ python run_ingestion.py --force
 
 ---
 
+## Testing
+
+A pytest smoke test suite verifies the project structure, database, embedding pipeline, vector store, and retrieval.
+
+```bash
+pip install pytest
+pytest tests/ -v
+```
+
+Tests skip gracefully if the vector store has not been built yet.
+
+---
+
 ## Laws Covered
 
 | Domain | Law |
