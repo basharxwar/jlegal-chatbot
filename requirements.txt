@@ -19,3 +19,4 @@ openai-whisper
 streamlit-mic-recorder
 numba
 pytest>=8.0
+matplotlib>=3.7

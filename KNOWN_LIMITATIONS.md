@@ -1,79 +1,136 @@
 # JLegal-ChatBot — Known Limitations
 
-## 1. Traffic Law Article Numbers Not Detected
-**Status:** Persistent — replacement PDF also has encoding issues
+---
 
-The original traffic.pdf used Arabic Presentation Forms (U+FB50-FEFF).
-A replacement file was tested in v12.2 but had a different problem: 635
-non-BMP characters (Tifinagh-range codepoints) scattered through the text,
-zero article numbers detectable via regex.
+## 1. Traffic Law PDF Encoding
 
-Result: The 108 Traffic Law chunks currently in the vector store are from
-the original file. They are semantically searchable but show "نص قانوني"
-instead of article numbers.
+**What:** Article numbers are blank for all Traffic Law (قانون السير) chunks.
+The chunks are semantically searchable but citations show "نص قانوني" instead of an article number.
 
-Fix needed: A clean Unicode-encoded PDF of قانون السير رقم 49 لسنة 2008.
-When available, run `python run_ingestion.py --force` to replace chunks.
+**Why:** The original `traffic.pdf` stores Arabic text using Arabic Presentation Forms
+(Unicode block U+FB50–U+FEFF — ligature codepoints, not standard Arabic).
+The article regex patterns match `المادة` in standard Unicode, not the ligature form.
+A replacement PDF was tested in v12.2 but had a different problem: 635 non-BMP
+Tifinagh-range codepoints scattered through extracted text, yielding zero regex matches.
 
-Priority: Medium — law is searchable, citations lack article numbers
+**Evidence:** `run_ingestion.py --force` on either file produces 0/N article labels for
+TrafficLaw. All other 9 domains reach 99%+ article coverage on the same regex.
+
+**Future fix:** Obtain a clean Unicode-encoded PDF of قانون السير رقم 49 لسنة 2008
+from a government portal and run `python run_ingestion.py --force`.
+Alternatively, post-process the extracted text with `unicodedata.normalize('NFKC', text)`
+before regex matching to decompose ligature forms.
 
 ---
 
-## 2. Social Security Law Not Ingested
-**Status:** Known, documented, future work
+## 2. PDF Consultation Download Button
 
-The Social Security PDF is a scanned image file (compressed PDF with no
-text layer). PyMuPDF extracts 0 pages of text.
+**What:** The "تحميل الاستشارة القانونية PDF" button is disabled in the deployed UI.
 
-Fix: OCR pipeline using pytesseract with Arabic language pack (`ara`).
-Steps needed:
-1. Install tesseract-ocr with Arabic training data
-2. Convert PDF pages to images (PyMuPDF can do this)
-3. Run pytesseract.image_to_string(image, lang='ara')
-4. Feed extracted text through existing chunking pipeline
+**Why:** Three interacting failure modes were encountered across versions v12–v12.5:
 
-Priority: Medium — documented as Future Work in project report
+1. **Path resolution** (`v12–v12.4`): `Path(__file__).resolve()` can return the
+   Streamlit server's working directory instead of the file's actual directory on
+   Windows, so `font_path.exists()` returned False and the Amiri font was never loaded.
+   Fixed in v12.5 by using `os.path.abspath(__file__)`.
 
----
+2. **Closure capture** (`v12.4`): `LetterheadPDF` captured the outer `_mf` variable
+   by reference. `header()` was triggered by `add_page()` before `_mf` was updated from
+   `"Helvetica"` to `"Arabic"`, causing `FPDFUnicodeEncodingException` in every header.
+   Fixed in v12.5 with constructor injection.
 
-## 3. Levantine Dialect Direct Retrieval
-**Status:** Partially mitigated via query expansion
+3. **Runtime path** (`v12.5`): Even with correct path resolution and constructor
+   injection, Streamlit's module import mechanism on the deployment machine still
+   prevents `open(font_path, "rb")` inside the fpdf2 font loader from resolving the path
+   consistently. The button is currently disabled in the UI as a precaution for the
+   defense demo; `_generate_pdf()` remains implemented and tested in isolation.
 
-AraBERTv02 was trained primarily on MSA (Modern Standard Arabic).
-Direct dialectal queries like "فصلوني من الشغل فجأة" score 0.46-0.50,
-which is below useful retrieval threshold.
+**Evidence:** `_generate_pdf(question, answer)` runs correctly when called from a plain
+Python script (`python -c "from app import _generate_pdf; ..."`). The failure is
+Streamlit-runtime-specific.
 
-Mitigation: Query expansion via Claude Haiku rewrites the query to formal
-MSA before embedding. This improves scores to 0.73-0.75 and retrieves
-relevant Labor Law articles.
-
-Remaining gap: Article 25 (arbitrary dismissal) specifically still requires
-lowering threshold to 0.45 or increasing top_k to 12.
-
-Future work: Fine-tune AraBERTv02 on a Jordanian legal QA corpus.
-
-Priority: Medium — mitigated, good demo story for committee
+**Future fix:** Pre-load font bytes at module startup (before Streamlit changes cwd)
+and pass the raw bytes to fpdf2 via `add_font(fname=io.BytesIO(font_bytes))` instead of
+a file path. This eliminates the path-resolution dependency entirely.
 
 ---
 
-## 4. Windows NTFS Unicode Normalization
-**Status:** Solved, documented for reference
+## 3. Cybercrime Extortion Query Ranking
 
-Arabic filenames with Eastern Arabic numerals (١، ٢، ١٦) use different
-Unicode normalization forms on Windows NTFS vs Python string literals.
-`Path.exists()` returns False even when the file is present.
+**What:** Queries about "ابتزاز إلكتروني" (electronic extortion/blackmail) sometimes
+rank lower than expected, with top-1 scores in the 0.60–0.68 range rather than 0.75+.
 
-Fix applied: `unicodedata.normalize('NFC', filename)` on both the stored
-filename and the glob results before comparison.
+**Why:** The Cybercrime Law uses the term "تهديد" (threat) in the statutory text more
+often than "ابتزاز" (extortion/blackmail). AraBERTv02's embedding space places "تهديد"
+and "ابتزاز" in different neighbourhoods because they are semantically distinct in
+general Arabic text, even though the legal concept is the same.
+
+**Evidence:** Direct embedding similarity `cosine(embed("ابتزاز"), embed("تهديد"))` ≈ 0.41.
+The query expansion step (Claude Haiku rewrites colloquial to MSA) partially mitigates
+this by including "تهديد" in the rewritten query, but only when `expand=True`.
+
+**Future fix:** Fine-tune AraBERTv02 on a Jordanian legal synonym list
+(`ابتزاز ↔ تهديد ↔ انتزاع`, etc.) using contrastive learning. Alternatively, add a
+domain-specific synonym expansion table that supplements query expansion.
 
 ---
 
-## 5. numpy Version Pinning Required
-**Status:** Solved, documented for reference
+## 4. Corpus Coverage Boundary
 
-torch 2.3.1+cpu was compiled against numpy 1.x.
-numpy 2.x causes `RuntimeError: Numpy is not available` in torch.
+**What:** The system only answers questions from 10 indexed Jordanian laws. Questions
+about constitutional law, tax law, investment law, customs, consumer protection,
+social security, and all other Jordanian legislation return low similarity scores and
+a refusal message.
 
-Fix: Always install with `pip install "numpy<2"`.
-Any dependency (numba, scipy, etc.) that pulls in numpy 2.x will break
-torch tensor-to-numpy conversion.
+**Why:** Only laws with clean, Unicode-encoded PDFs were ingested. Scope was limited
+by project timeline and PDF availability. Social Security Law (قانون الضمان الاجتماعي)
+was explicitly excluded because its PDF is a scanned image with no text layer —
+PyMuPDF extracts zero pages.
+
+**Evidence:** Benchmark questions Q039–Q044 (refusal category) all produce
+top-1 scores < 0.35 in the retrieval evaluation, confirming the system correctly
+does not fabricate answers for out-of-corpus topics.
+
+**Indexed laws (10):**
+Labor, Commercial, PersonalStatus, PersonalStatus2019, Cybercrime,
+CivilService, CivilStatus, HRManagement, TrafficLaw, PenalCode.
+
+**Future fix:**
+- Social Security: OCR pipeline using `pytesseract` with Arabic language pack (`ara`).
+- Other laws: collect official PDFs from the Jordanian Legislation and Opinion Bureau
+  (diwan.gov.jo) and run `python run_ingestion.py --force` after adding entries to
+  `LAWS` list in `run_ingestion.py`.
+
+---
+
+## 5. Static Corpus (No Amendment Tracking)
+
+**What:** The vector store is a snapshot of the laws at ingestion time. Legislative
+amendments enacted after the last `run_ingestion.py` run are not reflected.
+
+**Why:** The system uses a one-time offline ingestion model. There is no connection to
+a live legal database, no webhook for Jordanian legislation updates, and no diff-based
+re-ingestion strategy.
+
+**Evidence:** Jordanian Personal Status Law was amended by Law No. 15 of 2019.
+The system indexes both the original and the 2019 version as separate domains, but
+any subsequent amendments to either version after the ingestion date are silently absent.
+
+**Future fix:**
+- Schedule periodic `run_ingestion.py --force` runs (e.g., quarterly cron job).
+- Add a `last_ingested_at` timestamp to each DOCUMENT row and display a staleness
+  warning in the UI when the timestamp exceeds a configurable threshold.
+- Long-term: integrate with the Jordanian Official Gazette RSS feed (if available)
+  to trigger re-ingestion on publication of new legislation.
+
+---
+
+## Previously Solved Issues (for reference)
+
+| Issue | Status | Fixed In |
+|-------|--------|----------|
+| Levantine dialect direct retrieval (score 0.46–0.50) | Mitigated via Claude Haiku query expansion | v7 |
+| Windows NTFS Arabic filename NFC normalization | Solved — `unicodedata.normalize('NFC', ...)` applied | v8 |
+| numpy 2.x incompatibility with torch 2.3.1+cpu | Solved — pin `numpy<2` in requirements.txt | v8 |
+| ChromaDB C++ HNSW DLL crash on Windows + Python 3.12 | Solved — replaced with numpy/JSON vector store | v1 |
+| Article number coverage 40% (regex mismatch) | Solved — 4-pattern cascade + forward propagation | v5 |

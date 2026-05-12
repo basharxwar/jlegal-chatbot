@@ -29,6 +29,23 @@ from datetime import date
 from pathlib import Path
 
 logger = logging.getLogger(__name__)
+# Load font/logo bytes at startup — bypasses Arabic path issues in Streamlit
+_AMIRI_FONT_BYTES: bytes | None = None
+_YARMOUK_LOGO_BYTES: bytes | None = None
+try:
+    import os as _os
+    _bd = _os.path.dirname(_os.path.abspath(__file__))
+    _ff = "C:/jfonts/Amiri.ttf"
+    _lf = "C:/jfonts/logo.png"
+    if _os.path.isfile(_ff):
+        with open(_ff, "rb") as _fh:
+            _AMIRI_FONT_BYTES = _fh.read()
+    if _os.path.isfile(_lf):
+        with open(_lf, "rb") as _fh:
+            _YARMOUK_LOGO_BYTES = _fh.read()
+    print(f"[STARTUP] Font bytes: {len(_AMIRI_FONT_BYTES) if _AMIRI_FONT_BYTES else 'MISSING'}")
+except Exception as _einit:
+    print(f"[STARTUP] ERROR: {_einit}")
 
 try:
     from src.pipeline import run_query, ensure_session
@@ -327,137 +344,107 @@ def _extract_pdf_text(pdf_bytes: bytes) -> str:
 
 
 def _generate_pdf(question: str, answer: str) -> bytes:
-    """Generate a Yarmouk-letterhead PDF for the consultation.
-
-    Returns bytes on success. Raises on failure (caller logs and shows error).
-
-    Two-step font pattern: probe font on a throwaway FPDF first, then set _mf
-    only if that succeeds. This guarantees LetterheadPDF.header() never calls
-    set_font("Arabic") against an unregistered font.
-    """
-    import re
+    import re, os, tempfile, shutil
     from fpdf import FPDF
-    from pathlib import Path
 
-    # Strip emojis — Amiri has no emoji glyphs
     _EMOJI_RE = re.compile(
         "[\U0001F600-\U0001F64F\U0001F300-\U0001F5FF\U0001F680-\U0001F6FF"
         "\U0001F1E0-\U0001F1FF\U00002702-\U000027B0\U000024C2-\U0001F251"
-        "\U00010000-\U0010FFFF]+",
-        flags=re.UNICODE,
-    )
-    def strip_emoji(text: str) -> str:
-        return _EMOJI_RE.sub("", text or "")
-
+        "\U00010000-\U0010FFFF]+", flags=re.UNICODE)
+    def strip_emoji(t):
+        return _EMOJI_RE.sub("", t or "")
     try:
         import arabic_reshaper
         from bidi.algorithm import get_display
-        def ar(text: str) -> str:
-            return get_display(arabic_reshaper.reshape(strip_emoji(text)))
-        has_arabic = True
+        def ar(t):
+            return get_display(arabic_reshaper.reshape(strip_emoji(t)))
     except ImportError:
-        def ar(text: str) -> str:
-            return strip_emoji(text)
-        has_arabic = False
+        def ar(t):
+            return strip_emoji(t)
 
-    import os
-    # os.path.abspath is reliable in Streamlit; Path.resolve() is not
-    # (Streamlit may change cwd, making relative resolution wrong)
-    _APP_DIR = os.path.dirname(os.path.abspath(__file__))
-    font_path = Path(os.path.join(_APP_DIR, "fonts", "Amiri-Regular.ttf"))
-    logo_path = Path(os.path.join(_APP_DIR, "assets", "yarmouk_logo.png"))
+    _tmpdir = tempfile.mkdtemp()
+    FONT = "Helvetica"
+    _tmp_font = None
+    _tmp_logo = None
 
-    # Probe font on throwaway instance — use_arabic_font only True on success
-    use_arabic_font = False
-    if has_arabic and font_path.exists():
-        try:
-            _probe = FPDF()
-            _probe.add_font("Arabic", fname=str(font_path))
-            use_arabic_font = True
-            del _probe
-        except Exception as exc:
-            logger.warning("Amiri font probe failed, using Helvetica: %s", exc)
+    try:
+        with open("C:/jfonts/Amiri.ttf", "rb") as _src:
+            _font_data = _src.read()
+        _tmp_font = os.path.join(_tmpdir, "Amiri.ttf")
+        with open(_tmp_font, "wb") as f:
+            f.write(_font_data)
+        FONT = "Amiri"
+    except Exception as _fe:
+        print("[PDF] Font load failed:", _fe)
 
-    # LetterheadPDF receives all state as constructor args — no closures
-    class LetterheadPDF(FPDF):
-        def __init__(self, use_ar, fp, lp, ar_fn):
-            super().__init__()
-            self._use_ar = use_ar
-            self._fp = fp
-            self._lp = lp
-            self._ar = ar_fn
-            if self._use_ar:
-                self.add_font("Arabic", fname=str(self._fp))
+    if _YARMOUK_LOGO_BYTES:
+        _tmp_logo = os.path.join(_tmpdir, "logo.png")
+        with open(_tmp_logo, "wb") as f:
+            f.write(_YARMOUK_LOGO_BYTES)
 
-        def _f(self):
-            return "Arabic" if self._use_ar else "Helvetica"
-
-        def header(self_):
-            if self_._lp.exists():
-                try:
-                    self_.image(str(self_._lp), x=160, y=6, w=32)
-                except Exception:
-                    pass
-            self_.set_font(self_._f(), size=15)
-            self_.set_text_color(31, 60, 136)
-            self_.cell(0, 9, self_._ar("استشارة قانونية"),
-                       align="C", new_x="LMARGIN", new_y="NEXT")
-            self_.set_font(self_._f(), size=10)
-            self_.set_text_color(70, 70, 70)
-            self_.cell(0, 6, self_._ar("JLegal-ChatBot — المساعد القانوني الأردني"),
-                       align="C", new_x="LMARGIN", new_y="NEXT")
-            self_.cell(0, 6, self_._ar("جامعة اليرموك — كلية تكنولوجيا المعلومات"),
-                       align="C", new_x="LMARGIN", new_y="NEXT")
-            self_.set_font("Helvetica", size=9)
-            self_.set_text_color(130, 130, 130)
-            self_.cell(0, 5, f"التاريخ: {date.today().strftime('%Y-%m-%d')}",
-                       align="R", new_x="LMARGIN", new_y="NEXT")
-            self_.ln(2)
-            self_.set_draw_color(31, 60, 136)
-            self_.set_line_width(0.5)
-            self_.line(15, self_.get_y(), 195, self_.get_y())
-            self_.ln(4)
-
-        def footer(self_):
-            self_.set_y(-25)
-            self_.set_draw_color(200, 200, 200)
-            self_.line(15, self_.get_y(), 195, self_.get_y())
-            self_.ln(2)
-            self_.set_font(self_._f(), size=7)
-            self_.set_text_color(130, 130, 130)
-            disclaimer = self_._ar(
-                "إخلاء مسؤولية: هذه الاستشارة مُولّدة بواسطة نظام ذكاء اصطناعي "
-                "بناءً على نصوص قانونية أردنية مُدرجة. لا تُعدّ بديلاً عن "
-                "الاستشارة القانونية المتخصصة من محامٍ مرخّص."
-            )
-            self_.multi_cell(0, 4, disclaimer, align="C")
-            self_.set_font("Helvetica", size=8)
-            self_.cell(0, 5, f"صفحة {self_.page_no()}", align="C")
-
-    pdf = LetterheadPDF(use_arabic_font, font_path, logo_path, ar)
+    pdf = FPDF()
+    if FONT == "Amiri":
+        pdf.add_font("Amiri", fname=_tmp_font)
     pdf.set_margins(15, 48, 15)
     pdf.set_auto_page_break(auto=True, margin=30)
     pdf.add_page()
 
-    _f = "Arabic" if use_arabic_font else "Helvetica"
-    align = "R" if has_arabic else "L"
+    if _tmp_logo:
+        try:
+            pdf.image(_tmp_logo, x=160, y=6, w=32)
+        except Exception:
+            pass
+    pdf.set_font(FONT, size=15)
+    pdf.set_text_color(31, 60, 136)
+    pdf.cell(0, 9, ar("استشارة قانونية"), align="C", new_x="LMARGIN", new_y="NEXT")
+    pdf.set_font(FONT, size=10)
+    pdf.set_text_color(70, 70, 70)
+    pdf.cell(0, 6, ar("JLegal-ChatBot — المساعد القانوني الأردني"), align="C", new_x="LMARGIN", new_y="NEXT")
+    pdf.cell(0, 6, ar("جامعة اليرموك — كلية تكنولوجيا المعلومات"), align="C", new_x="LMARGIN", new_y="NEXT")
+    pdf.set_font("Helvetica", size=9)
+    pdf.set_text_color(130, 130, 130)
+    pdf.cell(0, 5, f"التاريخ: {date.today().strftime('%Y-%m-%d')}", align="R", new_x="LMARGIN", new_y="NEXT")
+    pdf.ln(2)
+    pdf.set_draw_color(31, 60, 136)
+    pdf.set_line_width(0.5)
+    pdf.line(15, pdf.get_y(), 195, pdf.get_y())
+    pdf.ln(4)
 
-    pdf.set_font(_f, size=12)
+    align = "R"
+    pdf.set_font(FONT, size=12)
     pdf.set_text_color(31, 60, 136)
     pdf.cell(0, 8, ar("السؤال القانوني:"), align=align, new_x="LMARGIN", new_y="NEXT")
-    pdf.set_font(_f, size=10)
+    pdf.set_font(FONT, size=10)
     pdf.set_text_color(0, 0, 0)
     pdf.multi_cell(0, 6, ar(question), align=align)
     pdf.ln(6)
-
-    pdf.set_font(_f, size=12)
+    pdf.set_font(FONT, size=12)
     pdf.set_text_color(31, 60, 136)
     pdf.cell(0, 8, ar("الإجابة القانونية:"), align=align, new_x="LMARGIN", new_y="NEXT")
-    pdf.set_font(_f, size=10)
+    pdf.set_font(FONT, size=10)
     pdf.set_text_color(0, 0, 0)
     pdf.multi_cell(0, 6, ar(answer), align=align)
 
-    return bytes(pdf.output())
+    pdf.set_y(-25)
+    pdf.set_draw_color(200, 200, 200)
+    pdf.line(15, pdf.get_y(), 195, pdf.get_y())
+    pdf.ln(2)
+    pdf.set_font(FONT, size=7)
+    pdf.set_text_color(130, 130, 130)
+    pdf.multi_cell(0, 4, ar(
+        "إخلاء مسؤولية: هذه الاستشارة مُولّدة بواسطة نظام ذكاء اصطناعي "
+        "بناءً على نصوص قانونية أردنية مُدرجة. لا تُعدّ بديلاً عن "
+        "الاستشارة القانونية المتخصصة من محامٍ مرخّص."
+    ), align="C")
+    pdf.set_font("Helvetica", size=8)
+    pdf.cell(0, 5, f"صفحة 1 | {date.today().strftime('%Y-%m-%d')}", align="C")
+
+    result = bytes(pdf.output())
+    try:
+        shutil.rmtree(_tmpdir)
+    except Exception:
+        pass
+    return result
 
 
 def _render_confidence(conf: dict) -> None:
@@ -522,16 +509,6 @@ def _render_assistant_message(msg: dict, key_suffix: str) -> None:
         except Exception as exc:
             logger.exception("PDF generation failed for history message")
             _pdf_error = f"{type(exc).__name__}: {exc}"
-        if _pdf_bytes is not None:
-            st.download_button(
-                label="📄 تحميل الاستشارة القانونية PDF",
-                data=_pdf_bytes,
-                file_name=f"استشارة_قانونية_{date.today()}.pdf",
-                mime="application/pdf",
-                key=f"pdf_history_{key_suffix}",
-            )
-        elif _pdf_error:
-            st.caption(f"⚠️ تعذّر إنشاء PDF: {_pdf_error}")
 
     for att in msg.get("attachments", []):
         icon = "🖼️" if att["type"] == "image" else "📄"
@@ -965,16 +942,6 @@ if user_text or uploaded_files:
                 except Exception as exc:
                     logger.exception("PDF generation failed for new message")
                     _pdf_error2 = f"{type(exc).__name__}: {exc}"
-                if _pdf_bytes2 is not None:
-                    st.download_button(
-                        label="📄 تحميل الاستشارة القانونية PDF",
-                        data=_pdf_bytes2,
-                        file_name=f"استشارة_قانونية_{date.today()}.pdf",
-                        mime="application/pdf",
-                        key=f"pdf_new_{query_id or 'x'}",
-                    )
-                elif _pdf_error2:
-                    st.caption(f"⚠️ تعذّر إنشاء PDF: {_pdf_error2}")
 
             fc2 = st.columns([1, 1, 8])             # 5. Feedback
             with fc2[0]:
