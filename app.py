@@ -697,7 +697,7 @@ with st.sidebar:
     with st.expander("معلومات النظام", expanded=False):
         c1, c2 = st.columns(2)
         c1.metric("النصوص", str(db_chunk_count))
-        c2.metric("القوانين", "10")
+        c2.metric("القوانين", "18")
         st.caption("AraBERTv02 — بحث دلالي")
         store_ready = bool(VECTOR_STORE_DIR and VECTOR_STORE_DIR.exists() and any(VECTOR_STORE_DIR.iterdir()))
         model_loaded = load_arabert() is not None
@@ -724,7 +724,7 @@ with st.sidebar:
 - إدخال صوتي: OpenAI Whisper
 - الواجهة: Streamlit
 
-**القوانين المتاحة (9):**
+**القوانين المتاحة (18):**
 - قانون العمل الأردني
 - قانون التجارة الأردني
 - قانون الأحوال الشخصية
@@ -734,13 +734,20 @@ with st.sidebar:
 - قانون الأحوال الشخصية 2019
 - قانون السير الأردني
 - نظام إدارة الموارد البشرية
+- قانون العقوبات الأردني
+- قانون الضمان الاجتماعي
+- قانون ضريبة الدخل
+- قانون المالكين والمستأجرين
+- قانون حماية المستهلك
+- قانون الاستثمار
+- قانون الشركات
+- الدستور الأردني
+- قانون الجمارك
 
 **حدود النظام:**
 - يستند حصراً إلى النصوص المُدرجة
 - لا يُعدّ بديلاً عن الاستشارة القانونية المتخصصة
 - بعض القوانين قد تحتوي على نصوص غير قابلة للقراءة بالكامل (مثل قانون السير)
-
-- قانون العقوبات الأردني (رقم 16 لسنة 1960)
 
 **مشروع تخرج — كلية تكنولوجيا المعلومات، جامعة اليرموك — 2026**
 """)
@@ -766,7 +773,7 @@ st.markdown(
     '<p style="color:#BFDBFE;margin:8px 0 0 0;font-size:1.05rem;">'
     'مساعدك القانوني الأردني الذكي — مدعوم بالذكاء الاصطناعي</p>'
     '<div style="margin-top:12px;display:flex;gap:12px;flex-wrap:wrap;">'
-    '<span style="background:rgba(59,130,246,0.25);color:#BFDBFE;padding:4px 12px;border-radius:20px;font-size:0.85rem;">10 قوانين أردنية</span>'
+    '<span style="background:rgba(59,130,246,0.25);color:#BFDBFE;padding:4px 12px;border-radius:20px;font-size:0.85rem;">18 قوانين أردنية</span>'
     f'<span style="background:rgba(59,130,246,0.25);color:#BFDBFE;padding:4px 12px;border-radius:20px;font-size:0.85rem;">{db_chunk_count} نصاً قانونياً</span>'
     '<span style="background:rgba(59,130,246,0.25);color:#BFDBFE;padding:4px 12px;border-radius:20px;font-size:0.85rem;">بحث دلالي AraBERTv02</span>'
     '</div></div>',
