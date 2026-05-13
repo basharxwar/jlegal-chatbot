@@ -21,4 +21,4 @@ def db_path(project_root):
 
 @pytest.fixture(scope="session")
 def vector_store_dir(project_root):
-    return project_root / "vector_store_arabertv02"
+    return project_root / "vector_store"

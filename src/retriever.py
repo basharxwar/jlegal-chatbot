@@ -24,6 +24,14 @@ ALL_DOMAINS: list[str] = [
     "PersonalStatus2019",
     "TrafficLaw",
     "HRManagement",
+    "PenalCode",
+    "IncomeTax",
+    "LandlordTenant",
+    "ConsumerProtection",
+    "Investment",
+    "Companies",
+    "Constitution",
+    "Customs",
 ]
 
 # Per-domain fetch count when searching all domains, then merged to top_k

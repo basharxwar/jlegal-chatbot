@@ -81,6 +81,8 @@ def preload_all_collections():
     for domain in [
         "Labor", "Commercial", "PersonalStatus", "Cybercrime", "CivilService",
         "CivilStatus", "SocialSecurity", "PersonalStatus2019", "TrafficLaw", "HRManagement", "PenalCode",
+        "IncomeTax", "LandlordTenant", "ConsumerProtection", "Investment",
+        "Companies", "Constitution", "Customs",
     ]:
         _load_domain(domain)
     return True
@@ -118,6 +120,14 @@ DOMAIN_OPTIONS: dict[str, str | None] = {
     "قانون السير": "TrafficLaw",
     "نظام إدارة الموارد البشرية": "HRManagement",
     "قانون العقوبات": "PenalCode",
+    "قانون الضمان الاجتماعي": "SocialSecurity",
+    "قانون ضريبة الدخل": "IncomeTax",
+    "قانون المالكين والمستأجرين": "LandlordTenant",
+    "قانون حماية المستهلك": "ConsumerProtection",
+    "قانون الاستثمار": "Investment",
+    "قانون الشركات": "Companies",
+    "الدستور الأردني": "Constitution",
+    "قانون الجمارك": "Customs",
 }
 
 LAW_NAMES_AR: dict[str, str] = {
@@ -131,7 +141,14 @@ LAW_NAMES_AR: dict[str, str] = {
     "PersonalStatus2019": "قانون الأحوال الشخصية 2019",
     "TrafficLaw": "قانون السير الأردني",
     "HRManagement": "نظام إدارة الموارد البشرية",
-    "PenalCode":    "قانون العقوبات الأردني",
+    "PenalCode":        "قانون العقوبات الأردني",
+    "IncomeTax":        "قانون ضريبة الدخل",
+    "LandlordTenant":   "قانون المالكين والمستأجرين",
+    "ConsumerProtection": "قانون حماية المستهلك",
+    "Investment":       "قانون الاستثمار",
+    "Companies":        "قانون الشركات",
+    "Constitution":     "الدستور الأردني",
+    "Customs":          "قانون الجمارك",
 }
 
 EXAMPLES = [

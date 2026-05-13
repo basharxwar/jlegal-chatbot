@@ -5,7 +5,12 @@
     "law_domain": "Labor",
     "question": "ما هي مدة الإجازة السنوية المستحقة للعامل وفق قانون العمل الأردني؟",
     "expected_article": "61",
-    "expected_keywords": ["إجازة", "سنوية", "أيام", "العامل"],
+    "expected_keywords": [
+      "إجازة",
+      "سنوية",
+      "أيام",
+      "العامل"
+    ],
     "is_in_corpus": true,
     "notes": "Article 61 Labor Law: 14 days/year for first 5 years, 21 days thereafter"
   },
@@ -15,7 +20,12 @@
     "law_domain": "Labor",
     "question": "ما هي حالات الفصل التعسفي الموجبة للتعويض في قانون العمل الأردني؟",
     "expected_article": "25",
-    "expected_keywords": ["فصل", "تعسفي", "تعويض", "العامل"],
+    "expected_keywords": [
+      "فصل",
+      "تعسفي",
+      "تعويض",
+      "العامل"
+    ],
     "is_in_corpus": true,
     "notes": "Article 25 Labor Law: arbitrary dismissal compensation"
   },
@@ -25,7 +35,12 @@
     "law_domain": "Labor",
     "question": "كم عدد ساعات العمل اليومية والأسبوعية القصوى المقررة في قانون العمل الأردني؟",
     "expected_article": "57",
-    "expected_keywords": ["ساعات", "عمل", "يومية", "أسبوعية"],
+    "expected_keywords": [
+      "ساعات",
+      "عمل",
+      "يومية",
+      "أسبوعية"
+    ],
     "is_in_corpus": true,
     "notes": "Article 57 Labor Law: 8 hours/day, 48 hours/week maximum"
   },
@@ -35,7 +50,12 @@
     "law_domain": "Commercial",
     "question": "ما هي أركان وشروط تأسيس الشركة ذات المسؤولية المحدودة في قانون التجارة الأردني؟",
     "expected_article": null,
-    "expected_keywords": ["شركة", "مسؤولية", "محدودة", "تأسيس"],
+    "expected_keywords": [
+      "شركة",
+      "مسؤولية",
+      "محدودة",
+      "تأسيس"
+    ],
     "is_in_corpus": true,
     "notes": "Commercial Law: limited liability company formation requirements"
   },
@@ -45,7 +65,12 @@
     "law_domain": "Commercial",
     "question": "ما هي البيانات الإلزامية التي يجب توافرها في الشيك التجاري لصحته قانونياً؟",
     "expected_article": null,
-    "expected_keywords": ["شيك", "بيانات", "صحة", "قانوني"],
+    "expected_keywords": [
+      "شيك",
+      "بيانات",
+      "صحة",
+      "قانوني"
+    ],
     "is_in_corpus": true,
     "notes": "Commercial Law: mandatory elements of a valid cheque"
   },
@@ -55,7 +80,13 @@
     "law_domain": "Commercial",
     "question": "ما هي التزامات البائع في عقد البيع التجاري وما هي ضمانات المشتري؟",
     "expected_article": null,
-    "expected_keywords": ["بائع", "مشتري", "عقد", "بيع", "التزامات"],
+    "expected_keywords": [
+      "بائع",
+      "مشتري",
+      "عقد",
+      "بيع",
+      "التزامات"
+    ],
     "is_in_corpus": true,
     "notes": "Commercial Law: sale contract obligations"
   },
@@ -65,7 +96,12 @@
     "law_domain": "PersonalStatus",
     "question": "ما هي أركان وشروط انعقاد الزواج الصحيح في قانون الأحوال الشخصية الأردني؟",
     "expected_article": null,
-    "expected_keywords": ["زواج", "أركان", "شروط", "صحيح"],
+    "expected_keywords": [
+      "زواج",
+      "أركان",
+      "شروط",
+      "صحيح"
+    ],
     "is_in_corpus": true,
     "notes": "Personal Status Law: conditions for a valid marriage contract"
   },
@@ -75,7 +111,11 @@
     "law_domain": "PersonalStatus",
     "question": "ما هي أحكام حق الزوجة في النفقة وشروط استحقاقها ومقدارها؟",
     "expected_article": null,
-    "expected_keywords": ["نفقة", "زوجة", "استحقاق"],
+    "expected_keywords": [
+      "نفقة",
+      "زوجة",
+      "استحقاق"
+    ],
     "is_in_corpus": true,
     "notes": "Personal Status Law: wife's right to financial maintenance"
   },
@@ -85,7 +125,11 @@
     "law_domain": "PersonalStatus",
     "question": "ما هي مدة عدة المطلقة وما هي أحكامها في قانون الأحوال الشخصية؟",
     "expected_article": null,
-    "expected_keywords": ["عدة", "مطلقة", "مدة"],
+    "expected_keywords": [
+      "عدة",
+      "مطلقة",
+      "مدة"
+    ],
     "is_in_corpus": true,
     "notes": "Personal Status Law: waiting period after divorce"
   },
@@ -95,7 +139,12 @@
     "law_domain": "Cybercrime",
     "question": "ما هي العقوبة المقررة لجريمة الابتزاز الإلكتروني في قانون الجرائم الإلكترونية الأردني؟",
     "expected_article": null,
-    "expected_keywords": ["ابتزاز", "إلكتروني", "عقوبة", "تهديد"],
+    "expected_keywords": [
+      "ابتزاز",
+      "إلكتروني",
+      "عقوبة",
+      "تهديد"
+    ],
     "is_in_corpus": true,
     "notes": "Cybercrime Law: electronic extortion/blackmail penalty"
   },
@@ -105,7 +154,13 @@
     "law_domain": "Cybercrime",
     "question": "ما هي عقوبة الدخول غير المشروع إلى الأنظمة والشبكات المعلوماتية؟",
     "expected_article": null,
-    "expected_keywords": ["دخول", "غير مشروع", "أنظمة", "معلوماتية", "عقوبة"],
+    "expected_keywords": [
+      "دخول",
+      "غير مشروع",
+      "أنظمة",
+      "معلوماتية",
+      "عقوبة"
+    ],
     "is_in_corpus": true,
     "notes": "Cybercrime Law: unauthorized system access penalty"
   },
@@ -115,7 +170,12 @@
     "law_domain": "Cybercrime",
     "question": "ما تعريف الجريمة الإلكترونية في القانون الأردني وما أنواعها المنصوص عليها؟",
     "expected_article": null,
-    "expected_keywords": ["جريمة", "إلكترونية", "تعريف", "قانون"],
+    "expected_keywords": [
+      "جريمة",
+      "إلكترونية",
+      "تعريف",
+      "قانون"
+    ],
     "is_in_corpus": true,
     "notes": "Cybercrime Law: definition and types of electronic crimes"
   },
@@ -125,7 +185,12 @@
     "law_domain": "CivilService",
     "question": "ما هي شروط التعيين في الوظائف الحكومية وفق نظام الخدمة المدنية الأردني؟",
     "expected_article": null,
-    "expected_keywords": ["تعيين", "وظيفة", "حكومية", "شروط"],
+    "expected_keywords": [
+      "تعيين",
+      "وظيفة",
+      "حكومية",
+      "شروط"
+    ],
     "is_in_corpus": true,
     "notes": "Civil Service System: government job appointment requirements"
   },
@@ -135,7 +200,12 @@
     "law_domain": "CivilService",
     "question": "ما هي العقوبات التأديبية المقررة للموظف الحكومي الذي يرتكب مخالفة وظيفية؟",
     "expected_article": null,
-    "expected_keywords": ["عقوبات", "تأديبية", "موظف", "مخالفة"],
+    "expected_keywords": [
+      "عقوبات",
+      "تأديبية",
+      "موظف",
+      "مخالفة"
+    ],
     "is_in_corpus": true,
     "notes": "Civil Service System: disciplinary penalties for government employees"
   },
@@ -145,7 +215,12 @@
     "law_domain": "CivilService",
     "question": "ما هي إجراءات وشروط الترقية والتدرج الوظيفي في الخدمة المدنية الأردنية؟",
     "expected_article": null,
-    "expected_keywords": ["ترقية", "تدرج", "وظيفي", "خدمة مدنية"],
+    "expected_keywords": [
+      "ترقية",
+      "تدرج",
+      "وظيفي",
+      "خدمة مدنية"
+    ],
     "is_in_corpus": true,
     "notes": "Civil Service System: promotion and career advancement procedures"
   },
@@ -155,7 +230,12 @@
     "law_domain": "CivilStatus",
     "question": "ما هي إجراءات تسجيل عقد الزواج في سجلات الأحوال المدنية الأردنية؟",
     "expected_article": null,
-    "expected_keywords": ["تسجيل", "زواج", "أحوال مدنية", "سجل"],
+    "expected_keywords": [
+      "تسجيل",
+      "زواج",
+      "أحوال مدنية",
+      "سجل"
+    ],
     "is_in_corpus": true,
     "notes": "Civil Status Law: marriage registration procedures"
   },
@@ -165,7 +245,12 @@
     "law_domain": "CivilStatus",
     "question": "ما هي الوثائق المطلوبة لاستخراج بطاقة الهوية الوطنية الأردنية لأول مرة؟",
     "expected_article": null,
-    "expected_keywords": ["هوية", "وطنية", "وثائق", "استخراج"],
+    "expected_keywords": [
+      "هوية",
+      "وطنية",
+      "وثائق",
+      "استخراج"
+    ],
     "is_in_corpus": true,
     "notes": "Civil Status Law: national ID card issuance requirements"
   },
@@ -175,7 +260,12 @@
     "law_domain": "CivilStatus",
     "question": "ما هي إجراءات قيد المواليد الجدد في السجل المدني الأردني والمهلة القانونية؟",
     "expected_article": null,
-    "expected_keywords": ["قيد", "مواليد", "سجل مدني", "مهلة"],
+    "expected_keywords": [
+      "قيد",
+      "مواليد",
+      "سجل مدني",
+      "مهلة"
+    ],
     "is_in_corpus": true,
     "notes": "Civil Status Law: birth registration procedures and deadlines"
   },
@@ -185,7 +275,12 @@
     "law_domain": "PersonalStatus2019",
     "question": "ما هي أحكام الحضانة وترتيبها في قانون الأحوال الشخصية الجديد لعام 2019؟",
     "expected_article": null,
-    "expected_keywords": ["حضانة", "2019", "ترتيب", "أحكام"],
+    "expected_keywords": [
+      "حضانة",
+      "2019",
+      "ترتيب",
+      "أحكام"
+    ],
     "is_in_corpus": true,
     "notes": "Personal Status Law 2019: custody provisions and order"
   },
@@ -195,7 +290,12 @@
     "law_domain": "PersonalStatus2019",
     "question": "كيف نظّم قانون الأحوال الشخصية 2019 مسألة نفقة المطلقة ومدة استحقاقها؟",
     "expected_article": null,
-    "expected_keywords": ["نفقة", "مطلقة", "2019", "استحقاق"],
+    "expected_keywords": [
+      "نفقة",
+      "مطلقة",
+      "2019",
+      "استحقاق"
+    ],
     "is_in_corpus": true,
     "notes": "Personal Status Law 2019: divorced woman's financial support"
   },
@@ -205,7 +305,12 @@
     "law_domain": "PersonalStatus2019",
     "question": "ما هي الشروط والإجراءات المستحدثة للزواج الثاني في تعديلات قانون الأحوال الشخصية 2019؟",
     "expected_article": null,
-    "expected_keywords": ["زواج", "ثاني", "شروط", "2019"],
+    "expected_keywords": [
+      "زواج",
+      "ثاني",
+      "شروط",
+      "2019"
+    ],
     "is_in_corpus": true,
     "notes": "Personal Status Law 2019: new requirements for second marriage"
   },
@@ -215,7 +320,12 @@
     "law_domain": "TrafficLaw",
     "question": "ما هي العقوبة والغرامة المقررة لتجاوز إشارة المرور الحمراء وفق قانون السير الأردني؟",
     "expected_article": null,
-    "expected_keywords": ["إشارة", "حمراء", "غرامة", "عقوبة"],
+    "expected_keywords": [
+      "إشارة",
+      "حمراء",
+      "غرامة",
+      "عقوبة"
+    ],
     "is_in_corpus": true,
     "notes": "Traffic Law: penalty for running a red light"
   },
@@ -225,7 +335,12 @@
     "law_domain": "TrafficLaw",
     "question": "في أي الحالات يُسحب من مرتكب المخالفة المرورية إذن القيادة وفق قانون السير؟",
     "expected_article": null,
-    "expected_keywords": ["سحب", "رخصة", "قيادة", "حالات"],
+    "expected_keywords": [
+      "سحب",
+      "رخصة",
+      "قيادة",
+      "حالات"
+    ],
     "is_in_corpus": true,
     "notes": "Traffic Law: conditions for license revocation"
   },
@@ -235,7 +350,12 @@
     "law_domain": "TrafficLaw",
     "question": "ما هي غرامة القيادة بسرعة زائدة عن الحد المسموح به على الطرق الأردنية؟",
     "expected_article": null,
-    "expected_keywords": ["سرعة", "غرامة", "حد", "مسموح"],
+    "expected_keywords": [
+      "سرعة",
+      "غرامة",
+      "حد",
+      "مسموح"
+    ],
     "is_in_corpus": true,
     "notes": "Traffic Law: speeding fine amount"
   },
@@ -245,7 +365,12 @@
     "law_domain": "HRManagement",
     "question": "ما هي معايير وأسس تقييم الأداء الوظيفي وفق نظام إدارة الموارد البشرية؟",
     "expected_article": null,
-    "expected_keywords": ["تقييم", "أداء", "معايير", "موارد بشرية"],
+    "expected_keywords": [
+      "تقييم",
+      "أداء",
+      "معايير",
+      "موارد بشرية"
+    ],
     "is_in_corpus": true,
     "notes": "HR Management System: performance evaluation criteria"
   },
@@ -255,7 +380,12 @@
     "law_domain": "HRManagement",
     "question": "ما هي إجراءات إنهاء خدمة الموظف في نظام إدارة الموارد البشرية وحالاتها؟",
     "expected_article": null,
-    "expected_keywords": ["إنهاء", "خدمة", "موظف", "إجراءات"],
+    "expected_keywords": [
+      "إنهاء",
+      "خدمة",
+      "موظف",
+      "إجراءات"
+    ],
     "is_in_corpus": true,
     "notes": "HR Management System: service termination procedures"
   },
@@ -265,7 +395,12 @@
     "law_domain": "HRManagement",
     "question": "ما هي المكافآت والاستحقاقات المالية للموظف عند انتهاء خدمته في نظام الموارد البشرية؟",
     "expected_article": null,
-    "expected_keywords": ["مكافأة", "استحقاقات", "انتهاء خدمة", "موارد بشرية"],
+    "expected_keywords": [
+      "مكافأة",
+      "استحقاقات",
+      "انتهاء خدمة",
+      "موارد بشرية"
+    ],
     "is_in_corpus": true,
     "notes": "HR Management System: end-of-service financial entitlements"
   },
@@ -275,7 +410,12 @@
     "law_domain": "PenalCode",
     "question": "ما هي العقوبة المقررة لجريمة السرقة وما هي ظروفها المشددة في قانون العقوبات الأردني؟",
     "expected_article": null,
-    "expected_keywords": ["سرقة", "عقوبة", "حبس", "مشددة"],
+    "expected_keywords": [
+      "سرقة",
+      "عقوبة",
+      "حبس",
+      "مشددة"
+    ],
     "is_in_corpus": true,
     "notes": "Penal Code: theft penalty and aggravating circumstances"
   },
@@ -285,7 +425,12 @@
     "law_domain": "PenalCode",
     "question": "ما هي أركان جريمة القتل العمد وعقوبتها في قانون العقوبات الأردني؟",
     "expected_article": null,
-    "expected_keywords": ["قتل", "عمد", "أركان", "عقوبة"],
+    "expected_keywords": [
+      "قتل",
+      "عمد",
+      "أركان",
+      "عقوبة"
+    ],
     "is_in_corpus": true,
     "notes": "Penal Code: intentional homicide elements and punishment"
   },
@@ -295,7 +440,12 @@
     "law_domain": "PenalCode",
     "question": "ما هي عقوبة جرائم الاحتيال والنصب والتزوير في قانون العقوبات الأردني؟",
     "expected_article": null,
-    "expected_keywords": ["احتيال", "نصب", "تزوير", "عقوبة"],
+    "expected_keywords": [
+      "احتيال",
+      "نصب",
+      "تزوير",
+      "عقوبة"
+    ],
     "is_in_corpus": true,
     "notes": "Penal Code: fraud, deception and forgery penalties"
   },
@@ -305,7 +455,12 @@
     "law_domain": null,
     "question": "ما الفرق في حقوق إنهاء العقد بين موظف القطاع الخاص وفق قانون العمل وموظف القطاع العام وفق نظام الخدمة المدنية؟",
     "expected_article": null,
-    "expected_keywords": ["قطاع خاص", "قطاع عام", "إنهاء عقد", "حقوق"],
+    "expected_keywords": [
+      "قطاع خاص",
+      "قطاع عام",
+      "إنهاء عقد",
+      "حقوق"
+    ],
     "is_in_corpus": true,
     "notes": "Cross: Labor Law vs Civil Service System on termination rights"
   },
@@ -315,7 +470,12 @@
     "law_domain": null,
     "question": "كيف تتقاطع أحكام قانون التجارة مع قانون الجرائم الإلكترونية في معالجة الاحتيال التجاري الرقمي؟",
     "expected_article": null,
-    "expected_keywords": ["تجارة", "إلكترونية", "احتيال", "قانون"],
+    "expected_keywords": [
+      "تجارة",
+      "إلكترونية",
+      "احتيال",
+      "قانون"
+    ],
     "is_in_corpus": true,
     "notes": "Cross: Commercial Law + Cybercrime Law on digital commercial fraud"
   },
@@ -325,7 +485,12 @@
     "law_domain": null,
     "question": "ما الفرق بين الطلاق في قانون الأحوال الشخصية وكيف يؤثر على قيود قانون الأحوال المدنية؟",
     "expected_article": null,
-    "expected_keywords": ["طلاق", "أحوال شخصية", "أحوال مدنية", "تسجيل"],
+    "expected_keywords": [
+      "طلاق",
+      "أحوال شخصية",
+      "أحوال مدنية",
+      "تسجيل"
+    ],
     "is_in_corpus": true,
     "notes": "Cross: Personal Status Law + Civil Status Law on divorce registration"
   },
@@ -335,7 +500,12 @@
     "law_domain": null,
     "question": "كيف تعالج أحكام قانون السير وقانون العقوبات جرائم حوادث المرور المميتة من حيث المسؤولية؟",
     "expected_article": null,
-    "expected_keywords": ["حوادث مرور", "قتل", "إهمال", "عقوبة"],
+    "expected_keywords": [
+      "حوادث مرور",
+      "قتل",
+      "إهمال",
+      "عقوبة"
+    ],
     "is_in_corpus": true,
     "notes": "Cross: Traffic Law + Penal Code on fatal accident liability"
   },
@@ -345,7 +515,12 @@
     "law_domain": null,
     "question": "هل تختلف مكافأة نهاية الخدمة بين قانون العمل ونظام إدارة الموارد البشرية؟",
     "expected_article": null,
-    "expected_keywords": ["مكافأة", "نهاية خدمة", "قانون العمل", "موارد بشرية"],
+    "expected_keywords": [
+      "مكافأة",
+      "نهاية خدمة",
+      "قانون العمل",
+      "موارد بشرية"
+    ],
     "is_in_corpus": true,
     "notes": "Cross: Labor Law vs HR Management System on end-of-service gratuity"
   },
@@ -355,7 +530,12 @@
     "law_domain": null,
     "question": "كيف يتناول قانون الجرائم الإلكترونية وقانون التجارة قضايا الابتزاز الرقمي ضد رجال الأعمال؟",
     "expected_article": null,
-    "expected_keywords": ["ابتزاز", "رقمي", "تجارة", "جرائم إلكترونية"],
+    "expected_keywords": [
+      "ابتزاز",
+      "رقمي",
+      "تجارة",
+      "جرائم إلكترونية"
+    ],
     "is_in_corpus": true,
     "notes": "Cross: Cybercrime Law + Commercial Law on digital extortion against businesses"
   },
@@ -365,7 +545,12 @@
     "law_domain": null,
     "question": "هل يُطبَّق قانون الأحوال الشخصية القديم أم تعديلات 2019 على زواج تم قبل صدور قانون 2019؟",
     "expected_article": null,
-    "expected_keywords": ["أحوال شخصية", "2019", "تطبيق", "زواج"],
+    "expected_keywords": [
+      "أحوال شخصية",
+      "2019",
+      "تطبيق",
+      "زواج"
+    ],
     "is_in_corpus": true,
     "notes": "Cross: Personal Status Law vs Personal Status Law 2019 on transitional application"
   },
@@ -375,7 +560,12 @@
     "law_domain": null,
     "question": "ما العلاقة بين حضانة الأطفال في قانون الأحوال الشخصية ومتطلبات التسجيل في قانون الأحوال المدنية؟",
     "expected_article": null,
-    "expected_keywords": ["حضانة", "أطفال", "تسجيل", "أحوال مدنية"],
+    "expected_keywords": [
+      "حضانة",
+      "أطفال",
+      "تسجيل",
+      "أحوال مدنية"
+    ],
     "is_in_corpus": true,
     "notes": "Cross: custody in Personal Status + child registration in Civil Status"
   },
@@ -385,7 +575,12 @@
     "law_domain": null,
     "question": "ما هي شرائح ضريبة الدخل الأردنية وكيف تُحتسب الضريبة على الرواتب؟",
     "expected_article": null,
-    "expected_keywords": ["ضريبة", "دخل", "شرائح", "راتب"],
+    "expected_keywords": [
+      "ضريبة",
+      "دخل",
+      "شرائح",
+      "راتب"
+    ],
     "is_in_corpus": false,
     "notes": "Tax law is NOT in the corpus — system should refuse (score < 0.45)"
   },
@@ -395,7 +590,12 @@
     "law_domain": null,
     "question": "ما هي شروط ومتطلبات الاستثمار الأجنبي المباشر وفق قانون الاستثمار الأردني؟",
     "expected_article": null,
-    "expected_keywords": ["استثمار", "أجنبي", "شروط", "تراخيص"],
+    "expected_keywords": [
+      "استثمار",
+      "أجنبي",
+      "شروط",
+      "تراخيص"
+    ],
     "is_in_corpus": false,
     "notes": "Investment law is NOT in the corpus — system should refuse"
   },
@@ -405,7 +605,12 @@
     "law_domain": null,
     "question": "ما هي نصوص الدستور الأردني المتعلقة بحقوق المواطنين والحريات العامة والمبادئ الأساسية؟",
     "expected_article": null,
-    "expected_keywords": ["دستور", "حقوق", "حريات", "مواطن"],
+    "expected_keywords": [
+      "دستور",
+      "حقوق",
+      "حريات",
+      "مواطن"
+    ],
     "is_in_corpus": false,
     "notes": "Constitutional law is NOT in the corpus — system should refuse"
   },
@@ -415,7 +620,12 @@
     "law_domain": null,
     "question": "ما هي إجراءات التخليص الجمركي وأنواع الرسوم المفروضة على البضائع المستوردة؟",
     "expected_article": null,
-    "expected_keywords": ["جمارك", "رسوم", "استيراد", "تخليص"],
+    "expected_keywords": [
+      "جمارك",
+      "رسوم",
+      "استيراد",
+      "تخليص"
+    ],
     "is_in_corpus": false,
     "notes": "Customs law is NOT in the corpus — system should refuse"
   },
@@ -425,7 +635,12 @@
     "law_domain": null,
     "question": "ما هي حقوق المستهلك الأردني في مواجهة التاجر المحتال وكيف يتقدم بشكوى؟",
     "expected_article": null,
-    "expected_keywords": ["مستهلك", "حقوق", "شكوى", "تاجر"],
+    "expected_keywords": [
+      "مستهلك",
+      "حقوق",
+      "شكوى",
+      "تاجر"
+    ],
     "is_in_corpus": false,
     "notes": "Consumer protection law is NOT in the corpus — system should refuse"
   },
@@ -435,7 +650,12 @@
     "law_domain": null,
     "question": "ما هي حقوق التقاعد ومعادلة احتساب المعاش في قانون الضمان الاجتماعي الأردني؟",
     "expected_article": null,
-    "expected_keywords": ["تقاعد", "معاش", "ضمان اجتماعي", "احتساب"],
+    "expected_keywords": [
+      "تقاعد",
+      "معاش",
+      "ضمان اجتماعي",
+      "احتساب"
+    ],
     "is_in_corpus": false,
     "notes": "Social Security is NOT in corpus (scanned PDF, no text layer) — system should refuse"
   },
@@ -445,7 +665,12 @@
     "law_domain": "Labor",
     "question": "شو يصير لو طردوني من الشغل فجأة بدون سبب واضح ومش دافعينلي حقوقي؟",
     "expected_article": "25",
-    "expected_keywords": ["فصل", "تعسفي", "تعويض", "حقوق"],
+    "expected_keywords": [
+      "فصل",
+      "تعسفي",
+      "تعويض",
+      "حقوق"
+    ],
     "is_in_corpus": true,
     "notes": "Jordanian dialect: arbitrary dismissal — same as Q002 but colloquial phrasing"
   },
@@ -455,7 +680,12 @@
     "law_domain": "Labor",
     "question": "كيف آخد حقي لو صاحب الشغل ما دفعلي راتبي من شهرين؟",
     "expected_article": null,
-    "expected_keywords": ["راتب", "حقوق", "دفع", "صاحب عمل"],
+    "expected_keywords": [
+      "راتب",
+      "حقوق",
+      "دفع",
+      "صاحب عمل"
+    ],
     "is_in_corpus": true,
     "notes": "Jordanian dialect: unpaid wages complaint — Labor Law"
   },
@@ -465,7 +695,12 @@
     "law_domain": "PenalCode",
     "question": "عندي جار سرق منّي موبايل وشاهد شافه شو بعمل عشان آخد حقي؟",
     "expected_article": null,
-    "expected_keywords": ["سرقة", "بلاغ", "شهود", "عقوبة"],
+    "expected_keywords": [
+      "سرقة",
+      "بلاغ",
+      "شهود",
+      "عقوبة"
+    ],
     "is_in_corpus": true,
     "notes": "Jordanian dialect: theft complaint — Penal Code"
   },
@@ -475,7 +710,12 @@
     "law_domain": "Cybercrime",
     "question": "لو حدا هكّرلي حسابي على الانترنت وبعتلي تهديدات وصور شو القانون الأردني بحميني؟",
     "expected_article": null,
-    "expected_keywords": ["ابتزاز", "إلكتروني", "حماية", "تهديد"],
+    "expected_keywords": [
+      "ابتزاز",
+      "إلكتروني",
+      "حماية",
+      "تهديد"
+    ],
     "is_in_corpus": true,
     "notes": "Jordanian dialect: online hacking and extortion — Cybercrime Law"
   },
@@ -485,7 +725,9 @@
     "law_domain": null,
     "question": "الحقوق",
     "expected_article": null,
-    "expected_keywords": ["حقوق"],
+    "expected_keywords": [
+      "حقوق"
+    ],
     "is_in_corpus": true,
     "notes": "Edge case: single-word query — system should still retrieve something relevant"
   },
@@ -495,8 +737,252 @@
     "law_domain": "Labor",
     "question": "أعمل في شركة خاصة منذ أكثر من خمس سنوات وقرر صاحب العمل إنهاء خدماتي فجأة دون إشعار مسبق ودون تقديم أي مبرر أو سبب قانوني مقبول، في حين كنت أؤدي مهامي الوظيفية على أكمل وجه وحصلت على تقييمات أداء ممتازة في المراجعات الأخيرة، وقد دفع لي صاحب العمل راتب آخر شهر فقط دون أي تعويض إضافي، فما هي حقوقي القانونية الكاملة في هذه الحالة بموجب قانون العمل الأردني من حيث التعويض عن الفصل التعسفي ومكافأة نهاية الخدمة وبدل الإشعار وما تبقى من إجازات سنوية مستحقة؟",
     "expected_article": "25",
-    "expected_keywords": ["فصل تعسفي", "تعويض", "مكافأة نهاية خدمة", "إشعار"],
+    "expected_keywords": [
+      "فصل تعسفي",
+      "تعويض",
+      "مكافأة نهاية خدمة",
+      "إشعار"
+    ],
     "is_in_corpus": true,
     "notes": "Edge case: very long multi-aspect question — Labor Law, arbitrary dismissal"
+  },
+  {
+    "id": "Q051",
+    "category": "factual",
+    "law_domain": "SocialSecurity",
+    "question": "ما هي شروط الاستحقاق لمعاش التقاعد في قانون الضمان الاجتماعي الأردني؟",
+    "expected_article": null,
+    "expected_keywords": [
+      "تقاعد",
+      "استحقاق",
+      "ضمان اجتماعي",
+      "سن"
+    ],
+    "is_in_corpus": true,
+    "notes": "Social Security: retirement pension eligibility conditions"
+  },
+  {
+    "id": "Q052",
+    "category": "factual",
+    "law_domain": "SocialSecurity",
+    "question": "ما هي نسب اشتراكات الضمان الاجتماعي المفروضة على العامل وصاحب العمل؟",
+    "expected_article": null,
+    "expected_keywords": [
+      "اشتراكات",
+      "نسبة",
+      "ضمان اجتماعي",
+      "صاحب عمل"
+    ],
+    "is_in_corpus": true,
+    "notes": "Social Security: employer and employee contribution rates"
+  },
+  {
+    "id": "Q053",
+    "category": "factual",
+    "law_domain": "IncomeTax",
+    "question": "ما هي شرائح ضريبة الدخل المطبقة على الأفراد في قانون ضريبة الدخل الأردني؟",
+    "expected_article": null,
+    "expected_keywords": [
+      "شرائح",
+      "ضريبة دخل",
+      "أفراد",
+      "نسبة"
+    ],
+    "is_in_corpus": true,
+    "notes": "Income Tax: individual income tax brackets and rates"
+  },
+  {
+    "id": "Q054",
+    "category": "factual",
+    "law_domain": "IncomeTax",
+    "question": "ما هي الإعفاءات الضريبية الشخصية والعائلية المقررة في قانون ضريبة الدخل الأردني؟",
+    "expected_article": null,
+    "expected_keywords": [
+      "إعفاء",
+      "ضريبي",
+      "شخصي",
+      "عائلي"
+    ],
+    "is_in_corpus": true,
+    "notes": "Income Tax: personal and family tax exemptions"
+  },
+  {
+    "id": "Q055",
+    "category": "factual",
+    "law_domain": "LandlordTenant",
+    "question": "ما هي شروط إخلاء المستأجر من العقار وإجراءاته وفق قانون المالكين والمستأجرين؟",
+    "expected_article": null,
+    "expected_keywords": [
+      "إخلاء",
+      "مستأجر",
+      "عقار",
+      "شروط"
+    ],
+    "is_in_corpus": true,
+    "notes": "Landlord Tenant: tenant eviction conditions and procedures"
+  },
+  {
+    "id": "Q056",
+    "category": "factual",
+    "law_domain": "LandlordTenant",
+    "question": "ما هي التزامات المالك تجاه المستأجر في صيانة العقار وتوفير الخدمات؟",
+    "expected_article": null,
+    "expected_keywords": [
+      "مالك",
+      "التزامات",
+      "صيانة",
+      "عقار"
+    ],
+    "is_in_corpus": true,
+    "notes": "Landlord Tenant: landlord obligations for maintenance"
+  },
+  {
+    "id": "Q057",
+    "category": "factual",
+    "law_domain": "ConsumerProtection",
+    "question": "ما هي الحقوق الأساسية للمستهلك المكفولة في قانون حماية المستهلك الأردني؟",
+    "expected_article": null,
+    "expected_keywords": [
+      "حقوق",
+      "مستهلك",
+      "حماية",
+      "أساسية"
+    ],
+    "is_in_corpus": true,
+    "notes": "Consumer Protection: fundamental consumer rights"
+  },
+  {
+    "id": "Q058",
+    "category": "factual",
+    "law_domain": "ConsumerProtection",
+    "question": "ما هي العقوبات المقررة لمخالفة أحكام قانون حماية المستهلك الأردني؟",
+    "expected_article": null,
+    "expected_keywords": [
+      "عقوبات",
+      "مخالفة",
+      "حماية مستهلك",
+      "غرامة"
+    ],
+    "is_in_corpus": true,
+    "notes": "Consumer Protection: penalties for violations"
+  },
+  {
+    "id": "Q059",
+    "category": "factual",
+    "law_domain": "Investment",
+    "question": "ما هي الضمانات والمزايا الممنوحة للمستثمرين الأجانب في قانون الاستثمار الأردني؟",
+    "expected_article": null,
+    "expected_keywords": [
+      "ضمانات",
+      "مستثمر",
+      "أجنبي",
+      "مزايا"
+    ],
+    "is_in_corpus": true,
+    "notes": "Investment Law: guarantees and benefits for foreign investors"
+  },
+  {
+    "id": "Q060",
+    "category": "factual",
+    "law_domain": "Investment",
+    "question": "ما هي إجراءات تسجيل الاستثمار والحصول على التراخيص اللازمة وفق قانون الاستثمار؟",
+    "expected_article": null,
+    "expected_keywords": [
+      "تسجيل",
+      "استثمار",
+      "تراخيص",
+      "إجراءات"
+    ],
+    "is_in_corpus": true,
+    "notes": "Investment Law: registration and licensing procedures"
+  },
+  {
+    "id": "Q061",
+    "category": "factual",
+    "law_domain": "Companies",
+    "question": "ما هي أنواع الشركات المنصوص عليها في قانون الشركات الأردني وشروط تأسيسها؟",
+    "expected_article": null,
+    "expected_keywords": [
+      "شركات",
+      "أنواع",
+      "تأسيس",
+      "شروط"
+    ],
+    "is_in_corpus": true,
+    "notes": "Companies Law: types of companies and formation requirements"
+  },
+  {
+    "id": "Q062",
+    "category": "factual",
+    "law_domain": "Companies",
+    "question": "ما هي مسؤوليات أعضاء مجلس الإدارة وواجباتهم وفق قانون الشركات الأردني؟",
+    "expected_article": null,
+    "expected_keywords": [
+      "مجلس إدارة",
+      "مسؤوليات",
+      "واجبات",
+      "شركات"
+    ],
+    "is_in_corpus": true,
+    "notes": "Companies Law: board of directors responsibilities"
+  },
+  {
+    "id": "Q063",
+    "category": "factual",
+    "law_domain": "Constitution",
+    "question": "ما هي الحقوق والحريات الأساسية المكفولة للمواطنين في الدستور الأردني؟",
+    "expected_article": null,
+    "expected_keywords": [
+      "حقوق",
+      "حريات",
+      "مواطنين",
+      "دستور"
+    ],
+    "is_in_corpus": true,
+    "notes": "Constitution: fundamental rights and freedoms guaranteed to citizens"
+  },
+  {
+    "id": "Q064",
+    "category": "factual",
+    "law_domain": "Constitution",
+    "question": "ما هي صلاحيات مجلس النواب الأردني واختصاصاته الدستورية؟",
+    "expected_article": null,
+    "expected_keywords": [
+      "مجلس النواب",
+      "صلاحيات",
+      "اختصاصات",
+      "دستور"
+    ],
+    "is_in_corpus": true,
+    "notes": "Constitution: powers and jurisdiction of the House of Representatives"
+  },
+  {
+    "id": "Q065",
+    "category": "factual",
+    "law_domain": "Customs",
+    "question": "ما هي إجراءات التخليص الجمركي وكيفية تحديد الرسوم الجمركية على البضائع المستوردة؟",
+    "expected_article": null,
+    "expected_keywords": [
+      "تخليص",
+      "جمركي",
+      "رسوم",
+      "بضائع"
+    ],
+    "is_in_corpus": true,
+    "notes": "Customs Law: clearance procedures and duty calculation"
+  },
+  {
+    "id": "Q066",
+    "category": "factual",
+    "law_domain": "Customs",
+    "question": "ما هي حالات الإعفاء من الرسوم الجمركية المنصوص عليها في قانون الجمارك الأردني؟",
+    "expected_article": null,
+    "expected_keywords": [
+      "إعفاء",
+      "رسوم جمركية",
+      "حالات"
+    ],
+    "is_in_corpus": true,
+    "notes": "Customs Law: exemptions from customs duties"
   }
 ]

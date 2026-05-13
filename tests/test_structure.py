@@ -30,11 +30,14 @@ def test_requirements_exists(project_root):
     assert (project_root / "requirements.txt").exists()
 
 
-def test_all_ten_law_pdfs_present(project_root):
+def test_all_eighteen_law_pdfs_present(project_root):
     expected = [
         "labor.pdf", "commercial.pdf", "personal_status.pdf",
         "personal_status_2019.pdf", "cybercrime.pdf", "civil_service.pdf",
         "civil_status.pdf", "hr_system.pdf", "traffic.pdf", "penal_code.pdf",
+        "social_security.pdf", "income_tax.pdf", "landlord_tenant.pdf",
+        "consumer_protection.pdf", "investment.pdf", "companies.pdf",
+        "constitution.pdf", "customs.pdf",
     ]
     for pdf in expected:
         assert (project_root / pdf).exists(), f"Missing PDF: {pdf}"

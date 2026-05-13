@@ -1,0 +1,3500 @@
+[
+  {
+    "question_id": "Q001",
+    "question": "ما هي مدة الإجازة السنوية المستحقة للعامل وفق قانون العمل الأردني؟",
+    "category": "factual",
+    "law_domain": "Labor",
+    "expected_article": "61",
+    "is_in_corpus": true,
+    "top_5_chunks": [
+      {
+        "chunk_id": "97f63b4a-5963-4650-a95d-510126694fde",
+        "article_number": "43",
+        "law_domain": "Labor",
+        "law_name_ar": "قانون العمل الأردني",
+        "score": 0.7801,
+        "rank": 1
+      },
+      {
+        "chunk_id": "98ad73fd-afff-4b26-9557-d31ea07063cd",
+        "article_number": "107",
+        "law_domain": "Labor",
+        "law_name_ar": "قانون العمل الأردني",
+        "score": 0.7796,
+        "rank": 2
+      },
+      {
+        "chunk_id": "b7ec654c-f97b-4d15-acc2-78baab5d698a",
+        "article_number": "59",
+        "law_domain": "Labor",
+        "law_name_ar": "قانون العمل الأردني",
+        "score": 0.7785,
+        "rank": 3
+      },
+      {
+        "chunk_id": "0ce81753-2426-4a58-acf3-c5fec4f2fe8d",
+        "article_number": "64",
+        "law_domain": "Labor",
+        "law_name_ar": "قانون العمل الأردني",
+        "score": 0.7761,
+        "rank": 4
+      },
+      {
+        "chunk_id": "0987b567-fb0a-4459-9780-1ed2751dcc3b",
+        "article_number": "67",
+        "law_domain": "Labor",
+        "law_name_ar": "قانون العمل الأردني",
+        "score": 0.7735,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.7801,
+    "result_count": 10,
+    "retrieval_time_ms": 6803.75
+  },
+  {
+    "question_id": "Q002",
+    "question": "ما هي حالات الفصل التعسفي الموجبة للتعويض في قانون العمل الأردني؟",
+    "category": "factual",
+    "law_domain": "Labor",
+    "expected_article": "25",
+    "is_in_corpus": true,
+    "top_5_chunks": [
+      {
+        "chunk_id": "10556395-be75-45b2-9424-dcfb8d3866cc",
+        "article_number": "24",
+        "law_domain": "Labor",
+        "law_name_ar": "قانون العمل الأردني",
+        "score": 0.7866,
+        "rank": 1
+      },
+      {
+        "chunk_id": "ed82081f-36c9-42ba-af42-daeb33303788",
+        "article_number": "3",
+        "law_domain": "Labor",
+        "law_name_ar": "قانون العمل الأردني",
+        "score": 0.7865,
+        "rank": 2
+      },
+      {
+        "chunk_id": "02faf077-afa6-4e85-bcd0-ad9f1847e430",
+        "article_number": "89",
+        "law_domain": "Labor",
+        "law_name_ar": "قانون العمل الأردني",
+        "score": 0.7823,
+        "rank": 3
+      },
+      {
+        "chunk_id": "97f63b4a-5963-4650-a95d-510126694fde",
+        "article_number": "43",
+        "law_domain": "Labor",
+        "law_name_ar": "قانون العمل الأردني",
+        "score": 0.7758,
+        "rank": 4
+      },
+      {
+        "chunk_id": "b6397a7f-46ad-4036-a7f9-0049df64011a",
+        "article_number": "2",
+        "law_domain": "Labor",
+        "law_name_ar": "قانون العمل الأردني",
+        "score": 0.7622,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.7866,
+    "result_count": 10,
+    "retrieval_time_ms": 104.66
+  },
+  {
+    "question_id": "Q003",
+    "question": "كم عدد ساعات العمل اليومية والأسبوعية القصوى المقررة في قانون العمل الأردني؟",
+    "category": "factual",
+    "law_domain": "Labor",
+    "expected_article": "57",
+    "is_in_corpus": true,
+    "top_5_chunks": [
+      {
+        "chunk_id": "b7ec654c-f97b-4d15-acc2-78baab5d698a",
+        "article_number": "59",
+        "law_domain": "Labor",
+        "law_name_ar": "قانون العمل الأردني",
+        "score": 0.7812,
+        "rank": 1
+      },
+      {
+        "chunk_id": "ed82081f-36c9-42ba-af42-daeb33303788",
+        "article_number": "3",
+        "law_domain": "Labor",
+        "law_name_ar": "قانون العمل الأردني",
+        "score": 0.7808,
+        "rank": 2
+      },
+      {
+        "chunk_id": "97f63b4a-5963-4650-a95d-510126694fde",
+        "article_number": "43",
+        "law_domain": "Labor",
+        "law_name_ar": "قانون العمل الأردني",
+        "score": 0.7701,
+        "rank": 3
+      },
+      {
+        "chunk_id": "98ad73fd-afff-4b26-9557-d31ea07063cd",
+        "article_number": "107",
+        "law_domain": "Labor",
+        "law_name_ar": "قانون العمل الأردني",
+        "score": 0.7688,
+        "rank": 4
+      },
+      {
+        "chunk_id": "fa6e7307-2970-4ea1-b3ed-328732ff3dcf",
+        "article_number": "57",
+        "law_domain": "Labor",
+        "law_name_ar": "قانون العمل الأردني",
+        "score": 0.7687,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.7812,
+    "result_count": 10,
+    "retrieval_time_ms": 80.06
+  },
+  {
+    "question_id": "Q004",
+    "question": "ما هي أركان وشروط تأسيس الشركة ذات المسؤولية المحدودة في قانون التجارة الأردني؟",
+    "category": "factual",
+    "law_domain": "Commercial",
+    "expected_article": null,
+    "is_in_corpus": true,
+    "top_5_chunks": [
+      {
+        "chunk_id": "14d8c99d-26c4-4735-a05e-8fd34c387594",
+        "article_number": "36",
+        "law_domain": "Commercial",
+        "law_name_ar": "قانون التجارة الأردني",
+        "score": 0.8157,
+        "rank": 1
+      },
+      {
+        "chunk_id": "5d50b7b6-fe76-4819-a376-e73c5a228807",
+        "article_number": "476",
+        "law_domain": "Commercial",
+        "law_name_ar": "قانون التجارة الأردني",
+        "score": 0.8082,
+        "rank": 2
+      },
+      {
+        "chunk_id": "ea305549-c03d-4e23-a037-b90744d14c73",
+        "article_number": "1",
+        "law_domain": "Commercial",
+        "law_name_ar": "قانون التجارة الأردني",
+        "score": 0.808,
+        "rank": 3
+      },
+      {
+        "chunk_id": "c46af382-fe71-4421-88f1-521481468f29",
+        "article_number": "24",
+        "law_domain": "Commercial",
+        "law_name_ar": "قانون التجارة الأردني",
+        "score": 0.8048,
+        "rank": 4
+      },
+      {
+        "chunk_id": "4daead3e-99c2-48dd-8c8e-0951a79e095a",
+        "article_number": "2",
+        "law_domain": "Commercial",
+        "law_name_ar": "قانون التجارة الأردني",
+        "score": 0.7986,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.8157,
+    "result_count": 10,
+    "retrieval_time_ms": 365.02
+  },
+  {
+    "question_id": "Q005",
+    "question": "ما هي البيانات الإلزامية التي يجب توافرها في الشيك التجاري لصحته قانونياً؟",
+    "category": "factual",
+    "law_domain": "Commercial",
+    "expected_article": null,
+    "is_in_corpus": true,
+    "top_5_chunks": [
+      {
+        "chunk_id": "8448f6d8-e0cd-4423-ac02-1ab0967a4784",
+        "article_number": "35",
+        "law_domain": "Commercial",
+        "law_name_ar": "قانون التجارة الأردني",
+        "score": 0.8185,
+        "rank": 1
+      },
+      {
+        "chunk_id": "2aa1219b-7354-472a-823e-9ada982f54ab",
+        "article_number": "52",
+        "law_domain": "Commercial",
+        "law_name_ar": "قانون التجارة الأردني",
+        "score": 0.8174,
+        "rank": 2
+      },
+      {
+        "chunk_id": "a598d6e6-abdc-4aa8-bff4-6323efbd73ef",
+        "article_number": "1",
+        "law_domain": "Commercial",
+        "law_name_ar": "قانون التجارة الأردني",
+        "score": 0.8161,
+        "rank": 3
+      },
+      {
+        "chunk_id": "6587ec2d-e0a1-4673-9e19-dd9b0e99d03b",
+        "article_number": "232",
+        "law_domain": "Commercial",
+        "law_name_ar": "قانون التجارة الأردني",
+        "score": 0.8135,
+        "rank": 4
+      },
+      {
+        "chunk_id": "a7a85386-bff3-4675-84e5-6b19342e1019",
+        "article_number": "149",
+        "law_domain": "Commercial",
+        "law_name_ar": "قانون التجارة الأردني",
+        "score": 0.8112,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.8185,
+    "result_count": 10,
+    "retrieval_time_ms": 85.37
+  },
+  {
+    "question_id": "Q006",
+    "question": "ما هي التزامات البائع في عقد البيع التجاري وما هي ضمانات المشتري؟",
+    "category": "factual",
+    "law_domain": "Commercial",
+    "expected_article": null,
+    "is_in_corpus": true,
+    "top_5_chunks": [
+      {
+        "chunk_id": "3a9c7a76-4237-4db9-97c4-586ffa40139a",
+        "article_number": "1",
+        "law_domain": "Commercial",
+        "law_name_ar": "قانون التجارة الأردني",
+        "score": 0.7992,
+        "rank": 1
+      },
+      {
+        "chunk_id": "2aa1219b-7354-472a-823e-9ada982f54ab",
+        "article_number": "52",
+        "law_domain": "Commercial",
+        "law_name_ar": "قانون التجارة الأردني",
+        "score": 0.7946,
+        "rank": 2
+      },
+      {
+        "chunk_id": "fddfe057-aa4f-4c1a-8781-3d6ef24c6a49",
+        "article_number": "68",
+        "law_domain": "Commercial",
+        "law_name_ar": "قانون التجارة الأردني",
+        "score": 0.7857,
+        "rank": 3
+      },
+      {
+        "chunk_id": "a7d3247e-7c1e-4dbb-bf78-36091f0da935",
+        "article_number": "104",
+        "law_domain": "Commercial",
+        "law_name_ar": "قانون التجارة الأردني",
+        "score": 0.7845,
+        "rank": 4
+      },
+      {
+        "chunk_id": "97bfdf72-48c4-4d4a-bdd4-9d07cef16118",
+        "article_number": "238",
+        "law_domain": "Commercial",
+        "law_name_ar": "قانون التجارة الأردني",
+        "score": 0.7844,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.7992,
+    "result_count": 10,
+    "retrieval_time_ms": 116.13
+  },
+  {
+    "question_id": "Q007",
+    "question": "ما هي أركان وشروط انعقاد الزواج الصحيح في قانون الأحوال الشخصية الأردني؟",
+    "category": "factual",
+    "law_domain": "PersonalStatus",
+    "expected_article": null,
+    "is_in_corpus": true,
+    "top_5_chunks": [
+      {
+        "chunk_id": "dc9c3ff7-4bcd-4c64-a031-a04fdbe7f8b0",
+        "article_number": "13",
+        "law_domain": "PersonalStatus",
+        "law_name_ar": "قانون الأحوال الشخصية",
+        "score": 0.7789,
+        "rank": 1
+      },
+      {
+        "chunk_id": "51be2949-1895-4bfd-98dd-b7523f9dbc0d",
+        "article_number": "36",
+        "law_domain": "PersonalStatus",
+        "law_name_ar": "قانون الأحوال الشخصية",
+        "score": 0.7681,
+        "rank": 2
+      },
+      {
+        "chunk_id": "bba5da2f-ad66-4e6a-922d-cf69dc08aa5a",
+        "article_number": "142",
+        "law_domain": "PersonalStatus",
+        "law_name_ar": "قانون الأحوال الشخصية",
+        "score": 0.7626,
+        "rank": 3
+      },
+      {
+        "chunk_id": "ea8d24e3-97eb-4e90-bdb7-493882af9d49",
+        "article_number": "29",
+        "law_domain": "PersonalStatus",
+        "law_name_ar": "قانون الأحوال الشخصية",
+        "score": 0.7605,
+        "rank": 4
+      },
+      {
+        "chunk_id": "8b994ad8-39e4-41ca-9296-bdfd170e055f",
+        "article_number": "154",
+        "law_domain": "PersonalStatus",
+        "law_name_ar": "قانون الأحوال الشخصية",
+        "score": 0.7589,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.7789,
+    "result_count": 10,
+    "retrieval_time_ms": 249.22
+  },
+  {
+    "question_id": "Q008",
+    "question": "ما هي أحكام حق الزوجة في النفقة وشروط استحقاقها ومقدارها؟",
+    "category": "factual",
+    "law_domain": "PersonalStatus",
+    "expected_article": null,
+    "is_in_corpus": true,
+    "top_5_chunks": [
+      {
+        "chunk_id": "bc551642-1e53-48a0-956e-788d36fccc61",
+        "article_number": "151",
+        "law_domain": "PersonalStatus",
+        "law_name_ar": "قانون الأحوال الشخصية",
+        "score": 0.7762,
+        "rank": 1
+      },
+      {
+        "chunk_id": "e9746b18-6d0c-45ce-b964-af1f15949b06",
+        "article_number": "115",
+        "law_domain": "PersonalStatus",
+        "law_name_ar": "قانون الأحوال الشخصية",
+        "score": 0.7672,
+        "rank": 2
+      },
+      {
+        "chunk_id": "9c989e3e-1a0a-40ec-b549-0b88840e38c5",
+        "article_number": "106",
+        "law_domain": "PersonalStatus",
+        "law_name_ar": "قانون الأحوال الشخصية",
+        "score": 0.7658,
+        "rank": 3
+      },
+      {
+        "chunk_id": "6f5e7e4a-f6e6-41ec-ac09-c0b3744cc374",
+        "article_number": "64",
+        "law_domain": "PersonalStatus",
+        "law_name_ar": "قانون الأحوال الشخصية",
+        "score": 0.7574,
+        "rank": 4
+      },
+      {
+        "chunk_id": "5c7dae36-4c44-4cf8-a2b2-11a7382e0ea7",
+        "article_number": "253",
+        "law_domain": "PersonalStatus",
+        "law_name_ar": "قانون الأحوال الشخصية",
+        "score": 0.7573,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.7762,
+    "result_count": 10,
+    "retrieval_time_ms": 105.12
+  },
+  {
+    "question_id": "Q009",
+    "question": "ما هي مدة عدة المطلقة وما هي أحكامها في قانون الأحوال الشخصية؟",
+    "category": "factual",
+    "law_domain": "PersonalStatus",
+    "expected_article": null,
+    "is_in_corpus": true,
+    "top_5_chunks": [
+      {
+        "chunk_id": "bc551642-1e53-48a0-956e-788d36fccc61",
+        "article_number": "151",
+        "law_domain": "PersonalStatus",
+        "law_name_ar": "قانون الأحوال الشخصية",
+        "score": 0.7974,
+        "rank": 1
+      },
+      {
+        "chunk_id": "8b994ad8-39e4-41ca-9296-bdfd170e055f",
+        "article_number": "154",
+        "law_domain": "PersonalStatus",
+        "law_name_ar": "قانون الأحوال الشخصية",
+        "score": 0.7778,
+        "rank": 2
+      },
+      {
+        "chunk_id": "9c989e3e-1a0a-40ec-b549-0b88840e38c5",
+        "article_number": "106",
+        "law_domain": "PersonalStatus",
+        "law_name_ar": "قانون الأحوال الشخصية",
+        "score": 0.7727,
+        "rank": 3
+      },
+      {
+        "chunk_id": "1e0c69e6-d6ed-4b83-bd08-cd05521939d2",
+        "article_number": "97",
+        "law_domain": "PersonalStatus",
+        "law_name_ar": "قانون الأحوال الشخصية",
+        "score": 0.768,
+        "rank": 4
+      },
+      {
+        "chunk_id": "edf7f058-0b3b-4b5a-b654-36339760e3dc",
+        "article_number": "144",
+        "law_domain": "PersonalStatus",
+        "law_name_ar": "قانون الأحوال الشخصية",
+        "score": 0.7643,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.7974,
+    "result_count": 10,
+    "retrieval_time_ms": 83.26
+  },
+  {
+    "question_id": "Q010",
+    "question": "ما هي العقوبة المقررة لجريمة الابتزاز الإلكتروني في قانون الجرائم الإلكترونية الأردني؟",
+    "category": "factual",
+    "law_domain": "Cybercrime",
+    "expected_article": null,
+    "is_in_corpus": true,
+    "top_5_chunks": [
+      {
+        "chunk_id": "322506e9-1577-481c-8377-36d0bae88e32",
+        "article_number": "39",
+        "law_domain": "Cybercrime",
+        "law_name_ar": "قانون الجرائم الإلكترونية الأردني",
+        "score": 0.7736,
+        "rank": 1
+      },
+      {
+        "chunk_id": "8a951c45-65c3-478c-abe8-2a88970b49c9",
+        "article_number": "14",
+        "law_domain": "Cybercrime",
+        "law_name_ar": "قانون الجرائم الإلكترونية الأردني",
+        "score": 0.7655,
+        "rank": 2
+      },
+      {
+        "chunk_id": "aab28632-9c34-42d2-8af1-b0fee854ad06",
+        "article_number": "2",
+        "law_domain": "Cybercrime",
+        "law_name_ar": "قانون الجرائم الإلكترونية الأردني",
+        "score": 0.7647,
+        "rank": 3
+      },
+      {
+        "chunk_id": "93d6fe2e-76a9-4ec1-9ab1-e251a8d572d9",
+        "article_number": "29",
+        "law_domain": "Cybercrime",
+        "law_name_ar": "قانون الجرائم الإلكترونية الأردني",
+        "score": 0.7599,
+        "rank": 4
+      },
+      {
+        "chunk_id": "75ff33e2-96db-43bc-9234-54c093d37256",
+        "article_number": "26",
+        "law_domain": "Cybercrime",
+        "law_name_ar": "قانون الجرائم الإلكترونية الأردني",
+        "score": 0.752,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.7736,
+    "result_count": 10,
+    "retrieval_time_ms": 142.28
+  },
+  {
+    "question_id": "Q011",
+    "question": "ما هي عقوبة الدخول غير المشروع إلى الأنظمة والشبكات المعلوماتية؟",
+    "category": "factual",
+    "law_domain": "Cybercrime",
+    "expected_article": null,
+    "is_in_corpus": true,
+    "top_5_chunks": [
+      {
+        "chunk_id": "aab28632-9c34-42d2-8af1-b0fee854ad06",
+        "article_number": "2",
+        "law_domain": "Cybercrime",
+        "law_name_ar": "قانون الجرائم الإلكترونية الأردني",
+        "score": 0.7144,
+        "rank": 1
+      },
+      {
+        "chunk_id": "8a951c45-65c3-478c-abe8-2a88970b49c9",
+        "article_number": "14",
+        "law_domain": "Cybercrime",
+        "law_name_ar": "قانون الجرائم الإلكترونية الأردني",
+        "score": 0.7131,
+        "rank": 2
+      },
+      {
+        "chunk_id": "b8ab3f87-10cb-4157-96b1-758574d17497",
+        "article_number": "2",
+        "law_domain": "Cybercrime",
+        "law_name_ar": "قانون الجرائم الإلكترونية الأردني",
+        "score": 0.7111,
+        "rank": 3
+      },
+      {
+        "chunk_id": "322506e9-1577-481c-8377-36d0bae88e32",
+        "article_number": "39",
+        "law_domain": "Cybercrime",
+        "law_name_ar": "قانون الجرائم الإلكترونية الأردني",
+        "score": 0.7105,
+        "rank": 4
+      },
+      {
+        "chunk_id": "75ff33e2-96db-43bc-9234-54c093d37256",
+        "article_number": "26",
+        "law_domain": "Cybercrime",
+        "law_name_ar": "قانون الجرائم الإلكترونية الأردني",
+        "score": 0.7093,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.7144,
+    "result_count": 10,
+    "retrieval_time_ms": 109.82
+  },
+  {
+    "question_id": "Q012",
+    "question": "ما تعريف الجريمة الإلكترونية في القانون الأردني وما أنواعها المنصوص عليها؟",
+    "category": "factual",
+    "law_domain": "Cybercrime",
+    "expected_article": null,
+    "is_in_corpus": true,
+    "top_5_chunks": [
+      {
+        "chunk_id": "93d6fe2e-76a9-4ec1-9ab1-e251a8d572d9",
+        "article_number": "29",
+        "law_domain": "Cybercrime",
+        "law_name_ar": "قانون الجرائم الإلكترونية الأردني",
+        "score": 0.7729,
+        "rank": 1
+      },
+      {
+        "chunk_id": "8a951c45-65c3-478c-abe8-2a88970b49c9",
+        "article_number": "14",
+        "law_domain": "Cybercrime",
+        "law_name_ar": "قانون الجرائم الإلكترونية الأردني",
+        "score": 0.768,
+        "rank": 2
+      },
+      {
+        "chunk_id": "322506e9-1577-481c-8377-36d0bae88e32",
+        "article_number": "39",
+        "law_domain": "Cybercrime",
+        "law_name_ar": "قانون الجرائم الإلكترونية الأردني",
+        "score": 0.7667,
+        "rank": 3
+      },
+      {
+        "chunk_id": "75ff33e2-96db-43bc-9234-54c093d37256",
+        "article_number": "26",
+        "law_domain": "Cybercrime",
+        "law_name_ar": "قانون الجرائم الإلكترونية الأردني",
+        "score": 0.7659,
+        "rank": 4
+      },
+      {
+        "chunk_id": "aab28632-9c34-42d2-8af1-b0fee854ad06",
+        "article_number": "2",
+        "law_domain": "Cybercrime",
+        "law_name_ar": "قانون الجرائم الإلكترونية الأردني",
+        "score": 0.7658,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.7729,
+    "result_count": 10,
+    "retrieval_time_ms": 107.32
+  },
+  {
+    "question_id": "Q013",
+    "question": "ما هي شروط التعيين في الوظائف الحكومية وفق نظام الخدمة المدنية الأردني؟",
+    "category": "factual",
+    "law_domain": "CivilService",
+    "expected_article": null,
+    "is_in_corpus": true,
+    "top_5_chunks": [
+      {
+        "chunk_id": "87ae4a3c-9b05-4387-8ae2-63124fbbb1d6",
+        "article_number": "",
+        "law_domain": "CivilService",
+        "law_name_ar": "نظام الخدمة المدنية",
+        "score": 0.7291,
+        "rank": 1
+      },
+      {
+        "chunk_id": "2775e97e-c3ce-41b0-9ccb-ac66b46941cf",
+        "article_number": "31",
+        "law_domain": "CivilService",
+        "law_name_ar": "نظام الخدمة المدنية",
+        "score": 0.7274,
+        "rank": 2
+      },
+      {
+        "chunk_id": "3ed9bd5c-ff0e-4934-8622-8e994a44df08",
+        "article_number": "19",
+        "law_domain": "CivilService",
+        "law_name_ar": "نظام الخدمة المدنية",
+        "score": 0.6919,
+        "rank": 3
+      },
+      {
+        "chunk_id": "d736d138-f673-4290-be08-bcab8cf25890",
+        "article_number": "56",
+        "law_domain": "CivilService",
+        "law_name_ar": "نظام الخدمة المدنية",
+        "score": 0.6836,
+        "rank": 4
+      },
+      {
+        "chunk_id": "d7729389-ef7d-45d3-9518-e76cf324bc91",
+        "article_number": "13",
+        "law_domain": "CivilService",
+        "law_name_ar": "نظام الخدمة المدنية",
+        "score": 0.657,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.7291,
+    "result_count": 10,
+    "retrieval_time_ms": 166.89
+  },
+  {
+    "question_id": "Q014",
+    "question": "ما هي العقوبات التأديبية المقررة للموظف الحكومي الذي يرتكب مخالفة وظيفية؟",
+    "category": "factual",
+    "law_domain": "CivilService",
+    "expected_article": null,
+    "is_in_corpus": true,
+    "top_5_chunks": [
+      {
+        "chunk_id": "8ef9d295-7242-4314-8ebc-725b2339afaf",
+        "article_number": "7",
+        "law_domain": "CivilService",
+        "law_name_ar": "نظام الخدمة المدنية",
+        "score": 0.6853,
+        "rank": 1
+      },
+      {
+        "chunk_id": "00219fbd-a244-4598-969d-6f4922339454",
+        "article_number": "17",
+        "law_domain": "CivilService",
+        "law_name_ar": "نظام الخدمة المدنية",
+        "score": 0.6735,
+        "rank": 2
+      },
+      {
+        "chunk_id": "713560f8-14fb-4d16-9b5c-bd3eb4196661",
+        "article_number": "24",
+        "law_domain": "CivilService",
+        "law_name_ar": "نظام الخدمة المدنية",
+        "score": 0.6682,
+        "rank": 3
+      },
+      {
+        "chunk_id": "87ae4a3c-9b05-4387-8ae2-63124fbbb1d6",
+        "article_number": "",
+        "law_domain": "CivilService",
+        "law_name_ar": "نظام الخدمة المدنية",
+        "score": 0.6667,
+        "rank": 4
+      },
+      {
+        "chunk_id": "3082342a-5cf7-46d8-a0e2-82f1d9b99c7b",
+        "article_number": "14",
+        "law_domain": "CivilService",
+        "law_name_ar": "نظام الخدمة المدنية",
+        "score": 0.6629,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.6853,
+    "result_count": 10,
+    "retrieval_time_ms": 107.18
+  },
+  {
+    "question_id": "Q015",
+    "question": "ما هي إجراءات وشروط الترقية والتدرج الوظيفي في الخدمة المدنية الأردنية؟",
+    "category": "factual",
+    "law_domain": "CivilService",
+    "expected_article": null,
+    "is_in_corpus": true,
+    "top_5_chunks": [
+      {
+        "chunk_id": "fd151046-9a9e-4b6f-b913-da62700e1a12",
+        "article_number": "6",
+        "law_domain": "CivilService",
+        "law_name_ar": "نظام الخدمة المدنية",
+        "score": 0.7147,
+        "rank": 1
+      },
+      {
+        "chunk_id": "87ae4a3c-9b05-4387-8ae2-63124fbbb1d6",
+        "article_number": "",
+        "law_domain": "CivilService",
+        "law_name_ar": "نظام الخدمة المدنية",
+        "score": 0.7032,
+        "rank": 2
+      },
+      {
+        "chunk_id": "2775e97e-c3ce-41b0-9ccb-ac66b46941cf",
+        "article_number": "31",
+        "law_domain": "CivilService",
+        "law_name_ar": "نظام الخدمة المدنية",
+        "score": 0.699,
+        "rank": 3
+      },
+      {
+        "chunk_id": "d736d138-f673-4290-be08-bcab8cf25890",
+        "article_number": "56",
+        "law_domain": "CivilService",
+        "law_name_ar": "نظام الخدمة المدنية",
+        "score": 0.6823,
+        "rank": 4
+      },
+      {
+        "chunk_id": "19ddbd04-548e-4375-8d9b-d249197800d9",
+        "article_number": "6",
+        "law_domain": "CivilService",
+        "law_name_ar": "نظام الخدمة المدنية",
+        "score": 0.6814,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.7147,
+    "result_count": 10,
+    "retrieval_time_ms": 107.72
+  },
+  {
+    "question_id": "Q016",
+    "question": "ما هي إجراءات تسجيل عقد الزواج في سجلات الأحوال المدنية الأردنية؟",
+    "category": "factual",
+    "law_domain": "CivilStatus",
+    "expected_article": null,
+    "is_in_corpus": true,
+    "top_5_chunks": [
+      {
+        "chunk_id": "1435bb4e-600c-426d-bb33-84f4be6f526b",
+        "article_number": "15",
+        "law_domain": "CivilStatus",
+        "law_name_ar": "civil_status",
+        "score": 0.741,
+        "rank": 1
+      },
+      {
+        "chunk_id": "9857fdb8-a67d-4db5-8a2d-bbe17ff30723",
+        "article_number": "",
+        "law_domain": "CivilStatus",
+        "law_name_ar": "civil_status",
+        "score": 0.7335,
+        "rank": 2
+      },
+      {
+        "chunk_id": "6be5576c-c68c-485a-9334-0137e955984e",
+        "article_number": "",
+        "law_domain": "CivilStatus",
+        "law_name_ar": "civil_status",
+        "score": 0.7331,
+        "rank": 3
+      },
+      {
+        "chunk_id": "3a4f7386-1057-48a8-bf03-e42d7d2cc0a4",
+        "article_number": "",
+        "law_domain": "CivilStatus",
+        "law_name_ar": "civil_status",
+        "score": 0.725,
+        "rank": 4
+      },
+      {
+        "chunk_id": "34a2bd5e-1691-4646-9e9e-ead9c674ce0f",
+        "article_number": "15",
+        "law_domain": "CivilStatus",
+        "law_name_ar": "civil_status",
+        "score": 0.7213,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.741,
+    "result_count": 10,
+    "retrieval_time_ms": 155.32
+  },
+  {
+    "question_id": "Q017",
+    "question": "ما هي الوثائق المطلوبة لاستخراج بطاقة الهوية الوطنية الأردنية لأول مرة؟",
+    "category": "factual",
+    "law_domain": "CivilStatus",
+    "expected_article": null,
+    "is_in_corpus": true,
+    "top_5_chunks": [
+      {
+        "chunk_id": "86cbf7ef-cc77-4351-ad01-6ac75f84ac1a",
+        "article_number": "27",
+        "law_domain": "CivilStatus",
+        "law_name_ar": "civil_status",
+        "score": 0.7059,
+        "rank": 1
+      },
+      {
+        "chunk_id": "1435bb4e-600c-426d-bb33-84f4be6f526b",
+        "article_number": "15",
+        "law_domain": "CivilStatus",
+        "law_name_ar": "civil_status",
+        "score": 0.677,
+        "rank": 2
+      },
+      {
+        "chunk_id": "a76431b1-9ab8-4755-98df-98c33bcbd3de",
+        "article_number": "19",
+        "law_domain": "CivilStatus",
+        "law_name_ar": "civil_status",
+        "score": 0.6722,
+        "rank": 3
+      },
+      {
+        "chunk_id": "e419dd78-14d7-469e-8dd3-72b40222c9b1",
+        "article_number": "1",
+        "law_domain": "CivilStatus",
+        "law_name_ar": "civil_status",
+        "score": 0.6717,
+        "rank": 4
+      },
+      {
+        "chunk_id": "34a2bd5e-1691-4646-9e9e-ead9c674ce0f",
+        "article_number": "15",
+        "law_domain": "CivilStatus",
+        "law_name_ar": "civil_status",
+        "score": 0.6683,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.7059,
+    "result_count": 10,
+    "retrieval_time_ms": 107.07
+  },
+  {
+    "question_id": "Q018",
+    "question": "ما هي إجراءات قيد المواليد الجدد في السجل المدني الأردني والمهلة القانونية؟",
+    "category": "factual",
+    "law_domain": "CivilStatus",
+    "expected_article": null,
+    "is_in_corpus": true,
+    "top_5_chunks": [
+      {
+        "chunk_id": "9857fdb8-a67d-4db5-8a2d-bbe17ff30723",
+        "article_number": "",
+        "law_domain": "CivilStatus",
+        "law_name_ar": "civil_status",
+        "score": 0.7228,
+        "rank": 1
+      },
+      {
+        "chunk_id": "3a4f7386-1057-48a8-bf03-e42d7d2cc0a4",
+        "article_number": "",
+        "law_domain": "CivilStatus",
+        "law_name_ar": "civil_status",
+        "score": 0.7216,
+        "rank": 2
+      },
+      {
+        "chunk_id": "6be5576c-c68c-485a-9334-0137e955984e",
+        "article_number": "",
+        "law_domain": "CivilStatus",
+        "law_name_ar": "civil_status",
+        "score": 0.7182,
+        "rank": 3
+      },
+      {
+        "chunk_id": "1435bb4e-600c-426d-bb33-84f4be6f526b",
+        "article_number": "15",
+        "law_domain": "CivilStatus",
+        "law_name_ar": "civil_status",
+        "score": 0.715,
+        "rank": 4
+      },
+      {
+        "chunk_id": "e419dd78-14d7-469e-8dd3-72b40222c9b1",
+        "article_number": "1",
+        "law_domain": "CivilStatus",
+        "law_name_ar": "civil_status",
+        "score": 0.7132,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.7228,
+    "result_count": 10,
+    "retrieval_time_ms": 81.62
+  },
+  {
+    "question_id": "Q019",
+    "question": "ما هي أحكام الحضانة وترتيبها في قانون الأحوال الشخصية الجديد لعام 2019؟",
+    "category": "factual",
+    "law_domain": "PersonalStatus2019",
+    "expected_article": null,
+    "is_in_corpus": true,
+    "top_5_chunks": [
+      {
+        "chunk_id": "f278052a-0eb2-4845-a8dd-d713c37310b9",
+        "article_number": "١",
+        "law_domain": "PersonalStatus2019",
+        "law_name_ar": "personal_status_2019",
+        "score": 0.4883,
+        "rank": 1
+      },
+      {
+        "chunk_id": "23f7d35a-6948-4839-bc6b-f9e3ea8b19f2",
+        "article_number": "١",
+        "law_domain": "PersonalStatus2019",
+        "law_name_ar": "personal_status_2019",
+        "score": 0.4753,
+        "rank": 2
+      },
+      {
+        "chunk_id": "1ab44c35-486b-48ec-a57f-235ff246e30e",
+        "article_number": "١",
+        "law_domain": "PersonalStatus2019",
+        "law_name_ar": "personal_status_2019",
+        "score": 0.4714,
+        "rank": 3
+      },
+      {
+        "chunk_id": "0ea87df3-021c-455c-a8a3-7d61b1df1f1b",
+        "article_number": "",
+        "law_domain": "PersonalStatus2019",
+        "law_name_ar": "personal_status_2019",
+        "score": 0.4666,
+        "rank": 4
+      },
+      {
+        "chunk_id": "2e2517b9-1e2e-4472-94ba-8299bd2ac008",
+        "article_number": "",
+        "law_domain": "PersonalStatus2019",
+        "law_name_ar": "personal_status_2019",
+        "score": 0.4645,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.4883,
+    "result_count": 10,
+    "retrieval_time_ms": 214.68
+  },
+  {
+    "question_id": "Q020",
+    "question": "كيف نظّم قانون الأحوال الشخصية 2019 مسألة نفقة المطلقة ومدة استحقاقها؟",
+    "category": "factual",
+    "law_domain": "PersonalStatus2019",
+    "expected_article": null,
+    "is_in_corpus": true,
+    "top_5_chunks": [
+      {
+        "chunk_id": "f278052a-0eb2-4845-a8dd-d713c37310b9",
+        "article_number": "١",
+        "law_domain": "PersonalStatus2019",
+        "law_name_ar": "personal_status_2019",
+        "score": 0.4527,
+        "rank": 1
+      },
+      {
+        "chunk_id": "23f7d35a-6948-4839-bc6b-f9e3ea8b19f2",
+        "article_number": "١",
+        "law_domain": "PersonalStatus2019",
+        "law_name_ar": "personal_status_2019",
+        "score": 0.4516,
+        "rank": 2
+      },
+      {
+        "chunk_id": "b700c03d-a8a4-49de-b2f4-53b2a522986f",
+        "article_number": "",
+        "law_domain": "PersonalStatus2019",
+        "law_name_ar": "personal_status_2019",
+        "score": 0.4504,
+        "rank": 3
+      },
+      {
+        "chunk_id": "d9ed6756-6805-4b69-a23d-e5ceb5fce30a",
+        "article_number": "١",
+        "law_domain": "PersonalStatus2019",
+        "law_name_ar": "personal_status_2019",
+        "score": 0.4491,
+        "rank": 4
+      },
+      {
+        "chunk_id": "a640cd81-9566-4204-ad57-c13011a08d69",
+        "article_number": "١",
+        "law_domain": "PersonalStatus2019",
+        "law_name_ar": "personal_status_2019",
+        "score": 0.4478,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.4527,
+    "result_count": 10,
+    "retrieval_time_ms": 103.91
+  },
+  {
+    "question_id": "Q021",
+    "question": "ما هي الشروط والإجراءات المستحدثة للزواج الثاني في تعديلات قانون الأحوال الشخصية 2019؟",
+    "category": "factual",
+    "law_domain": "PersonalStatus2019",
+    "expected_article": null,
+    "is_in_corpus": true,
+    "top_5_chunks": [
+      {
+        "chunk_id": "f278052a-0eb2-4845-a8dd-d713c37310b9",
+        "article_number": "١",
+        "law_domain": "PersonalStatus2019",
+        "law_name_ar": "personal_status_2019",
+        "score": 0.4431,
+        "rank": 1
+      },
+      {
+        "chunk_id": "23f7d35a-6948-4839-bc6b-f9e3ea8b19f2",
+        "article_number": "١",
+        "law_domain": "PersonalStatus2019",
+        "law_name_ar": "personal_status_2019",
+        "score": 0.4287,
+        "rank": 2
+      },
+      {
+        "chunk_id": "0ea87df3-021c-455c-a8a3-7d61b1df1f1b",
+        "article_number": "",
+        "law_domain": "PersonalStatus2019",
+        "law_name_ar": "personal_status_2019",
+        "score": 0.424,
+        "rank": 3
+      },
+      {
+        "chunk_id": "1ab44c35-486b-48ec-a57f-235ff246e30e",
+        "article_number": "١",
+        "law_domain": "PersonalStatus2019",
+        "law_name_ar": "personal_status_2019",
+        "score": 0.4232,
+        "rank": 4
+      },
+      {
+        "chunk_id": "81f84c98-2310-4b0e-ba2e-99af38fbc304",
+        "article_number": "",
+        "law_domain": "PersonalStatus2019",
+        "law_name_ar": "personal_status_2019",
+        "score": 0.4213,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.4431,
+    "result_count": 10,
+    "retrieval_time_ms": 81.66
+  },
+  {
+    "question_id": "Q022",
+    "question": "ما هي العقوبة والغرامة المقررة لتجاوز إشارة المرور الحمراء وفق قانون السير الأردني؟",
+    "category": "factual",
+    "law_domain": "TrafficLaw",
+    "expected_article": null,
+    "is_in_corpus": true,
+    "top_5_chunks": [
+      {
+        "chunk_id": "adf8b418-e492-4cf9-9659-de4a49717509",
+        "article_number": "",
+        "law_domain": "TrafficLaw",
+        "law_name_ar": "traffic",
+        "score": 0.7334,
+        "rank": 1
+      },
+      {
+        "chunk_id": "c7cbefc3-5203-4395-a106-5fb3bfe9a554",
+        "article_number": "5",
+        "law_domain": "TrafficLaw",
+        "law_name_ar": "traffic",
+        "score": 0.6329,
+        "rank": 2
+      },
+      {
+        "chunk_id": "61603465-a89d-4d88-8f75-4bbecc031bc6",
+        "article_number": "2",
+        "law_domain": "TrafficLaw",
+        "law_name_ar": "traffic",
+        "score": 0.6113,
+        "rank": 3
+      },
+      {
+        "chunk_id": "e0972955-c620-4215-a9e1-4255bbafa690",
+        "article_number": "1",
+        "law_domain": "TrafficLaw",
+        "law_name_ar": "traffic",
+        "score": 0.6027,
+        "rank": 4
+      },
+      {
+        "chunk_id": "8d885b86-373d-4b89-9f02-b0ddeed942d1",
+        "article_number": "1",
+        "law_domain": "TrafficLaw",
+        "law_name_ar": "traffic",
+        "score": 0.5966,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.7334,
+    "result_count": 10,
+    "retrieval_time_ms": 203.64
+  },
+  {
+    "question_id": "Q023",
+    "question": "في أي الحالات يُسحب من مرتكب المخالفة المرورية إذن القيادة وفق قانون السير؟",
+    "category": "factual",
+    "law_domain": "TrafficLaw",
+    "expected_article": null,
+    "is_in_corpus": true,
+    "top_5_chunks": [
+      {
+        "chunk_id": "f7a1c721-eaaa-40b5-b0e4-bad57e4be1f7",
+        "article_number": "2",
+        "law_domain": "TrafficLaw",
+        "law_name_ar": "traffic",
+        "score": 0.6103,
+        "rank": 1
+      },
+      {
+        "chunk_id": "ffaa548e-b2a7-4db8-a142-9e50ede5a81e",
+        "article_number": "1",
+        "law_domain": "TrafficLaw",
+        "law_name_ar": "traffic",
+        "score": 0.6069,
+        "rank": 2
+      },
+      {
+        "chunk_id": "a5fe5d35-17d8-4383-a083-e71cf6caca64",
+        "article_number": "1",
+        "law_domain": "TrafficLaw",
+        "law_name_ar": "traffic",
+        "score": 0.599,
+        "rank": 3
+      },
+      {
+        "chunk_id": "58271677-26ca-44d3-9f05-c0dbf530bf31",
+        "article_number": "5",
+        "law_domain": "TrafficLaw",
+        "law_name_ar": "traffic",
+        "score": 0.5982,
+        "rank": 4
+      },
+      {
+        "chunk_id": "19df402d-b19b-474e-b9cd-29c5a705b7ab",
+        "article_number": "6",
+        "law_domain": "TrafficLaw",
+        "law_name_ar": "traffic",
+        "score": 0.5946,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.6103,
+    "result_count": 10,
+    "retrieval_time_ms": 75.88
+  },
+  {
+    "question_id": "Q024",
+    "question": "ما هي غرامة القيادة بسرعة زائدة عن الحد المسموح به على الطرق الأردنية؟",
+    "category": "factual",
+    "law_domain": "TrafficLaw",
+    "expected_article": null,
+    "is_in_corpus": true,
+    "top_5_chunks": [
+      {
+        "chunk_id": "adf8b418-e492-4cf9-9659-de4a49717509",
+        "article_number": "",
+        "law_domain": "TrafficLaw",
+        "law_name_ar": "traffic",
+        "score": 0.6941,
+        "rank": 1
+      },
+      {
+        "chunk_id": "c7cbefc3-5203-4395-a106-5fb3bfe9a554",
+        "article_number": "5",
+        "law_domain": "TrafficLaw",
+        "law_name_ar": "traffic",
+        "score": 0.6173,
+        "rank": 2
+      },
+      {
+        "chunk_id": "61603465-a89d-4d88-8f75-4bbecc031bc6",
+        "article_number": "2",
+        "law_domain": "TrafficLaw",
+        "law_name_ar": "traffic",
+        "score": 0.609,
+        "rank": 3
+      },
+      {
+        "chunk_id": "e0972955-c620-4215-a9e1-4255bbafa690",
+        "article_number": "1",
+        "law_domain": "TrafficLaw",
+        "law_name_ar": "traffic",
+        "score": 0.6024,
+        "rank": 4
+      },
+      {
+        "chunk_id": "674d8bdf-0e36-4e31-8051-454398b047d4",
+        "article_number": "1",
+        "law_domain": "TrafficLaw",
+        "law_name_ar": "traffic",
+        "score": 0.5985,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.6941,
+    "result_count": 10,
+    "retrieval_time_ms": 83.65
+  },
+  {
+    "question_id": "Q025",
+    "question": "ما هي معايير وأسس تقييم الأداء الوظيفي وفق نظام إدارة الموارد البشرية؟",
+    "category": "factual",
+    "law_domain": "HRManagement",
+    "expected_article": null,
+    "is_in_corpus": true,
+    "top_5_chunks": [
+      {
+        "chunk_id": "edfa485d-7f27-44ec-ac86-40e654c43956",
+        "article_number": "10",
+        "law_domain": "HRManagement",
+        "law_name_ar": "hr_system",
+        "score": 0.7759,
+        "rank": 1
+      },
+      {
+        "chunk_id": "c7efef9c-8eeb-49f4-b759-3412258a9728",
+        "article_number": "4",
+        "law_domain": "HRManagement",
+        "law_name_ar": "hr_system",
+        "score": 0.7702,
+        "rank": 2
+      },
+      {
+        "chunk_id": "1a29ff8a-c1c6-4062-96be-871b8aef2216",
+        "article_number": "4",
+        "law_domain": "HRManagement",
+        "law_name_ar": "hr_system",
+        "score": 0.7625,
+        "rank": 3
+      },
+      {
+        "chunk_id": "3a2ac729-3474-4289-9267-6ac21b6ba597",
+        "article_number": "7",
+        "law_domain": "HRManagement",
+        "law_name_ar": "hr_system",
+        "score": 0.7609,
+        "rank": 4
+      },
+      {
+        "chunk_id": "31aacdfd-d403-4ea5-a46d-f3fe5aad6af1",
+        "article_number": "1",
+        "law_domain": "HRManagement",
+        "law_name_ar": "hr_system",
+        "score": 0.7606,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.7759,
+    "result_count": 10,
+    "retrieval_time_ms": 293.87
+  },
+  {
+    "question_id": "Q026",
+    "question": "ما هي إجراءات إنهاء خدمة الموظف في نظام إدارة الموارد البشرية وحالاتها؟",
+    "category": "factual",
+    "law_domain": "HRManagement",
+    "expected_article": null,
+    "is_in_corpus": true,
+    "top_5_chunks": [
+      {
+        "chunk_id": "31aacdfd-d403-4ea5-a46d-f3fe5aad6af1",
+        "article_number": "1",
+        "law_domain": "HRManagement",
+        "law_name_ar": "hr_system",
+        "score": 0.7542,
+        "rank": 1
+      },
+      {
+        "chunk_id": "a431ccf4-3f06-4484-ac1f-1f8c16273206",
+        "article_number": "119",
+        "law_domain": "HRManagement",
+        "law_name_ar": "hr_system",
+        "score": 0.7531,
+        "rank": 2
+      },
+      {
+        "chunk_id": "a7b86cdc-a883-4b43-bfae-ae3cf378a74e",
+        "article_number": "7",
+        "law_domain": "HRManagement",
+        "law_name_ar": "hr_system",
+        "score": 0.7486,
+        "rank": 3
+      },
+      {
+        "chunk_id": "c7efef9c-8eeb-49f4-b759-3412258a9728",
+        "article_number": "4",
+        "law_domain": "HRManagement",
+        "law_name_ar": "hr_system",
+        "score": 0.7392,
+        "rank": 4
+      },
+      {
+        "chunk_id": "c986ef8e-1926-42af-960e-80a4ab3eb870",
+        "article_number": "143",
+        "law_domain": "HRManagement",
+        "law_name_ar": "hr_system",
+        "score": 0.738,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.7542,
+    "result_count": 10,
+    "retrieval_time_ms": 76.37
+  },
+  {
+    "question_id": "Q027",
+    "question": "ما هي المكافآت والاستحقاقات المالية للموظف عند انتهاء خدمته في نظام الموارد البشرية؟",
+    "category": "factual",
+    "law_domain": "HRManagement",
+    "expected_article": null,
+    "is_in_corpus": true,
+    "top_5_chunks": [
+      {
+        "chunk_id": "31aacdfd-d403-4ea5-a46d-f3fe5aad6af1",
+        "article_number": "1",
+        "law_domain": "HRManagement",
+        "law_name_ar": "hr_system",
+        "score": 0.7857,
+        "rank": 1
+      },
+      {
+        "chunk_id": "b622144d-ac0c-4805-863d-e75e2e96fb82",
+        "article_number": "11",
+        "law_domain": "HRManagement",
+        "law_name_ar": "hr_system",
+        "score": 0.78,
+        "rank": 2
+      },
+      {
+        "chunk_id": "dab82cc8-237d-4b70-8adf-4f6f35064407",
+        "article_number": "128",
+        "law_domain": "HRManagement",
+        "law_name_ar": "hr_system",
+        "score": 0.7786,
+        "rank": 3
+      },
+      {
+        "chunk_id": "a431ccf4-3f06-4484-ac1f-1f8c16273206",
+        "article_number": "119",
+        "law_domain": "HRManagement",
+        "law_name_ar": "hr_system",
+        "score": 0.7764,
+        "rank": 4
+      },
+      {
+        "chunk_id": "8189c31b-7e92-47a5-a59a-191cd01fdd56",
+        "article_number": "2",
+        "law_domain": "HRManagement",
+        "law_name_ar": "hr_system",
+        "score": 0.7701,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.7857,
+    "result_count": 10,
+    "retrieval_time_ms": 80.74
+  },
+  {
+    "question_id": "Q028",
+    "question": "ما هي العقوبة المقررة لجريمة السرقة وما هي ظروفها المشددة في قانون العقوبات الأردني؟",
+    "category": "factual",
+    "law_domain": "PenalCode",
+    "expected_article": null,
+    "is_in_corpus": true,
+    "top_5_chunks": [
+      {
+        "chunk_id": "37b8f997-bba8-44e4-b7be-e4480c568dde",
+        "article_number": "306",
+        "law_domain": "PenalCode",
+        "law_name_ar": "penal_code",
+        "score": 0.7002,
+        "rank": 1
+      },
+      {
+        "chunk_id": "ea66e88c-4443-4a18-bd5d-75dd27901744",
+        "article_number": "330",
+        "law_domain": "PenalCode",
+        "law_name_ar": "penal_code",
+        "score": 0.6855,
+        "rank": 2
+      },
+      {
+        "chunk_id": "04be8efb-db0e-4c20-ab19-3a9b5431fb7e",
+        "article_number": "475",
+        "law_domain": "PenalCode",
+        "law_name_ar": "penal_code",
+        "score": 0.6827,
+        "rank": 3
+      },
+      {
+        "chunk_id": "6baf2153-aac0-4120-8dd5-38cb8c2e4ee9",
+        "article_number": "458",
+        "law_domain": "PenalCode",
+        "law_name_ar": "penal_code",
+        "score": 0.6799,
+        "rank": 4
+      },
+      {
+        "chunk_id": "86a092c8-bede-41c3-8123-078ff8a0119f",
+        "article_number": "54",
+        "law_domain": "PenalCode",
+        "law_name_ar": "penal_code",
+        "score": 0.6789,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.7002,
+    "result_count": 10,
+    "retrieval_time_ms": 435.44
+  },
+  {
+    "question_id": "Q029",
+    "question": "ما هي أركان جريمة القتل العمد وعقوبتها في قانون العقوبات الأردني؟",
+    "category": "factual",
+    "law_domain": "PenalCode",
+    "expected_article": null,
+    "is_in_corpus": true,
+    "top_5_chunks": [
+      {
+        "chunk_id": "04be8efb-db0e-4c20-ab19-3a9b5431fb7e",
+        "article_number": "475",
+        "law_domain": "PenalCode",
+        "law_name_ar": "penal_code",
+        "score": 0.6963,
+        "rank": 1
+      },
+      {
+        "chunk_id": "37b8f997-bba8-44e4-b7be-e4480c568dde",
+        "article_number": "306",
+        "law_domain": "PenalCode",
+        "law_name_ar": "penal_code",
+        "score": 0.6886,
+        "rank": 2
+      },
+      {
+        "chunk_id": "ea66e88c-4443-4a18-bd5d-75dd27901744",
+        "article_number": "330",
+        "law_domain": "PenalCode",
+        "law_name_ar": "penal_code",
+        "score": 0.6794,
+        "rank": 3
+      },
+      {
+        "chunk_id": "64423042-7046-41ef-ba74-993b78b231b6",
+        "article_number": "467",
+        "law_domain": "PenalCode",
+        "law_name_ar": "penal_code",
+        "score": 0.6728,
+        "rank": 4
+      },
+      {
+        "chunk_id": "6baf2153-aac0-4120-8dd5-38cb8c2e4ee9",
+        "article_number": "458",
+        "law_domain": "PenalCode",
+        "law_name_ar": "penal_code",
+        "score": 0.6725,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.6963,
+    "result_count": 10,
+    "retrieval_time_ms": 110.74
+  },
+  {
+    "question_id": "Q030",
+    "question": "ما هي عقوبة جرائم الاحتيال والنصب والتزوير في قانون العقوبات الأردني؟",
+    "category": "factual",
+    "law_domain": "PenalCode",
+    "expected_article": null,
+    "is_in_corpus": true,
+    "top_5_chunks": [
+      {
+        "chunk_id": "04be8efb-db0e-4c20-ab19-3a9b5431fb7e",
+        "article_number": "475",
+        "law_domain": "PenalCode",
+        "law_name_ar": "penal_code",
+        "score": 0.6919,
+        "rank": 1
+      },
+      {
+        "chunk_id": "37b8f997-bba8-44e4-b7be-e4480c568dde",
+        "article_number": "306",
+        "law_domain": "PenalCode",
+        "law_name_ar": "penal_code",
+        "score": 0.6699,
+        "rank": 2
+      },
+      {
+        "chunk_id": "aff6b0ce-859f-4fd8-9eab-44e2389cc9fe",
+        "article_number": "17",
+        "law_domain": "PenalCode",
+        "law_name_ar": "penal_code",
+        "score": 0.6687,
+        "rank": 3
+      },
+      {
+        "chunk_id": "6baf2153-aac0-4120-8dd5-38cb8c2e4ee9",
+        "article_number": "458",
+        "law_domain": "PenalCode",
+        "law_name_ar": "penal_code",
+        "score": 0.6643,
+        "rank": 4
+      },
+      {
+        "chunk_id": "20a8b148-67fb-44ac-a8a6-2a7a9c83bc34",
+        "article_number": "208",
+        "law_domain": "PenalCode",
+        "law_name_ar": "penal_code",
+        "score": 0.6641,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.6919,
+    "result_count": 10,
+    "retrieval_time_ms": 111.41
+  },
+  {
+    "question_id": "Q031",
+    "question": "ما الفرق في حقوق إنهاء العقد بين موظف القطاع الخاص وفق قانون العمل وموظف القطاع العام وفق نظام الخدمة المدنية؟",
+    "category": "cross_law",
+    "law_domain": null,
+    "expected_article": null,
+    "is_in_corpus": true,
+    "top_5_chunks": [
+      {
+        "chunk_id": "97f63b4a-5963-4650-a95d-510126694fde",
+        "article_number": "43",
+        "law_domain": "Labor",
+        "law_name_ar": "قانون العمل الأردني",
+        "score": 0.8252,
+        "rank": 1
+      },
+      {
+        "chunk_id": "8189c31b-7e92-47a5-a59a-191cd01fdd56",
+        "article_number": "2",
+        "law_domain": "HRManagement",
+        "law_name_ar": "hr_system",
+        "score": 0.8238,
+        "rank": 2
+      },
+      {
+        "chunk_id": "d049a856-491e-416e-8d70-7513faf7a94e",
+        "article_number": "2",
+        "law_domain": "HRManagement",
+        "law_name_ar": "hr_system",
+        "score": 0.8236,
+        "rank": 3
+      },
+      {
+        "chunk_id": "aaa64e65-5c31-4d16-ac05-d323cbaa682a",
+        "article_number": "1",
+        "law_domain": "HRManagement",
+        "law_name_ar": "hr_system",
+        "score": 0.8224,
+        "rank": 4
+      },
+      {
+        "chunk_id": "3b902715-1115-46e6-bca9-bb08cb9fb766",
+        "article_number": "100",
+        "law_domain": "HRManagement",
+        "law_name_ar": "hr_system",
+        "score": 0.8208,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.8252,
+    "result_count": 10,
+    "retrieval_time_ms": 1110.47
+  },
+  {
+    "question_id": "Q032",
+    "question": "كيف تتقاطع أحكام قانون التجارة مع قانون الجرائم الإلكترونية في معالجة الاحتيال التجاري الرقمي؟",
+    "category": "cross_law",
+    "law_domain": null,
+    "expected_article": null,
+    "is_in_corpus": true,
+    "top_5_chunks": [
+      {
+        "chunk_id": "1f0c386b-47f0-4fcc-a83b-39eb23556743",
+        "article_number": "5",
+        "law_domain": "Customs",
+        "law_name_ar": "قانون الجمارك",
+        "score": 0.7052,
+        "rank": 1
+      },
+      {
+        "chunk_id": "cb4097ee-7986-4b03-9074-5bee35c8895b",
+        "article_number": "10",
+        "law_domain": "ConsumerProtection",
+        "law_name_ar": "قانون حماية المستهلك",
+        "score": 0.698,
+        "rank": 2
+      },
+      {
+        "chunk_id": "80521fae-5542-48d5-8a5d-d4e6c70bff30",
+        "article_number": "14",
+        "law_domain": "ConsumerProtection",
+        "law_name_ar": "قانون حماية المستهلك",
+        "score": 0.6966,
+        "rank": 3
+      },
+      {
+        "chunk_id": "322506e9-1577-481c-8377-36d0bae88e32",
+        "article_number": "39",
+        "law_domain": "Cybercrime",
+        "law_name_ar": "قانون الجرائم الإلكترونية الأردني",
+        "score": 0.6926,
+        "rank": 4
+      },
+      {
+        "chunk_id": "20adad44-8179-4160-98be-4541c4b14bf7",
+        "article_number": "288",
+        "law_domain": "Companies",
+        "law_name_ar": "قانون الشركات",
+        "score": 0.6906,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.7052,
+    "result_count": 10,
+    "retrieval_time_ms": 102.23
+  },
+  {
+    "question_id": "Q033",
+    "question": "ما الفرق بين الطلاق في قانون الأحوال الشخصية وكيف يؤثر على قيود قانون الأحوال المدنية؟",
+    "category": "cross_law",
+    "law_domain": null,
+    "expected_article": null,
+    "is_in_corpus": true,
+    "top_5_chunks": [
+      {
+        "chunk_id": "8bd294dc-d8ff-4540-99d3-429c3b29982d",
+        "article_number": "9",
+        "law_domain": "CivilStatus",
+        "law_name_ar": "civil_status",
+        "score": 0.7321,
+        "rank": 1
+      },
+      {
+        "chunk_id": "a07fa28a-287a-4516-97d6-d9b46cf10c44",
+        "article_number": "326",
+        "law_domain": "PersonalStatus",
+        "law_name_ar": "قانون الأحوال الشخصية",
+        "score": 0.7222,
+        "rank": 2
+      },
+      {
+        "chunk_id": "54fbc7bd-55a9-4db1-bcae-5a5131130566",
+        "article_number": "7",
+        "law_domain": "LandlordTenant",
+        "law_name_ar": "قانون المالكين والمستأجرين",
+        "score": 0.7221,
+        "rank": 3
+      },
+      {
+        "chunk_id": "f09cd111-0d2c-4a59-b53f-a6dca688e9aa",
+        "article_number": "32",
+        "law_domain": "PersonalStatus",
+        "law_name_ar": "قانون الأحوال الشخصية",
+        "score": 0.7155,
+        "rank": 4
+      },
+      {
+        "chunk_id": "1e0c69e6-d6ed-4b83-bd08-cd05521939d2",
+        "article_number": "97",
+        "law_domain": "PersonalStatus",
+        "law_name_ar": "قانون الأحوال الشخصية",
+        "score": 0.7133,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.7321,
+    "result_count": 10,
+    "retrieval_time_ms": 105.51
+  },
+  {
+    "question_id": "Q034",
+    "question": "كيف تعالج أحكام قانون السير وقانون العقوبات جرائم حوادث المرور المميتة من حيث المسؤولية؟",
+    "category": "cross_law",
+    "law_domain": null,
+    "expected_article": null,
+    "is_in_corpus": true,
+    "top_5_chunks": [
+      {
+        "chunk_id": "a07fa28a-287a-4516-97d6-d9b46cf10c44",
+        "article_number": "326",
+        "law_domain": "PersonalStatus",
+        "law_name_ar": "قانون الأحوال الشخصية",
+        "score": 0.7399,
+        "rank": 1
+      },
+      {
+        "chunk_id": "5b22c5fe-949d-4a67-a635-3a0f676bb390",
+        "article_number": "68",
+        "law_domain": "IncomeTax",
+        "law_name_ar": "قانون ضريبة الدخل",
+        "score": 0.7287,
+        "rank": 2
+      },
+      {
+        "chunk_id": "78e16935-43c4-44cf-a59b-dc22acad88ac",
+        "article_number": "79",
+        "law_domain": "Commercial",
+        "law_name_ar": "قانون التجارة الأردني",
+        "score": 0.7283,
+        "rank": 3
+      },
+      {
+        "chunk_id": "07f297d1-72ba-435c-a00f-836eec237dc0",
+        "article_number": "67",
+        "law_domain": "IncomeTax",
+        "law_name_ar": "قانون ضريبة الدخل",
+        "score": 0.7264,
+        "rank": 4
+      },
+      {
+        "chunk_id": "5196e041-34e3-4cc9-b5f3-8849a2c417ca",
+        "article_number": "52",
+        "law_domain": "IncomeTax",
+        "law_name_ar": "قانون ضريبة الدخل",
+        "score": 0.7261,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.7399,
+    "result_count": 10,
+    "retrieval_time_ms": 107.06
+  },
+  {
+    "question_id": "Q035",
+    "question": "هل تختلف مكافأة نهاية الخدمة بين قانون العمل ونظام إدارة الموارد البشرية؟",
+    "category": "cross_law",
+    "law_domain": null,
+    "expected_article": null,
+    "is_in_corpus": true,
+    "top_5_chunks": [
+      {
+        "chunk_id": "97f63b4a-5963-4650-a95d-510126694fde",
+        "article_number": "43",
+        "law_domain": "Labor",
+        "law_name_ar": "قانون العمل الأردني",
+        "score": 0.7621,
+        "rank": 1
+      },
+      {
+        "chunk_id": "c25815b5-1081-46ab-9649-449c175f8a11",
+        "article_number": "2",
+        "law_domain": "Labor",
+        "law_name_ar": "قانون العمل الأردني",
+        "score": 0.7611,
+        "rank": 2
+      },
+      {
+        "chunk_id": "b622144d-ac0c-4805-863d-e75e2e96fb82",
+        "article_number": "11",
+        "law_domain": "HRManagement",
+        "law_name_ar": "hr_system",
+        "score": 0.7547,
+        "rank": 3
+      },
+      {
+        "chunk_id": "02faf077-afa6-4e85-bcd0-ad9f1847e430",
+        "article_number": "89",
+        "law_domain": "Labor",
+        "law_name_ar": "قانون العمل الأردني",
+        "score": 0.7482,
+        "rank": 4
+      },
+      {
+        "chunk_id": "83f75834-f327-404a-8ab6-ad2682166239",
+        "article_number": "3",
+        "law_domain": "Labor",
+        "law_name_ar": "قانون العمل الأردني",
+        "score": 0.7481,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.7621,
+    "result_count": 10,
+    "retrieval_time_ms": 131.97
+  },
+  {
+    "question_id": "Q036",
+    "question": "كيف يتناول قانون الجرائم الإلكترونية وقانون التجارة قضايا الابتزاز الرقمي ضد رجال الأعمال؟",
+    "category": "cross_law",
+    "law_domain": null,
+    "expected_article": null,
+    "is_in_corpus": true,
+    "top_5_chunks": [
+      {
+        "chunk_id": "cb4097ee-7986-4b03-9074-5bee35c8895b",
+        "article_number": "10",
+        "law_domain": "ConsumerProtection",
+        "law_name_ar": "قانون حماية المستهلك",
+        "score": 0.6698,
+        "rank": 1
+      },
+      {
+        "chunk_id": "cae8ae04-0e14-4ceb-aaa3-4f9c6c4f44d0",
+        "article_number": "15",
+        "law_domain": "ConsumerProtection",
+        "law_name_ar": "قانون حماية المستهلك",
+        "score": 0.6643,
+        "rank": 2
+      },
+      {
+        "chunk_id": "71f209bd-42e9-48e9-9486-cbb3ab497a2b",
+        "article_number": "37",
+        "law_domain": "Cybercrime",
+        "law_name_ar": "قانون الجرائم الإلكترونية الأردني",
+        "score": 0.6569,
+        "rank": 3
+      },
+      {
+        "chunk_id": "aa71f641-8944-40ea-a5f7-3b93ba583115",
+        "article_number": "15",
+        "law_domain": "ConsumerProtection",
+        "law_name_ar": "قانون حماية المستهلك",
+        "score": 0.6564,
+        "rank": 4
+      },
+      {
+        "chunk_id": "3d1459ce-67b9-4e82-8188-b5a06eb04650",
+        "article_number": "۳٦",
+        "law_domain": "Investment",
+        "law_name_ar": "قانون الاستثمار",
+        "score": 0.6561,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.6698,
+    "result_count": 10,
+    "retrieval_time_ms": 105.87
+  },
+  {
+    "question_id": "Q037",
+    "question": "هل يُطبَّق قانون الأحوال الشخصية القديم أم تعديلات 2019 على زواج تم قبل صدور قانون 2019؟",
+    "category": "cross_law",
+    "law_domain": null,
+    "expected_article": null,
+    "is_in_corpus": true,
+    "top_5_chunks": [
+      {
+        "chunk_id": "cbd238ea-9344-4a5a-8896-df37989b8620",
+        "article_number": "15",
+        "law_domain": "CivilStatus",
+        "law_name_ar": "civil_status",
+        "score": 0.6778,
+        "rank": 1
+      },
+      {
+        "chunk_id": "54fbc7bd-55a9-4db1-bcae-5a5131130566",
+        "article_number": "7",
+        "law_domain": "LandlordTenant",
+        "law_name_ar": "قانون المالكين والمستأجرين",
+        "score": 0.6375,
+        "rank": 2
+      },
+      {
+        "chunk_id": "f09cd111-0d2c-4a59-b53f-a6dca688e9aa",
+        "article_number": "32",
+        "law_domain": "PersonalStatus",
+        "law_name_ar": "قانون الأحوال الشخصية",
+        "score": 0.6224,
+        "rank": 3
+      },
+      {
+        "chunk_id": "5305a7d3-9976-487c-823a-e9679bb37880",
+        "article_number": "346",
+        "law_domain": "PenalCode",
+        "law_name_ar": "penal_code",
+        "score": 0.6203,
+        "rank": 4
+      },
+      {
+        "chunk_id": "d84614e0-5ab1-4f0c-aae1-d1ba32064a69",
+        "article_number": "5",
+        "law_domain": "CivilStatus",
+        "law_name_ar": "civil_status",
+        "score": 0.6165,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.6778,
+    "result_count": 10,
+    "retrieval_time_ms": 107.35
+  },
+  {
+    "question_id": "Q038",
+    "question": "ما العلاقة بين حضانة الأطفال في قانون الأحوال الشخصية ومتطلبات التسجيل في قانون الأحوال المدنية؟",
+    "category": "cross_law",
+    "law_domain": null,
+    "expected_article": null,
+    "is_in_corpus": true,
+    "top_5_chunks": [
+      {
+        "chunk_id": "a07fa28a-287a-4516-97d6-d9b46cf10c44",
+        "article_number": "326",
+        "law_domain": "PersonalStatus",
+        "law_name_ar": "قانون الأحوال الشخصية",
+        "score": 0.7968,
+        "rank": 1
+      },
+      {
+        "chunk_id": "4788e2a0-6281-4227-8036-a89a2c1b2000",
+        "article_number": "15",
+        "law_domain": "CivilStatus",
+        "law_name_ar": "civil_status",
+        "score": 0.7789,
+        "rank": 2
+      },
+      {
+        "chunk_id": "0291bcda-75b9-4af2-9a03-946ed3d935c3",
+        "article_number": "3",
+        "law_domain": "LandlordTenant",
+        "law_name_ar": "قانون المالكين والمستأجرين",
+        "score": 0.777,
+        "rank": 3
+      },
+      {
+        "chunk_id": "0d7a9c2b-3897-4dad-b7f3-53cb867021bb",
+        "article_number": "22",
+        "law_domain": "Commercial",
+        "law_name_ar": "قانون التجارة الأردني",
+        "score": 0.7748,
+        "rank": 4
+      },
+      {
+        "chunk_id": "de2ce600-1c41-47fc-9613-0f0071377791",
+        "article_number": "244",
+        "law_domain": "Commercial",
+        "law_name_ar": "قانون التجارة الأردني",
+        "score": 0.7695,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.7968,
+    "result_count": 10,
+    "retrieval_time_ms": 108.09
+  },
+  {
+    "question_id": "Q039",
+    "question": "ما هي شرائح ضريبة الدخل الأردنية وكيف تُحتسب الضريبة على الرواتب؟",
+    "category": "refusal",
+    "law_domain": null,
+    "expected_article": null,
+    "is_in_corpus": false,
+    "top_5_chunks": [
+      {
+        "chunk_id": "929c7cf0-1200-4c40-8b8b-69fdc26310cb",
+        "article_number": "٤",
+        "law_domain": "Investment",
+        "law_name_ar": "قانون الاستثمار",
+        "score": 0.6656,
+        "rank": 1
+      },
+      {
+        "chunk_id": "a37ddc97-ddd4-438c-b594-190ea6c478ee",
+        "article_number": "3",
+        "law_domain": "Investment",
+        "law_name_ar": "قانون الاستثمار",
+        "score": 0.6505,
+        "rank": 2
+      },
+      {
+        "chunk_id": "9977cdf4-3de1-48a9-b5da-6e52c0ba9ddf",
+        "article_number": "12",
+        "law_domain": "Investment",
+        "law_name_ar": "قانون الاستثمار",
+        "score": 0.6442,
+        "rank": 3
+      },
+      {
+        "chunk_id": "d0c66d8a-6957-4d7e-b4af-bff5adb3ac31",
+        "article_number": "2",
+        "law_domain": "IncomeTax",
+        "law_name_ar": "قانون ضريبة الدخل",
+        "score": 0.6436,
+        "rank": 4
+      },
+      {
+        "chunk_id": "4de991ea-d7d1-4014-b7e3-8a5aac794bad",
+        "article_number": "79",
+        "law_domain": "IncomeTax",
+        "law_name_ar": "قانون ضريبة الدخل",
+        "score": 0.6331,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.6656,
+    "result_count": 10,
+    "retrieval_time_ms": 133.32
+  },
+  {
+    "question_id": "Q040",
+    "question": "ما هي شروط ومتطلبات الاستثمار الأجنبي المباشر وفق قانون الاستثمار الأردني؟",
+    "category": "refusal",
+    "law_domain": null,
+    "expected_article": null,
+    "is_in_corpus": false,
+    "top_5_chunks": [
+      {
+        "chunk_id": "23e6eaff-91e8-4d9d-9623-e39cbbdd2abd",
+        "article_number": "10",
+        "law_domain": "Investment",
+        "law_name_ar": "قانون الاستثمار",
+        "score": 0.7894,
+        "rank": 1
+      },
+      {
+        "chunk_id": "9801d379-bb13-4c51-8bab-65d835b0f0e9",
+        "article_number": "31",
+        "law_domain": "Investment",
+        "law_name_ar": "قانون الاستثمار",
+        "score": 0.7743,
+        "rank": 2
+      },
+      {
+        "chunk_id": "cbb80b75-8981-4883-a01d-04df257fd2e3",
+        "article_number": "2",
+        "law_domain": "SocialSecurity",
+        "law_name_ar": "قانون الضمان الاجتماعي",
+        "score": 0.7638,
+        "rank": 3
+      },
+      {
+        "chunk_id": "b2d31d47-70c4-4af3-b8eb-44c780480c42",
+        "article_number": "1",
+        "law_domain": "IncomeTax",
+        "law_name_ar": "قانون ضريبة الدخل",
+        "score": 0.7599,
+        "rank": 4
+      },
+      {
+        "chunk_id": "d473549c-6afd-4961-a78d-c3f796aec928",
+        "article_number": "209",
+        "law_domain": "Companies",
+        "law_name_ar": "قانون الشركات",
+        "score": 0.7534,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.7894,
+    "result_count": 10,
+    "retrieval_time_ms": 131.21
+  },
+  {
+    "question_id": "Q041",
+    "question": "ما هي نصوص الدستور الأردني المتعلقة بحقوق المواطنين والحريات العامة والمبادئ الأساسية؟",
+    "category": "refusal",
+    "law_domain": null,
+    "expected_article": null,
+    "is_in_corpus": false,
+    "top_5_chunks": [
+      {
+        "chunk_id": "ea305549-c03d-4e23-a037-b90744d14c73",
+        "article_number": "1",
+        "law_domain": "Commercial",
+        "law_name_ar": "قانون التجارة الأردني",
+        "score": 0.7222,
+        "rank": 1
+      },
+      {
+        "chunk_id": "68654b10-834b-4cb8-bad5-5f9a50f25ccd",
+        "article_number": "37",
+        "law_domain": "Investment",
+        "law_name_ar": "قانون الاستثمار",
+        "score": 0.7175,
+        "rank": 2
+      },
+      {
+        "chunk_id": "5d50b7b6-fe76-4819-a376-e73c5a228807",
+        "article_number": "476",
+        "law_domain": "Commercial",
+        "law_name_ar": "قانون التجارة الأردني",
+        "score": 0.7164,
+        "rank": 3
+      },
+      {
+        "chunk_id": "f22d90b4-e0e0-4287-9eff-852f4b77b0c1",
+        "article_number": "129",
+        "law_domain": "Constitution",
+        "law_name_ar": "الدستور الأردني",
+        "score": 0.7159,
+        "rank": 4
+      },
+      {
+        "chunk_id": "ff5b6441-1b13-4ec9-b6b9-3ed3ecf32a90",
+        "article_number": "1",
+        "law_domain": "Investment",
+        "law_name_ar": "قانون الاستثمار",
+        "score": 0.7156,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.7222,
+    "result_count": 10,
+    "retrieval_time_ms": 126.39
+  },
+  {
+    "question_id": "Q042",
+    "question": "ما هي إجراءات التخليص الجمركي وأنواع الرسوم المفروضة على البضائع المستوردة؟",
+    "category": "refusal",
+    "law_domain": null,
+    "expected_article": null,
+    "is_in_corpus": false,
+    "top_5_chunks": [
+      {
+        "chunk_id": "9cfa3cfc-9bb2-4ef7-8d40-40fd4e500b1a",
+        "article_number": "147",
+        "law_domain": "Customs",
+        "law_name_ar": "قانون الجمارك",
+        "score": 0.7577,
+        "rank": 1
+      },
+      {
+        "chunk_id": "5e6349b6-17a9-4069-9174-fdbbec00a133",
+        "article_number": "78",
+        "law_domain": "Customs",
+        "law_name_ar": "قانون الجمارك",
+        "score": 0.7487,
+        "rank": 2
+      },
+      {
+        "chunk_id": "2d312c95-6a15-4c82-bcf1-cdcea38d99b4",
+        "article_number": "128",
+        "law_domain": "Customs",
+        "law_name_ar": "قانون الجمارك",
+        "score": 0.7484,
+        "rank": 3
+      },
+      {
+        "chunk_id": "626ae71a-5b03-45f5-b8b4-e0804213d10e",
+        "article_number": "196",
+        "law_domain": "Customs",
+        "law_name_ar": "قانون الجمارك",
+        "score": 0.7458,
+        "rank": 4
+      },
+      {
+        "chunk_id": "38c8d453-4fd5-4afd-b998-14d29da86408",
+        "article_number": "14",
+        "law_domain": "Investment",
+        "law_name_ar": "قانون الاستثمار",
+        "score": 0.7315,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.7577,
+    "result_count": 10,
+    "retrieval_time_ms": 128.32
+  },
+  {
+    "question_id": "Q043",
+    "question": "ما هي حقوق المستهلك الأردني في مواجهة التاجر المحتال وكيف يتقدم بشكوى؟",
+    "category": "refusal",
+    "law_domain": null,
+    "expected_article": null,
+    "is_in_corpus": false,
+    "top_5_chunks": [
+      {
+        "chunk_id": "4cfcd91c-da3f-47e4-85d4-fb58ee1f8d91",
+        "article_number": "3",
+        "law_domain": "ConsumerProtection",
+        "law_name_ar": "قانون حماية المستهلك",
+        "score": 0.7534,
+        "rank": 1
+      },
+      {
+        "chunk_id": "cae8ae04-0e14-4ceb-aaa3-4f9c6c4f44d0",
+        "article_number": "15",
+        "law_domain": "ConsumerProtection",
+        "law_name_ar": "قانون حماية المستهلك",
+        "score": 0.7514,
+        "rank": 2
+      },
+      {
+        "chunk_id": "aa71f641-8944-40ea-a5f7-3b93ba583115",
+        "article_number": "15",
+        "law_domain": "ConsumerProtection",
+        "law_name_ar": "قانون حماية المستهلك",
+        "score": 0.7374,
+        "rank": 3
+      },
+      {
+        "chunk_id": "cb4097ee-7986-4b03-9074-5bee35c8895b",
+        "article_number": "10",
+        "law_domain": "ConsumerProtection",
+        "law_name_ar": "قانون حماية المستهلك",
+        "score": 0.7316,
+        "rank": 4
+      },
+      {
+        "chunk_id": "23e6eaff-91e8-4d9d-9623-e39cbbdd2abd",
+        "article_number": "10",
+        "law_domain": "Investment",
+        "law_name_ar": "قانون الاستثمار",
+        "score": 0.7113,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.7534,
+    "result_count": 10,
+    "retrieval_time_ms": 101.59
+  },
+  {
+    "question_id": "Q044",
+    "question": "ما هي حقوق التقاعد ومعادلة احتساب المعاش في قانون الضمان الاجتماعي الأردني؟",
+    "category": "refusal",
+    "law_domain": null,
+    "expected_article": null,
+    "is_in_corpus": false,
+    "top_5_chunks": [
+      {
+        "chunk_id": "929c7cf0-1200-4c40-8b8b-69fdc26310cb",
+        "article_number": "٤",
+        "law_domain": "Investment",
+        "law_name_ar": "قانون الاستثمار",
+        "score": 0.782,
+        "rank": 1
+      },
+      {
+        "chunk_id": "4de991ea-d7d1-4014-b7e3-8a5aac794bad",
+        "article_number": "79",
+        "law_domain": "IncomeTax",
+        "law_name_ar": "قانون ضريبة الدخل",
+        "score": 0.7429,
+        "rank": 2
+      },
+      {
+        "chunk_id": "72a903bd-0612-4831-ac1b-73634bedebb9",
+        "article_number": "13",
+        "law_domain": "IncomeTax",
+        "law_name_ar": "قانون ضريبة الدخل",
+        "score": 0.7353,
+        "rank": 3
+      },
+      {
+        "chunk_id": "3b902715-1115-46e6-bca9-bb08cb9fb766",
+        "article_number": "100",
+        "law_domain": "HRManagement",
+        "law_name_ar": "hr_system",
+        "score": 0.7351,
+        "rank": 4
+      },
+      {
+        "chunk_id": "d95ee9b5-4280-43ea-9ae9-81ba495a6571",
+        "article_number": "1",
+        "law_domain": "IncomeTax",
+        "law_name_ar": "قانون ضريبة الدخل",
+        "score": 0.7347,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.782,
+    "result_count": 10,
+    "retrieval_time_ms": 100.34
+  },
+  {
+    "question_id": "Q045",
+    "question": "شو يصير لو طردوني من الشغل فجأة بدون سبب واضح ومش دافعينلي حقوقي؟",
+    "category": "dialect",
+    "law_domain": "Labor",
+    "expected_article": "25",
+    "is_in_corpus": true,
+    "top_5_chunks": [
+      {
+        "chunk_id": "d5c8224f-f5ad-4db9-84eb-6da322a126df",
+        "article_number": "14",
+        "law_domain": "Labor",
+        "law_name_ar": "قانون العمل الأردني",
+        "score": 0.6011,
+        "rank": 1
+      },
+      {
+        "chunk_id": "afec9b77-b33a-43d0-8b90-8cb151216575",
+        "article_number": "28",
+        "law_domain": "Labor",
+        "law_name_ar": "قانون العمل الأردني",
+        "score": 0.598,
+        "rank": 2
+      },
+      {
+        "chunk_id": "84ceacfd-157b-4211-95ab-d811030983b3",
+        "article_number": "47",
+        "law_domain": "Labor",
+        "law_name_ar": "قانون العمل الأردني",
+        "score": 0.5951,
+        "rank": 3
+      },
+      {
+        "chunk_id": "00f7e261-b09a-421e-bb21-a93cd31fb205",
+        "article_number": "21",
+        "law_domain": "Labor",
+        "law_name_ar": "قانون العمل الأردني",
+        "score": 0.5946,
+        "rank": 4
+      },
+      {
+        "chunk_id": "7e5631f5-90ce-43f1-85b5-d9c402adfcc2",
+        "article_number": "46",
+        "law_domain": "Labor",
+        "law_name_ar": "قانون العمل الأردني",
+        "score": 0.5936,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.6011,
+    "result_count": 10,
+    "retrieval_time_ms": 82.05
+  },
+  {
+    "question_id": "Q046",
+    "question": "كيف آخد حقي لو صاحب الشغل ما دفعلي راتبي من شهرين؟",
+    "category": "dialect",
+    "law_domain": "Labor",
+    "expected_article": null,
+    "is_in_corpus": true,
+    "top_5_chunks": [
+      {
+        "chunk_id": "7e5631f5-90ce-43f1-85b5-d9c402adfcc2",
+        "article_number": "46",
+        "law_domain": "Labor",
+        "law_name_ar": "قانون العمل الأردني",
+        "score": 0.6947,
+        "rank": 1
+      },
+      {
+        "chunk_id": "84ceacfd-157b-4211-95ab-d811030983b3",
+        "article_number": "47",
+        "law_domain": "Labor",
+        "law_name_ar": "قانون العمل الأردني",
+        "score": 0.6928,
+        "rank": 2
+      },
+      {
+        "chunk_id": "98ad73fd-afff-4b26-9557-d31ea07063cd",
+        "article_number": "107",
+        "law_domain": "Labor",
+        "law_name_ar": "قانون العمل الأردني",
+        "score": 0.6904,
+        "rank": 3
+      },
+      {
+        "chunk_id": "ef5ca59b-b0b6-484b-9d1d-4bf834f3c623",
+        "article_number": "91",
+        "law_domain": "Labor",
+        "law_name_ar": "قانون العمل الأردني",
+        "score": 0.6833,
+        "rank": 4
+      },
+      {
+        "chunk_id": "e5f42fb0-b2ca-4cff-8286-184250c6a19f",
+        "article_number": "62",
+        "law_domain": "Labor",
+        "law_name_ar": "قانون العمل الأردني",
+        "score": 0.6823,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.6947,
+    "result_count": 10,
+    "retrieval_time_ms": 80.09
+  },
+  {
+    "question_id": "Q047",
+    "question": "عندي جار سرق منّي موبايل وشاهد شافه شو بعمل عشان آخد حقي؟",
+    "category": "dialect",
+    "law_domain": "PenalCode",
+    "expected_article": null,
+    "is_in_corpus": true,
+    "top_5_chunks": [
+      {
+        "chunk_id": "e189a62d-d5a7-447b-99be-54528b798fc6",
+        "article_number": "391",
+        "law_domain": "PenalCode",
+        "law_name_ar": "penal_code",
+        "score": 0.703,
+        "rank": 1
+      },
+      {
+        "chunk_id": "5c5d1b32-84f3-40be-8fcc-175bbed007a2",
+        "article_number": "392",
+        "law_domain": "PenalCode",
+        "law_name_ar": "penal_code",
+        "score": 0.6216,
+        "rank": 2
+      },
+      {
+        "chunk_id": "609729c7-1a6e-4390-892a-ecaac3845965",
+        "article_number": "418",
+        "law_domain": "PenalCode",
+        "law_name_ar": "penal_code",
+        "score": 0.5927,
+        "rank": 3
+      },
+      {
+        "chunk_id": "a8906b69-da29-4508-bfb0-32672d936154",
+        "article_number": "417",
+        "law_domain": "PenalCode",
+        "law_name_ar": "penal_code",
+        "score": 0.5902,
+        "rank": 4
+      },
+      {
+        "chunk_id": "68aae985-d733-4f57-9e12-67d9f09bcadb",
+        "article_number": "174",
+        "law_domain": "PenalCode",
+        "law_name_ar": "penal_code",
+        "score": 0.5899,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.703,
+    "result_count": 10,
+    "retrieval_time_ms": 86.81
+  },
+  {
+    "question_id": "Q048",
+    "question": "لو حدا هكّرلي حسابي على الانترنت وبعتلي تهديدات وصور شو القانون الأردني بحميني؟",
+    "category": "dialect",
+    "law_domain": "Cybercrime",
+    "expected_article": null,
+    "is_in_corpus": true,
+    "top_5_chunks": [
+      {
+        "chunk_id": "5aae7db7-557b-40e1-8e1d-30351c1ac198",
+        "article_number": "3",
+        "law_domain": "Cybercrime",
+        "law_name_ar": "قانون الجرائم الإلكترونية الأردني",
+        "score": 0.509,
+        "rank": 1
+      },
+      {
+        "chunk_id": "277205a2-edf6-4335-9fac-3a7060ea3d04",
+        "article_number": "20",
+        "law_domain": "Cybercrime",
+        "law_name_ar": "قانون الجرائم الإلكترونية الأردني",
+        "score": 0.5061,
+        "rank": 2
+      },
+      {
+        "chunk_id": "904bd1da-72e5-4de0-a686-b3ec238ab177",
+        "article_number": "21",
+        "law_domain": "Cybercrime",
+        "law_name_ar": "قانون الجرائم الإلكترونية الأردني",
+        "score": 0.5033,
+        "rank": 3
+      },
+      {
+        "chunk_id": "a8f1b266-8926-4b36-a936-eaf33cf201c3",
+        "article_number": "16",
+        "law_domain": "Cybercrime",
+        "law_name_ar": "قانون الجرائم الإلكترونية الأردني",
+        "score": 0.5009,
+        "rank": 4
+      },
+      {
+        "chunk_id": "96704fdd-f986-4c34-bd62-f091debf882c",
+        "article_number": "18",
+        "law_domain": "Cybercrime",
+        "law_name_ar": "قانون الجرائم الإلكترونية الأردني",
+        "score": 0.5002,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.509,
+    "result_count": 10,
+    "retrieval_time_ms": 90.21
+  },
+  {
+    "question_id": "Q049",
+    "question": "الحقوق",
+    "category": "edge_case",
+    "law_domain": null,
+    "expected_article": null,
+    "is_in_corpus": true,
+    "top_5_chunks": [
+      {
+        "chunk_id": "adc8d82c-7a72-4b26-8da4-fa2f8972e64b",
+        "article_number": "10",
+        "law_domain": "Customs",
+        "law_name_ar": "قانون الجمارك",
+        "score": 0.4821,
+        "rank": 1
+      },
+      {
+        "chunk_id": "686c7fe0-adf8-47a7-8418-18477572d909",
+        "article_number": "109",
+        "law_domain": "HRManagement",
+        "law_name_ar": "hr_system",
+        "score": 0.4627,
+        "rank": 2
+      },
+      {
+        "chunk_id": "f2bf5056-8ea9-4cb9-b022-d0da9adee46b",
+        "article_number": "106",
+        "law_domain": "HRManagement",
+        "law_name_ar": "hr_system",
+        "score": 0.4533,
+        "rank": 3
+      },
+      {
+        "chunk_id": "30de96aa-a9b4-4226-929f-cd735d72a35b",
+        "article_number": "109",
+        "law_domain": "HRManagement",
+        "law_name_ar": "hr_system",
+        "score": 0.4529,
+        "rank": 4
+      },
+      {
+        "chunk_id": "69ce985b-49f0-4354-a6df-ee2ca4e3a219",
+        "article_number": "2",
+        "law_domain": "HRManagement",
+        "law_name_ar": "hr_system",
+        "score": 0.4515,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.4821,
+    "result_count": 10,
+    "retrieval_time_ms": 56.37
+  },
+  {
+    "question_id": "Q050",
+    "question": "أعمل في شركة خاصة منذ أكثر من خمس سنوات وقرر صاحب العمل إنهاء خدماتي فجأة دون إشعار مسبق ودون تقديم أي مبرر أو سبب قانوني مقبول، في حين كنت أؤدي مهامي الوظيفية على أكمل وجه وحصلت على تقييمات أداء ممتازة في المراجعات الأخيرة، وقد دفع لي صاحب العمل راتب آخر شهر فقط دون أي تعويض إضافي، فما هي حقوقي القانونية الكاملة في هذه الحالة بموجب قانون العمل الأردني من حيث التعويض عن الفصل التعسفي ومكافأة نهاية الخدمة وبدل الإشعار وما تبقى من إجازات سنوية مستحقة؟",
+    "category": "edge_case",
+    "law_domain": "Labor",
+    "expected_article": "25",
+    "is_in_corpus": true,
+    "top_5_chunks": [
+      {
+        "chunk_id": "98ad73fd-afff-4b26-9557-d31ea07063cd",
+        "article_number": "107",
+        "law_domain": "Labor",
+        "law_name_ar": "قانون العمل الأردني",
+        "score": 0.8632,
+        "rank": 1
+      },
+      {
+        "chunk_id": "04e8f481-839d-4dac-b78e-79c178d64d3a",
+        "article_number": "35",
+        "law_domain": "Labor",
+        "law_name_ar": "قانون العمل الأردني",
+        "score": 0.8621,
+        "rank": 2
+      },
+      {
+        "chunk_id": "3562dd35-9836-4f8e-964e-c60af965f25d",
+        "article_number": "7",
+        "law_domain": "Labor",
+        "law_name_ar": "قانون العمل الأردني",
+        "score": 0.8572,
+        "rank": 3
+      },
+      {
+        "chunk_id": "e6f1703c-9558-45b0-81e6-dd334ebf7339",
+        "article_number": "40",
+        "law_domain": "Labor",
+        "law_name_ar": "قانون العمل الأردني",
+        "score": 0.8553,
+        "rank": 4
+      },
+      {
+        "chunk_id": "0ce81753-2426-4a58-acf3-c5fec4f2fe8d",
+        "article_number": "64",
+        "law_domain": "Labor",
+        "law_name_ar": "قانون العمل الأردني",
+        "score": 0.8538,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.8632,
+    "result_count": 10,
+    "retrieval_time_ms": 240.82
+  },
+  {
+    "question_id": "Q051",
+    "question": "ما هي شروط الاستحقاق لمعاش التقاعد في قانون الضمان الاجتماعي الأردني؟",
+    "category": "factual",
+    "law_domain": "SocialSecurity",
+    "expected_article": null,
+    "is_in_corpus": true,
+    "top_5_chunks": [
+      {
+        "chunk_id": "cbb80b75-8981-4883-a01d-04df257fd2e3",
+        "article_number": "2",
+        "law_domain": "SocialSecurity",
+        "law_name_ar": "قانون الضمان الاجتماعي",
+        "score": 0.7742,
+        "rank": 1
+      },
+      {
+        "chunk_id": "cfeff2f6-36ee-4e5e-8a38-53f90b265a3d",
+        "article_number": "3",
+        "law_domain": "SocialSecurity",
+        "law_name_ar": "قانون الضمان الاجتماعي",
+        "score": 0.7635,
+        "rank": 2
+      },
+      {
+        "chunk_id": "a97eb5db-0f47-4ee9-a546-e8f8cf82712e",
+        "article_number": "4",
+        "law_domain": "SocialSecurity",
+        "law_name_ar": "قانون الضمان الاجتماعي",
+        "score": 0.7596,
+        "rank": 3
+      },
+      {
+        "chunk_id": "04c435af-b2e5-4e82-8b84-54303f3ebe3a",
+        "article_number": "20",
+        "law_domain": "SocialSecurity",
+        "law_name_ar": "قانون الضمان الاجتماعي",
+        "score": 0.7489,
+        "rank": 4
+      },
+      {
+        "chunk_id": "b9f94def-af53-41bf-9c29-e6508d8751ff",
+        "article_number": "1",
+        "law_domain": "SocialSecurity",
+        "law_name_ar": "قانون الضمان الاجتماعي",
+        "score": 0.7487,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.7742,
+    "result_count": 10,
+    "retrieval_time_ms": 106.95
+  },
+  {
+    "question_id": "Q052",
+    "question": "ما هي نسب اشتراكات الضمان الاجتماعي المفروضة على العامل وصاحب العمل؟",
+    "category": "factual",
+    "law_domain": "SocialSecurity",
+    "expected_article": null,
+    "is_in_corpus": true,
+    "top_5_chunks": [
+      {
+        "chunk_id": "db920a05-6ac5-46db-9d9f-bc9dad9dc04c",
+        "article_number": "3",
+        "law_domain": "SocialSecurity",
+        "law_name_ar": "قانون الضمان الاجتماعي",
+        "score": 0.697,
+        "rank": 1
+      },
+      {
+        "chunk_id": "ce9ef12b-61a7-49bf-abfa-87bad04db3d0",
+        "article_number": "2",
+        "law_domain": "SocialSecurity",
+        "law_name_ar": "قانون الضمان الاجتماعي",
+        "score": 0.6951,
+        "rank": 2
+      },
+      {
+        "chunk_id": "3a3f0f4f-4fd1-4333-825f-4b76a142970c",
+        "article_number": "5",
+        "law_domain": "SocialSecurity",
+        "law_name_ar": "قانون الضمان الاجتماعي",
+        "score": 0.6835,
+        "rank": 3
+      },
+      {
+        "chunk_id": "04c435af-b2e5-4e82-8b84-54303f3ebe3a",
+        "article_number": "20",
+        "law_domain": "SocialSecurity",
+        "law_name_ar": "قانون الضمان الاجتماعي",
+        "score": 0.6802,
+        "rank": 4
+      },
+      {
+        "chunk_id": "cfeff2f6-36ee-4e5e-8a38-53f90b265a3d",
+        "article_number": "3",
+        "law_domain": "SocialSecurity",
+        "law_name_ar": "قانون الضمان الاجتماعي",
+        "score": 0.6783,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.697,
+    "result_count": 10,
+    "retrieval_time_ms": 105.89
+  },
+  {
+    "question_id": "Q053",
+    "question": "ما هي شرائح ضريبة الدخل المطبقة على الأفراد في قانون ضريبة الدخل الأردني؟",
+    "category": "factual",
+    "law_domain": "IncomeTax",
+    "expected_article": null,
+    "is_in_corpus": true,
+    "top_5_chunks": [
+      {
+        "chunk_id": "4de991ea-d7d1-4014-b7e3-8a5aac794bad",
+        "article_number": "79",
+        "law_domain": "IncomeTax",
+        "law_name_ar": "قانون ضريبة الدخل",
+        "score": 0.8133,
+        "rank": 1
+      },
+      {
+        "chunk_id": "d95ee9b5-4280-43ea-9ae9-81ba495a6571",
+        "article_number": "1",
+        "law_domain": "IncomeTax",
+        "law_name_ar": "قانون ضريبة الدخل",
+        "score": 0.7946,
+        "rank": 2
+      },
+      {
+        "chunk_id": "d0c66d8a-6957-4d7e-b4af-bff5adb3ac31",
+        "article_number": "2",
+        "law_domain": "IncomeTax",
+        "law_name_ar": "قانون ضريبة الدخل",
+        "score": 0.7857,
+        "rank": 3
+      },
+      {
+        "chunk_id": "3d290fac-fe09-49ff-ab8d-9aff65dc4691",
+        "article_number": "4",
+        "law_domain": "IncomeTax",
+        "law_name_ar": "قانون ضريبة الدخل",
+        "score": 0.7796,
+        "rank": 4
+      },
+      {
+        "chunk_id": "ef9abc73-04bb-428e-8029-a7335b904e13",
+        "article_number": "36",
+        "law_domain": "IncomeTax",
+        "law_name_ar": "قانون ضريبة الدخل",
+        "score": 0.7794,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.8133,
+    "result_count": 10,
+    "retrieval_time_ms": 84.41
+  },
+  {
+    "question_id": "Q054",
+    "question": "ما هي الإعفاءات الضريبية الشخصية والعائلية المقررة في قانون ضريبة الدخل الأردني؟",
+    "category": "factual",
+    "law_domain": "IncomeTax",
+    "expected_article": null,
+    "is_in_corpus": true,
+    "top_5_chunks": [
+      {
+        "chunk_id": "d95ee9b5-4280-43ea-9ae9-81ba495a6571",
+        "article_number": "1",
+        "law_domain": "IncomeTax",
+        "law_name_ar": "قانون ضريبة الدخل",
+        "score": 0.8194,
+        "rank": 1
+      },
+      {
+        "chunk_id": "4de991ea-d7d1-4014-b7e3-8a5aac794bad",
+        "article_number": "79",
+        "law_domain": "IncomeTax",
+        "law_name_ar": "قانون ضريبة الدخل",
+        "score": 0.8171,
+        "rank": 2
+      },
+      {
+        "chunk_id": "3d290fac-fe09-49ff-ab8d-9aff65dc4691",
+        "article_number": "4",
+        "law_domain": "IncomeTax",
+        "law_name_ar": "قانون ضريبة الدخل",
+        "score": 0.8124,
+        "rank": 3
+      },
+      {
+        "chunk_id": "031f8650-eefb-4246-8d5c-e70bd91282f2",
+        "article_number": "22",
+        "law_domain": "IncomeTax",
+        "law_name_ar": "قانون ضريبة الدخل",
+        "score": 0.8122,
+        "rank": 4
+      },
+      {
+        "chunk_id": "d0c66d8a-6957-4d7e-b4af-bff5adb3ac31",
+        "article_number": "2",
+        "law_domain": "IncomeTax",
+        "law_name_ar": "قانون ضريبة الدخل",
+        "score": 0.8099,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.8194,
+    "result_count": 10,
+    "retrieval_time_ms": 81.98
+  },
+  {
+    "question_id": "Q055",
+    "question": "ما هي شروط إخلاء المستأجر من العقار وإجراءاته وفق قانون المالكين والمستأجرين؟",
+    "category": "factual",
+    "law_domain": "LandlordTenant",
+    "expected_article": null,
+    "is_in_corpus": true,
+    "top_5_chunks": [
+      {
+        "chunk_id": "f10895ad-b998-4f56-adc2-7211fc45e346",
+        "article_number": "2",
+        "law_domain": "LandlordTenant",
+        "law_name_ar": "قانون المالكين والمستأجرين",
+        "score": 0.7922,
+        "rank": 1
+      },
+      {
+        "chunk_id": "066abc31-0f0b-483e-8a86-14e591343f20",
+        "article_number": "9",
+        "law_domain": "LandlordTenant",
+        "law_name_ar": "قانون المالكين والمستأجرين",
+        "score": 0.7803,
+        "rank": 2
+      },
+      {
+        "chunk_id": "19000c8a-2d18-45d6-8324-dcf67c8c52da",
+        "article_number": "18",
+        "law_domain": "LandlordTenant",
+        "law_name_ar": "قانون المالكين والمستأجرين",
+        "score": 0.7713,
+        "rank": 3
+      },
+      {
+        "chunk_id": "4102a82c-a688-488d-bd1f-da2453a506a1",
+        "article_number": "4",
+        "law_domain": "LandlordTenant",
+        "law_name_ar": "قانون المالكين والمستأجرين",
+        "score": 0.7691,
+        "rank": 4
+      },
+      {
+        "chunk_id": "a376fa95-e1a1-45b1-bef4-73a96369af55",
+        "article_number": "2",
+        "law_domain": "LandlordTenant",
+        "law_name_ar": "قانون المالكين والمستأجرين",
+        "score": 0.7654,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.7922,
+    "result_count": 10,
+    "retrieval_time_ms": 85.36
+  },
+  {
+    "question_id": "Q056",
+    "question": "ما هي التزامات المالك تجاه المستأجر في صيانة العقار وتوفير الخدمات؟",
+    "category": "factual",
+    "law_domain": "LandlordTenant",
+    "expected_article": null,
+    "is_in_corpus": true,
+    "top_5_chunks": [
+      {
+        "chunk_id": "f10895ad-b998-4f56-adc2-7211fc45e346",
+        "article_number": "2",
+        "law_domain": "LandlordTenant",
+        "law_name_ar": "قانون المالكين والمستأجرين",
+        "score": 0.7537,
+        "rank": 1
+      },
+      {
+        "chunk_id": "24a46383-bee3-4412-be5b-d07c562fbd5e",
+        "article_number": "6",
+        "law_domain": "LandlordTenant",
+        "law_name_ar": "قانون المالكين والمستأجرين",
+        "score": 0.7269,
+        "rank": 2
+      },
+      {
+        "chunk_id": "3f20cea4-324c-499c-bc84-7af577e7ce78",
+        "article_number": "5",
+        "law_domain": "LandlordTenant",
+        "law_name_ar": "قانون المالكين والمستأجرين",
+        "score": 0.7195,
+        "rank": 3
+      },
+      {
+        "chunk_id": "19000c8a-2d18-45d6-8324-dcf67c8c52da",
+        "article_number": "18",
+        "law_domain": "LandlordTenant",
+        "law_name_ar": "قانون المالكين والمستأجرين",
+        "score": 0.7173,
+        "rank": 4
+      },
+      {
+        "chunk_id": "cccdc0b1-f5bb-47e0-898b-f181924354f2",
+        "article_number": "16",
+        "law_domain": "LandlordTenant",
+        "law_name_ar": "قانون المالكين والمستأجرين",
+        "score": 0.7088,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.7537,
+    "result_count": 10,
+    "retrieval_time_ms": 103.75
+  },
+  {
+    "question_id": "Q057",
+    "question": "ما هي الحقوق الأساسية للمستهلك المكفولة في قانون حماية المستهلك الأردني؟",
+    "category": "factual",
+    "law_domain": "ConsumerProtection",
+    "expected_article": null,
+    "is_in_corpus": true,
+    "top_5_chunks": [
+      {
+        "chunk_id": "4cfcd91c-da3f-47e4-85d4-fb58ee1f8d91",
+        "article_number": "3",
+        "law_domain": "ConsumerProtection",
+        "law_name_ar": "قانون حماية المستهلك",
+        "score": 0.8196,
+        "rank": 1
+      },
+      {
+        "chunk_id": "cae8ae04-0e14-4ceb-aaa3-4f9c6c4f44d0",
+        "article_number": "15",
+        "law_domain": "ConsumerProtection",
+        "law_name_ar": "قانون حماية المستهلك",
+        "score": 0.7889,
+        "rank": 2
+      },
+      {
+        "chunk_id": "cb4097ee-7986-4b03-9074-5bee35c8895b",
+        "article_number": "10",
+        "law_domain": "ConsumerProtection",
+        "law_name_ar": "قانون حماية المستهلك",
+        "score": 0.7798,
+        "rank": 3
+      },
+      {
+        "chunk_id": "80521fae-5542-48d5-8a5d-d4e6c70bff30",
+        "article_number": "14",
+        "law_domain": "ConsumerProtection",
+        "law_name_ar": "قانون حماية المستهلك",
+        "score": 0.76,
+        "rank": 4
+      },
+      {
+        "chunk_id": "4f30e530-24ba-4fec-8fc7-bae01e099016",
+        "article_number": "2",
+        "law_domain": "ConsumerProtection",
+        "law_name_ar": "قانون حماية المستهلك",
+        "score": 0.7597,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.8196,
+    "result_count": 10,
+    "retrieval_time_ms": 104.13
+  },
+  {
+    "question_id": "Q058",
+    "question": "ما هي العقوبات المقررة لمخالفة أحكام قانون حماية المستهلك الأردني؟",
+    "category": "factual",
+    "law_domain": "ConsumerProtection",
+    "expected_article": null,
+    "is_in_corpus": true,
+    "top_5_chunks": [
+      {
+        "chunk_id": "4cfcd91c-da3f-47e4-85d4-fb58ee1f8d91",
+        "article_number": "3",
+        "law_domain": "ConsumerProtection",
+        "law_name_ar": "قانون حماية المستهلك",
+        "score": 0.7822,
+        "rank": 1
+      },
+      {
+        "chunk_id": "80521fae-5542-48d5-8a5d-d4e6c70bff30",
+        "article_number": "14",
+        "law_domain": "ConsumerProtection",
+        "law_name_ar": "قانون حماية المستهلك",
+        "score": 0.7737,
+        "rank": 2
+      },
+      {
+        "chunk_id": "b4e1f157-0f65-41ca-a933-5db145389fdd",
+        "article_number": "25",
+        "law_domain": "ConsumerProtection",
+        "law_name_ar": "قانون حماية المستهلك",
+        "score": 0.7692,
+        "rank": 3
+      },
+      {
+        "chunk_id": "437aad0b-2556-4bfe-a445-b7d9bdd6841c",
+        "article_number": "9",
+        "law_domain": "ConsumerProtection",
+        "law_name_ar": "قانون حماية المستهلك",
+        "score": 0.7673,
+        "rank": 4
+      },
+      {
+        "chunk_id": "cae8ae04-0e14-4ceb-aaa3-4f9c6c4f44d0",
+        "article_number": "15",
+        "law_domain": "ConsumerProtection",
+        "law_name_ar": "قانون حماية المستهلك",
+        "score": 0.7621,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.7822,
+    "result_count": 10,
+    "retrieval_time_ms": 111.23
+  },
+  {
+    "question_id": "Q059",
+    "question": "ما هي الضمانات والمزايا الممنوحة للمستثمرين الأجانب في قانون الاستثمار الأردني؟",
+    "category": "factual",
+    "law_domain": "Investment",
+    "expected_article": null,
+    "is_in_corpus": true,
+    "top_5_chunks": [
+      {
+        "chunk_id": "23e6eaff-91e8-4d9d-9623-e39cbbdd2abd",
+        "article_number": "10",
+        "law_domain": "Investment",
+        "law_name_ar": "قانون الاستثمار",
+        "score": 0.7907,
+        "rank": 1
+      },
+      {
+        "chunk_id": "9801d379-bb13-4c51-8bab-65d835b0f0e9",
+        "article_number": "31",
+        "law_domain": "Investment",
+        "law_name_ar": "قانون الاستثمار",
+        "score": 0.7832,
+        "rank": 2
+      },
+      {
+        "chunk_id": "efa37dca-7eac-4297-9b61-0ebf4e263ea1",
+        "article_number": "2",
+        "law_domain": "Investment",
+        "law_name_ar": "قانون الاستثمار",
+        "score": 0.7594,
+        "rank": 3
+      },
+      {
+        "chunk_id": "410d5f1a-f9ac-484c-b395-1bd1fe73645b",
+        "article_number": "35",
+        "law_domain": "Investment",
+        "law_name_ar": "قانون الاستثمار",
+        "score": 0.7541,
+        "rank": 4
+      },
+      {
+        "chunk_id": "7518d154-e572-4483-9490-32cff23792ab",
+        "article_number": "9",
+        "law_domain": "Investment",
+        "law_name_ar": "قانون الاستثمار",
+        "score": 0.7538,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.7907,
+    "result_count": 10,
+    "retrieval_time_ms": 99.22
+  },
+  {
+    "question_id": "Q060",
+    "question": "ما هي إجراءات تسجيل الاستثمار والحصول على التراخيص اللازمة وفق قانون الاستثمار؟",
+    "category": "factual",
+    "law_domain": "Investment",
+    "expected_article": null,
+    "is_in_corpus": true,
+    "top_5_chunks": [
+      {
+        "chunk_id": "ed874a07-a230-4a59-b2a5-8605991f2a6d",
+        "article_number": "16",
+        "law_domain": "Investment",
+        "law_name_ar": "قانون الاستثمار",
+        "score": 0.6976,
+        "rank": 1
+      },
+      {
+        "chunk_id": "547f9caa-9d5d-4fd5-92a9-588918abed9e",
+        "article_number": "2",
+        "law_domain": "Investment",
+        "law_name_ar": "قانون الاستثمار",
+        "score": 0.6957,
+        "rank": 2
+      },
+      {
+        "chunk_id": "f8638fb3-2c30-4616-b949-e7a719f0238b",
+        "article_number": "18",
+        "law_domain": "Investment",
+        "law_name_ar": "قانون الاستثمار",
+        "score": 0.6942,
+        "rank": 3
+      },
+      {
+        "chunk_id": "3d1459ce-67b9-4e82-8188-b5a06eb04650",
+        "article_number": "۳٦",
+        "law_domain": "Investment",
+        "law_name_ar": "قانون الاستثمار",
+        "score": 0.6938,
+        "rank": 4
+      },
+      {
+        "chunk_id": "7cf9c2ab-5a9b-4a36-a37f-378dc699dcff",
+        "article_number": "38",
+        "law_domain": "Investment",
+        "law_name_ar": "قانون الاستثمار",
+        "score": 0.6938,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.6976,
+    "result_count": 10,
+    "retrieval_time_ms": 107.0
+  },
+  {
+    "question_id": "Q061",
+    "question": "ما هي أنواع الشركات المنصوص عليها في قانون الشركات الأردني وشروط تأسيسها؟",
+    "category": "factual",
+    "law_domain": "Companies",
+    "expected_article": null,
+    "is_in_corpus": true,
+    "top_5_chunks": [
+      {
+        "chunk_id": "d473549c-6afd-4961-a78d-c3f796aec928",
+        "article_number": "209",
+        "law_domain": "Companies",
+        "law_name_ar": "قانون الشركات",
+        "score": 0.8192,
+        "rank": 1
+      },
+      {
+        "chunk_id": "b1381dad-cb99-48b6-9fef-e6530f8467f6",
+        "article_number": "1",
+        "law_domain": "Companies",
+        "law_name_ar": "قانون الشركات",
+        "score": 0.8138,
+        "rank": 2
+      },
+      {
+        "chunk_id": "28b861e4-fa3b-4470-988c-7eaf32a88b3a",
+        "article_number": "205",
+        "law_domain": "Companies",
+        "law_name_ar": "قانون الشركات",
+        "score": 0.8066,
+        "rank": 3
+      },
+      {
+        "chunk_id": "fad048e4-eff3-4da1-bef2-f8be619f393d",
+        "article_number": "89",
+        "law_domain": "Companies",
+        "law_name_ar": "قانون الشركات",
+        "score": 0.8037,
+        "rank": 4
+      },
+      {
+        "chunk_id": "04594592-12a4-4afc-b46a-96add684f532",
+        "article_number": "76",
+        "law_domain": "Companies",
+        "law_name_ar": "قانون الشركات",
+        "score": 0.8032,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.8192,
+    "result_count": 10,
+    "retrieval_time_ms": 105.98
+  },
+  {
+    "question_id": "Q062",
+    "question": "ما هي مسؤوليات أعضاء مجلس الإدارة وواجباتهم وفق قانون الشركات الأردني؟",
+    "category": "factual",
+    "law_domain": "Companies",
+    "expected_article": null,
+    "is_in_corpus": true,
+    "top_5_chunks": [
+      {
+        "chunk_id": "d2d264bd-601a-4513-b444-2190c08f13db",
+        "article_number": "2",
+        "law_domain": "Companies",
+        "law_name_ar": "قانون الشركات",
+        "score": 0.7995,
+        "rank": 1
+      },
+      {
+        "chunk_id": "d473549c-6afd-4961-a78d-c3f796aec928",
+        "article_number": "209",
+        "law_domain": "Companies",
+        "law_name_ar": "قانون الشركات",
+        "score": 0.7978,
+        "rank": 2
+      },
+      {
+        "chunk_id": "4421d1fd-8435-47ca-98bf-c96282814db1",
+        "article_number": "151",
+        "law_domain": "Companies",
+        "law_name_ar": "قانون الشركات",
+        "score": 0.7955,
+        "rank": 3
+      },
+      {
+        "chunk_id": "20adad44-8179-4160-98be-4541c4b14bf7",
+        "article_number": "288",
+        "law_domain": "Companies",
+        "law_name_ar": "قانون الشركات",
+        "score": 0.7951,
+        "rank": 4
+      },
+      {
+        "chunk_id": "875c3b0f-0738-4383-9fdb-3dfc70cc89fc",
+        "article_number": "157",
+        "law_domain": "Companies",
+        "law_name_ar": "قانون الشركات",
+        "score": 0.7941,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.7995,
+    "result_count": 10,
+    "retrieval_time_ms": 110.0
+  },
+  {
+    "question_id": "Q063",
+    "question": "ما هي الحقوق والحريات الأساسية المكفولة للمواطنين في الدستور الأردني؟",
+    "category": "factual",
+    "law_domain": "Constitution",
+    "expected_article": null,
+    "is_in_corpus": true,
+    "top_5_chunks": [
+      {
+        "chunk_id": "f22d90b4-e0e0-4287-9eff-852f4b77b0c1",
+        "article_number": "129",
+        "law_domain": "Constitution",
+        "law_name_ar": "الدستور الأردني",
+        "score": 0.7342,
+        "rank": 1
+      },
+      {
+        "chunk_id": "c00ec336-20a0-4cbb-895d-d315a8ef3d57",
+        "article_number": "127",
+        "law_domain": "Constitution",
+        "law_name_ar": "الدستور الأردني",
+        "score": 0.7182,
+        "rank": 2
+      },
+      {
+        "chunk_id": "a78b4142-121a-42c4-bb50-f41d298fa047",
+        "article_number": "7",
+        "law_domain": "Constitution",
+        "law_name_ar": "الدستور الأردني",
+        "score": 0.717,
+        "rank": 3
+      },
+      {
+        "chunk_id": "d7279965-f488-411c-b31c-dc716bcec14e",
+        "article_number": "75",
+        "law_domain": "Constitution",
+        "law_name_ar": "الدستور الأردني",
+        "score": 0.7128,
+        "rank": 4
+      },
+      {
+        "chunk_id": "4ac40310-4176-458d-994c-89160c6b84e7",
+        "article_number": "6",
+        "law_domain": "Constitution",
+        "law_name_ar": "الدستور الأردني",
+        "score": 0.712,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.7342,
+    "result_count": 10,
+    "retrieval_time_ms": 219.87
+  },
+  {
+    "question_id": "Q064",
+    "question": "ما هي صلاحيات مجلس النواب الأردني واختصاصاته الدستورية؟",
+    "category": "factual",
+    "law_domain": "Constitution",
+    "expected_article": null,
+    "is_in_corpus": true,
+    "top_5_chunks": [
+      {
+        "chunk_id": "d07c5a0d-a238-4652-9b3c-04af74325853",
+        "article_number": "2",
+        "law_domain": "Constitution",
+        "law_name_ar": "الدستور الأردني",
+        "score": 0.7322,
+        "rank": 1
+      },
+      {
+        "chunk_id": "a923ef57-9c06-4027-abc9-d1f289aec9b1",
+        "article_number": "2",
+        "law_domain": "Constitution",
+        "law_name_ar": "الدستور الأردني",
+        "score": 0.7313,
+        "rank": 2
+      },
+      {
+        "chunk_id": "8d6d091e-b63b-4c57-8439-5ee3c8611a88",
+        "article_number": "76",
+        "law_domain": "Constitution",
+        "law_name_ar": "الدستور الأردني",
+        "score": 0.7274,
+        "rank": 3
+      },
+      {
+        "chunk_id": "f22d90b4-e0e0-4287-9eff-852f4b77b0c1",
+        "article_number": "129",
+        "law_domain": "Constitution",
+        "law_name_ar": "الدستور الأردني",
+        "score": 0.7272,
+        "rank": 4
+      },
+      {
+        "chunk_id": "da4c16fc-5268-44a0-aa1c-582bd459f644",
+        "article_number": "69",
+        "law_domain": "Constitution",
+        "law_name_ar": "الدستور الأردني",
+        "score": 0.7235,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.7322,
+    "result_count": 10,
+    "retrieval_time_ms": 336.2
+  },
+  {
+    "question_id": "Q065",
+    "question": "ما هي إجراءات التخليص الجمركي وكيفية تحديد الرسوم الجمركية على البضائع المستوردة؟",
+    "category": "factual",
+    "law_domain": "Customs",
+    "expected_article": null,
+    "is_in_corpus": true,
+    "top_5_chunks": [
+      {
+        "chunk_id": "9cfa3cfc-9bb2-4ef7-8d40-40fd4e500b1a",
+        "article_number": "147",
+        "law_domain": "Customs",
+        "law_name_ar": "قانون الجمارك",
+        "score": 0.7583,
+        "rank": 1
+      },
+      {
+        "chunk_id": "729b37e8-9e05-428c-a9b1-cc72767ec10e",
+        "article_number": "103",
+        "law_domain": "Customs",
+        "law_name_ar": "قانون الجمارك",
+        "score": 0.757,
+        "rank": 2
+      },
+      {
+        "chunk_id": "732dc9e1-34b5-4492-9293-c27ab5ade8b5",
+        "article_number": "7",
+        "law_domain": "Customs",
+        "law_name_ar": "قانون الجمارك",
+        "score": 0.7519,
+        "rank": 3
+      },
+      {
+        "chunk_id": "5e6349b6-17a9-4069-9174-fdbbec00a133",
+        "article_number": "78",
+        "law_domain": "Customs",
+        "law_name_ar": "قانون الجمارك",
+        "score": 0.75,
+        "rank": 4
+      },
+      {
+        "chunk_id": "2d312c95-6a15-4c82-bcf1-cdcea38d99b4",
+        "article_number": "128",
+        "law_domain": "Customs",
+        "law_name_ar": "قانون الجمارك",
+        "score": 0.7461,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.7583,
+    "result_count": 10,
+    "retrieval_time_ms": 322.19
+  },
+  {
+    "question_id": "Q066",
+    "question": "ما هي حالات الإعفاء من الرسوم الجمركية المنصوص عليها في قانون الجمارك الأردني؟",
+    "category": "factual",
+    "law_domain": "Customs",
+    "expected_article": null,
+    "is_in_corpus": true,
+    "top_5_chunks": [
+      {
+        "chunk_id": "9cfa3cfc-9bb2-4ef7-8d40-40fd4e500b1a",
+        "article_number": "147",
+        "law_domain": "Customs",
+        "law_name_ar": "قانون الجمارك",
+        "score": 0.8195,
+        "rank": 1
+      },
+      {
+        "chunk_id": "935f05ac-f846-4d27-96a8-5916624e6a4c",
+        "article_number": "156",
+        "law_domain": "Customs",
+        "law_name_ar": "قانون الجمارك",
+        "score": 0.8062,
+        "rank": 2
+      },
+      {
+        "chunk_id": "bd6468c0-3a0e-485f-a252-a250c25942d0",
+        "article_number": "170",
+        "law_domain": "Customs",
+        "law_name_ar": "قانون الجمارك",
+        "score": 0.7991,
+        "rank": 3
+      },
+      {
+        "chunk_id": "f9a10638-7c0e-4183-86ef-091632e94140",
+        "article_number": "252",
+        "law_domain": "Customs",
+        "law_name_ar": "قانون الجمارك",
+        "score": 0.7902,
+        "rank": 4
+      },
+      {
+        "chunk_id": "30759f18-3551-440e-89a5-19c76e449b60",
+        "article_number": "239",
+        "law_domain": "Customs",
+        "law_name_ar": "قانون الجمارك",
+        "score": 0.7881,
+        "rank": 5
+      }
+    ],
+    "top_score": 0.8195,
+    "result_count": 10,
+    "retrieval_time_ms": 101.8
+  }
+]

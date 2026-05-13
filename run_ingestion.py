@@ -36,6 +36,14 @@ LAWS: list[dict] = [
     {"file": "traffic.pdf",             "domain": "TrafficLaw",         "label": "Traffic Law"},
     {"file": "hr_system.pdf",           "domain": "HRManagement",       "label": "HR Management"},
     {"file": "penal_code.pdf",          "domain": "PenalCode",          "label": "Penal Code"},
+    {"file": "social_security.pdf",     "domain": "SocialSecurity",     "label": "Social Security"},
+    {"file": "income_tax.pdf",          "domain": "IncomeTax",          "label": "Income Tax"},
+    {"file": "landlord_tenant.pdf",     "domain": "LandlordTenant",     "label": "Landlord & Tenant"},
+    {"file": "consumer_protection.pdf", "domain": "ConsumerProtection", "label": "Consumer Protection"},
+    {"file": "investment.pdf",          "domain": "Investment",         "label": "Investment"},
+    {"file": "companies.pdf",           "domain": "Companies",          "label": "Companies"},
+    {"file": "constitution.pdf",        "domain": "Constitution",       "label": "Constitution"},
+    {"file": "customs.pdf",             "domain": "Customs",            "label": "Customs"},
 ]
 
 

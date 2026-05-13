@@ -38,7 +38,9 @@ def test_law_domains_present(conn):
     cursor = conn.execute("SELECT DISTINCT law_domain FROM DOCUMENT")
     domains = {row["law_domain"] for row in cursor.fetchall()}
     required = {"Labor", "Commercial", "PersonalStatus", "Cybercrime",
-                "CivilService", "PenalCode"}
+                "CivilService", "PenalCode",
+                "SocialSecurity", "IncomeTax", "Companies", "Constitution",
+                "ConsumerProtection", "Customs"}
     assert required.issubset(domains), f"Missing domains: {required - domains}"
 
 
