@@ -35,7 +35,7 @@ ALL_DOMAINS: list[str] = [
 ]
 
 # Per-domain fetch count when searching all domains, then merged to top_k
-_PER_DOMAIN_K = 4
+_PER_DOMAIN_K = 5
 
 
 def embed_query(query_text: str) -> list[float]:
@@ -72,27 +72,7 @@ def retrieve(
     threshold: float = 0.50,
     expand: bool = True,
 ) -> list[dict]:
-    """Retrieve the most relevant chunks for a given query.
 
-    Parameters
-    ----------
-    query_text:
-        The user's legal question (dialect or MSA).
-    law_domain:
-        Restrict to one domain. None = search all.
-    top_k:
-        Maximum results after threshold filtering.
-    threshold:
-        Minimum cosine similarity score for inclusion.
-    expand:
-        If True, rewrite the query to formal MSA via Claude Haiku and
-        search both the original and expanded versions, then merge.
-
-    Returns
-    -------
-    list[dict] with keys: chunk_id, chunk_text, law_domain, law_name_ar,
-        article_number, page_number, score, rank
-    """
     try:
         queries = [query_text]
 

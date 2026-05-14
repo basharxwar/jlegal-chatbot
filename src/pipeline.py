@@ -27,8 +27,8 @@ from src.database import (
 # Constants
 # ---------------------------------------------------------------------------
 
-DEFAULT_THRESHOLD = 0.50
-DEFAULT_TOP_K = 8
+DEFAULT_THRESHOLD = 0.450
+DEFAULT_TOP_K = 10
 
 # Chunks below this score are passed to Claude for context but NOT shown
 # to the user as cited sources — prevents noise on casual/off-topic queries.
